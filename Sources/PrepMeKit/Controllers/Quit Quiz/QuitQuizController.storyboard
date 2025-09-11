@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Quit Quiz Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="QuitQuizController" customModule="PrepMeKit" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="405"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YWH-Nq-8r5">
+                                <rect key="frame" x="24" y="40" width="345" height="341"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quit Quiz?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bod-0K-ewr">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="33.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
+                                        <color key="textColor" name="SCEPTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1YF-Sx-0RE" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="33.666666666666671" width="345" height="8"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="UkV-iM-l7Z"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="You’ve answered 1 questions but you still have more time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdB-kt-uo6">
+                                        <rect key="frame" x="0.0" y="41.666666666666679" width="345" height="95.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" name="SCEPShade1Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1pL-tC-V5g" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="137" width="345" height="36"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="Rp6-BE-EWz"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqH-E8-fgw">
+                                        <rect key="frame" x="0.0" y="173" width="345" height="48"/>
+                                        <color key="backgroundColor" name="SCEPAccentColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="zgE-Gf-LYs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Continue Quiz">
+                                            <color key="titleColor" name="SCEPButtonTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="continueClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="iCQ-vP-G5F"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1X-lY-Iz8" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="221" width="345" height="12"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="eXQ-eM-y9h"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDt-Fj-RBF">
+                                        <rect key="frame" x="0.0" y="233" width="345" height="48"/>
+                                        <color key="backgroundColor" name="SCEPShade3Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="3yZ-Ju-JIl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Quit quiz">
+                                            <color key="titleColor" name="SCEPTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="quitClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AFS-RU-2aB"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mej-I7-FiK" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="281" width="345" height="12"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="rcX-1i-sbz"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ndM-Hi-OsJ">
+                                        <rect key="frame" x="0.0" y="293" width="345" height="48"/>
+                                        <color key="backgroundColor" name="SCEPShade3Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="tij-Dj-TtQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Submit 1 question">
+                                            <color key="titleColor" name="SCEPTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submitClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VJt-oe-PeQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MeA-Sz-xX8"/>
+                        <color key="backgroundColor" name="SCEPShade4Color"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="YWH-Nq-8r5" secondAttribute="bottom" constant="24" id="GNU-Iw-SD9"/>
+                            <constraint firstItem="YWH-Nq-8r5" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="au4-73-Mos"/>
+                            <constraint firstAttribute="trailing" secondItem="YWH-Nq-8r5" secondAttribute="trailing" constant="24" id="hlW-Ng-SO1"/>
+                            <constraint firstItem="YWH-Nq-8r5" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="40" id="hnb-Lb-Rxz"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="393" height="405"/>
+                    <connections>
+                        <outlet property="submitButton" destination="ndM-Hi-OsJ" id="9RW-8N-xLU"/>
+                        <outlet property="subtitleLabel" destination="jdB-kt-uo6" id="ct2-hn-I3v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="-132.74647887323945"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="SCEPAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPButtonTextColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade3Color">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

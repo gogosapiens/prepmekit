@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Quiz Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="QuizController" customModule="PrepMeKit" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEl-Uu-ga0">
+                                <rect key="frame" x="0.0" y="174" width="393" height="678"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BJw-Rh-mbL">
+                                        <rect key="frame" x="16" y="24" width="361" height="516"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vql-Wo-t1k" customClass="PaginationView" customModule="PrepMeKit">
+                                                <rect key="frame" x="0.0" y="0.0" width="361" height="4"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="4" id="Tcm-k0-lBu"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dT6-ex-csM">
+                                                <rect key="frame" x="0.0" y="4" width="361" height="28"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aq6-zo-kmP">
+                                                        <rect key="frame" x="141.33333333333334" y="0.0" width="78.333333333333343" height="28"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Timer" translatesAutoresizingMaskIntoConstraints="NO" id="EgN-nR-fGC">
+                                                                <rect key="frame" x="0.0" y="0.0" width="24" height="28"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hME-zY-2wk">
+                                                                <rect key="frame" x="32" y="0.0" width="46.333333333333343" height="28"/>
+                                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                                                <color key="textColor" name="SCEPTextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="aq6-zo-kmP" firstAttribute="top" secondItem="dT6-ex-csM" secondAttribute="top" id="RRw-R4-Wea"/>
+                                                    <constraint firstItem="aq6-zo-kmP" firstAttribute="centerX" secondItem="dT6-ex-csM" secondAttribute="centerX" id="V8t-Do-LEx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="aq6-zo-kmP" secondAttribute="bottom" id="biL-ft-hKc"/>
+                                                    <constraint firstAttribute="height" constant="28" id="gWO-WB-Vos"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="QUESTION 1/10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxb-86-jII">
+                                                <rect key="frame" x="0.0" y="32" width="361" height="19.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                                <color key="textColor" name="SCEPShade1Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1g-9S-fgk">
+                                                <rect key="frame" x="0.0" y="51.666666666666657" width="361" height="22.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                                <color key="textColor" name="SCEPTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yv2-3W-g71">
+                                                <rect key="frame" x="0.0" y="74.333333333333286" width="361" height="441.66666666666674"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="12" minimumInteritemSpacing="12" id="0uN-C3-2HC">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="psb-pj-mXE"/>
+                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="RKc-7u-YeE"/>
+                                                </connections>
+                                            </collectionView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zws-Yo-Awr">
+                                        <rect key="frame" x="16" y="556" width="361" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N19-Kn-19d" customClass="QuizNavigationButton" customModule="PrepMeKit">
+                                                <rect key="frame" x="0.0" y="0.0" width="84.333333333333329" height="48"/>
+                                                <color key="backgroundColor" name="SCEPShade4Color"/>
+                                                <color key="tintColor" name="SCEPTextColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="ChevronLeft"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="previousQuestionClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KKd-Ro-67V"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STT-Su-IAc">
+                                                <rect key="frame" x="92.333333333333343" y="0.0" width="84.333333333333343" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erR-Qm-S0r" customClass="QuizNavigationButton" customModule="PrepMeKit">
+                                                <rect key="frame" x="184.66666666666666" y="0.0" width="83.999999999999972" height="48"/>
+                                                <color key="backgroundColor" name="SCEPShade4Color"/>
+                                                <color key="tintColor" name="SCEPTextColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="ChevronRight"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="nextQuestionClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3f0-zv-yBi"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfN-po-fie">
+                                                <rect key="frame" x="276.66666666666669" y="0.0" width="84.333333333333314" height="48"/>
+                                                <color key="backgroundColor" name="SCEPAccentColor"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Submit">
+                                                    <color key="titleColor" name="SCEPButtonTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="nextQuestionClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Kde-Ib-rSI"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="5RB-uY-wfF"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="SCEPShade3Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BJw-Rh-mbL" secondAttribute="trailing" constant="16" id="8fr-aM-wxf"/>
+                                    <constraint firstItem="BJw-Rh-mbL" firstAttribute="top" secondItem="aEl-Uu-ga0" secondAttribute="top" constant="24" id="E4Z-ky-88w"/>
+                                    <constraint firstItem="Zws-Yo-Awr" firstAttribute="top" secondItem="BJw-Rh-mbL" secondAttribute="bottom" constant="16" id="X1J-id-M4M"/>
+                                    <constraint firstItem="BJw-Rh-mbL" firstAttribute="leading" secondItem="aEl-Uu-ga0" secondAttribute="leading" constant="16" id="ec1-wf-bNm"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zws-Yo-Awr" secondAttribute="trailing" constant="16" id="kDA-ra-4dA"/>
+                                    <constraint firstItem="Zws-Yo-Awr" firstAttribute="leading" secondItem="aEl-Uu-ga0" secondAttribute="leading" constant="16" id="msN-28-xsP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okz-hX-4aq">
+                                <rect key="frame" x="0.0" y="118" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="5Em-P7-xdG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Close">
+                                    <color key="baseForegroundColor" name="SCEPShade4Color"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="closeClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HQU-5P-Arb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question of the day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnq-VR-HSk">
+                                <rect key="frame" x="56" y="118" width="281" height="56"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <color key="textColor" name="SCEPShade4Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="SCEPAccentColor"/>
+                        <constraints>
+                            <constraint firstItem="aEl-Uu-ga0" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="3ZH-rb-J68"/>
+                            <constraint firstItem="Okz-hX-4aq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="4zg-BB-gWb"/>
+                            <constraint firstItem="rnq-VR-HSk" firstAttribute="leading" secondItem="Okz-hX-4aq" secondAttribute="trailing" id="5Ol-Pi-Hah"/>
+                            <constraint firstItem="rnq-VR-HSk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="5yx-q2-bbH"/>
+                            <constraint firstItem="aEl-Uu-ga0" firstAttribute="top" secondItem="Okz-hX-4aq" secondAttribute="bottom" id="Be0-rn-quo"/>
+                            <constraint firstItem="aEl-Uu-ga0" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="56" id="LTU-S9-X1m"/>
+                            <constraint firstItem="aEl-Uu-ga0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="UtL-P3-FkH"/>
+                            <constraint firstItem="Okz-hX-4aq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aTz-oC-FCw"/>
+                            <constraint firstItem="aEl-Uu-ga0" firstAttribute="top" secondItem="rnq-VR-HSk" secondAttribute="bottom" id="fSs-3i-eK8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Zws-Yo-Awr" secondAttribute="bottom" constant="6" id="hgm-pg-4A4"/>
+                            <constraint firstAttribute="bottom" secondItem="aEl-Uu-ga0" secondAttribute="bottom" id="rwT-xJ-oyL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rnq-VR-HSk" secondAttribute="trailing" constant="56" id="s83-JE-UE2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="answersCollectionView" destination="Yv2-3W-g71" id="rDH-XG-t06"/>
+                        <outlet property="contentStackView" destination="BJw-Rh-mbL" id="dAB-gC-ilK"/>
+                        <outlet property="nextButton" destination="erR-Qm-S0r" id="IXl-u7-6AI"/>
+                        <outlet property="paginationView" destination="Vql-Wo-t1k" id="EQf-hf-4rW"/>
+                        <outlet property="previousButton" destination="N19-Kn-19d" id="5ai-gC-x4C"/>
+                        <outlet property="questionCounterLabel" destination="Lxb-86-jII" id="qe8-L9-ORG"/>
+                        <outlet property="questionLabel" destination="A1g-9S-fgk" id="Du9-91-0mL"/>
+                        <outlet property="submitButton" destination="wfN-po-fie" id="iCN-hS-hd8"/>
+                        <outlet property="timerLabel" destination="hME-zY-2wk" id="5uM-Jc-NGo"/>
+                        <outlet property="timerView" destination="dT6-ex-csM" id="7M8-eM-B99"/>
+                        <outlet property="titleLabel" destination="rnq-VR-HSk" id="41A-Z4-Geo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="24.647887323943664"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ChevronLeft" width="24" height="24"/>
+        <image name="ChevronRight" width="24" height="24"/>
+        <image name="Close" width="24" height="24"/>
+        <image name="Timer" width="24" height="24.333333969116211"/>
+        <namedColor name="SCEPAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPButtonTextColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade3Color">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

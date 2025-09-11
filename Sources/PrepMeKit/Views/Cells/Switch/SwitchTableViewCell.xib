@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SwitchTableViewCell" rowHeight="105" id="UBH-tW-lXZ" customClass="SwitchTableViewCell" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="476" height="105"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UBH-tW-lXZ" id="Ae5-Ay-X5e">
+                <rect key="frame" x="0.0" y="0.0" width="476" height="105"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="goF-WJ-ppe">
+                        <rect key="frame" x="16" y="16" width="379" height="73"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question of the day" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAg-RX-uNd">
+                                <rect key="frame" x="0.0" y="0.0" width="379" height="22.666666666666668"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <color key="textColor" name="SCEPTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Notifications with today’s Question of the day." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCb-nz-By4">
+                                <rect key="frame" x="0.0" y="26.666666666666661" width="379" height="46.333333333333343"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                <color key="textColor" name="SCEPShade1Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NCd-ob-483">
+                        <rect key="frame" x="411" y="16" width="51" height="31"/>
+                        <connections>
+                            <action selector="switchChanged:" destination="UBH-tW-lXZ" eventType="valueChanged" id="fxk-tH-rAU"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="goF-WJ-ppe" firstAttribute="top" secondItem="Ae5-Ay-X5e" secondAttribute="top" constant="16" id="JC0-Up-ROH"/>
+                    <constraint firstItem="NCd-ob-483" firstAttribute="leading" secondItem="goF-WJ-ppe" secondAttribute="trailing" constant="16" id="Jka-dT-DqZ"/>
+                    <constraint firstAttribute="bottom" secondItem="goF-WJ-ppe" secondAttribute="bottom" constant="16" id="UVb-Nj-NSj"/>
+                    <constraint firstAttribute="trailing" secondItem="NCd-ob-483" secondAttribute="trailing" constant="16" id="nvF-0a-uky"/>
+                    <constraint firstItem="goF-WJ-ppe" firstAttribute="leading" secondItem="Ae5-Ay-X5e" secondAttribute="leading" constant="16" id="nyi-V2-aG2"/>
+                    <constraint firstItem="NCd-ob-483" firstAttribute="top" secondItem="Ae5-Ay-X5e" secondAttribute="top" constant="16" id="uqi-21-2H1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="subtitleLabel" destination="HCb-nz-By4" id="YfH-lr-CPT"/>
+                <outlet property="switchControl" destination="NCd-ob-483" id="qLv-p8-nDw"/>
+                <outlet property="titleLabel" destination="UAg-RX-uNd" id="atm-DH-WhT"/>
+            </connections>
+            <point key="canvasLocation" x="212.21374045801525" y="39.7887323943662"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

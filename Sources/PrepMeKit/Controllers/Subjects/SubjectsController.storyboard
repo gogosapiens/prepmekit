@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Subjects Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="SubjectsController" customModule="PrepMeKit" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JoF-RD-Pw8">
+                                <rect key="frame" x="0.0" y="118" width="393" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5I-t8-Hsy">
+                                        <rect key="frame" x="337" y="0.0" width="56" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="vKd-Z9-wu7"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Close">
+                                            <color key="baseForegroundColor" name="SCEPTextColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="closeClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8f0-x7-hKv"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit subjects" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxa-fd-5E6">
+                                        <rect key="frame" x="56" y="0.0" width="281" height="56"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="v5I-t8-Hsy" firstAttribute="top" secondItem="JoF-RD-Pw8" secondAttribute="top" id="0oz-IK-THC"/>
+                                    <constraint firstAttribute="height" constant="56" id="1bJ-KP-B45"/>
+                                    <constraint firstAttribute="bottom" secondItem="lxa-fd-5E6" secondAttribute="bottom" id="5hq-MO-0cS"/>
+                                    <constraint firstItem="v5I-t8-Hsy" firstAttribute="leading" secondItem="lxa-fd-5E6" secondAttribute="trailing" id="8HQ-UY-ian"/>
+                                    <constraint firstAttribute="trailing" secondItem="v5I-t8-Hsy" secondAttribute="trailing" id="DPd-zv-BIT"/>
+                                    <constraint firstAttribute="bottom" secondItem="v5I-t8-Hsy" secondAttribute="bottom" id="Ilf-ZF-1CD"/>
+                                    <constraint firstItem="lxa-fd-5E6" firstAttribute="leading" secondItem="JoF-RD-Pw8" secondAttribute="leading" constant="56" id="XdU-xn-PQl"/>
+                                    <constraint firstItem="lxa-fd-5E6" firstAttribute="top" secondItem="JoF-RD-Pw8" secondAttribute="top" id="hEJ-9C-WHC"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaI-UK-Avp">
+                                <rect key="frame" x="16" y="182" width="361" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="AACN CCRN (Adult)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qse-Qo-3ML">
+                                        <rect key="frame" x="0.0" y="0.0" width="287" height="34"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGH-YP-Rds">
+                                        <rect key="frame" x="287" y="0.0" width="74" height="34"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="SELECT ALL">
+                                            <color key="titleColor" name="SCEPAccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectAllClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tZE-rl-hfa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="hNI-K4-ei0"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCL-NH-f9e">
+                                <rect key="frame" x="16" y="724" width="361" height="56"/>
+                                <color key="backgroundColor" name="SCEPAccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="oNI-jM-oMi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" name="SCEPButtonTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="21V-Me-t4M"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select at least one topic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJA-jD-Wi7">
+                                <rect key="frame" x="16" y="683" width="361" height="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                <color key="textColor" name="SCEPShade1Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5vD-ia-wZw">
+                                <rect key="frame" x="0.0" y="216" width="393" height="451"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="evc-Ua-7uQ"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="l2I-ny-q5S"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zCL-NH-f9e" firstAttribute="top" secondItem="ZJA-jD-Wi7" secondAttribute="bottom" constant="24" id="06F-oL-6tg"/>
+                            <constraint firstItem="JoF-RD-Pw8" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="0SP-pH-bbO"/>
+                            <constraint firstItem="5vD-ia-wZw" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="36S-Fo-O8v"/>
+                            <constraint firstItem="aaI-UK-Avp" firstAttribute="top" secondItem="JoF-RD-Pw8" secondAttribute="bottom" constant="8" id="6mf-Gv-YgB"/>
+                            <constraint firstItem="5vD-ia-wZw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="EVX-IR-5P4"/>
+                            <constraint firstItem="JoF-RD-Pw8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Eyp-9X-xgP"/>
+                            <constraint firstItem="zCL-NH-f9e" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="IaH-Eu-uOx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JoF-RD-Pw8" secondAttribute="trailing" id="LFn-90-gHc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zCL-NH-f9e" secondAttribute="bottom" constant="4" id="Osj-yE-aGT"/>
+                            <constraint firstItem="ZJA-jD-Wi7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="PHI-Yb-7fA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aaI-UK-Avp" secondAttribute="trailing" constant="16" id="iCF-LJ-cxc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zCL-NH-f9e" secondAttribute="trailing" constant="16" id="kWZ-Yh-JOe"/>
+                            <constraint firstItem="aaI-UK-Avp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="mh3-7g-swq"/>
+                            <constraint firstItem="5vD-ia-wZw" firstAttribute="top" secondItem="aaI-UK-Avp" secondAttribute="bottom" id="n0d-z7-B2N"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ZJA-jD-Wi7" secondAttribute="trailing" constant="16" id="oJ3-tx-CDg"/>
+                            <constraint firstItem="ZJA-jD-Wi7" firstAttribute="top" secondItem="5vD-ia-wZw" secondAttribute="bottom" constant="16" id="wAo-Hw-BA7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="examTitleLabel" destination="qse-Qo-3ML" id="F8P-7f-bgT"/>
+                        <outlet property="saveButton" destination="zCL-NH-f9e" id="5kF-pe-oXb"/>
+                        <outlet property="selectAllButton" destination="GGH-YP-Rds" id="pfj-W8-gTu"/>
+                        <outlet property="tableView" destination="5vD-ia-wZw" id="qdG-Gq-Q7B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="24.647887323943664"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Close" width="24" height="24"/>
+        <namedColor name="SCEPAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPButtonTextColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DayCollectionViewCell" id="Bmh-Fj-RcZ" customClass="DayCollectionViewCell" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="49" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W8n-Pe-g99">
+                <rect key="frame" x="0.0" y="0.0" width="49" height="88"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AP6-6W-Ghn">
+                        <rect key="frame" x="0.0" y="0.0" width="49" height="17"/>
+                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3th-WV-71H">
+                        <rect key="frame" x="0.0" y="25" width="49" height="63"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsQ-a1-27F">
+                                <rect key="frame" x="16" y="19" width="17" height="25.333333333333329"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                <color key="textColor" name="SCEPTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeL-5J-G8q">
+                                <rect key="frame" x="0.0" y="55" width="49" height="8"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="TST-lW-MqV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="SCEPShade4Color"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="63" id="2pt-Zd-YT5"/>
+                            <constraint firstAttribute="trailing" secondItem="QeL-5J-G8q" secondAttribute="trailing" id="N3K-Cm-FUt"/>
+                            <constraint firstAttribute="bottom" secondItem="QeL-5J-G8q" secondAttribute="bottom" id="aq2-Jc-rpd"/>
+                            <constraint firstItem="RsQ-a1-27F" firstAttribute="centerY" secondItem="3th-WV-71H" secondAttribute="centerY" id="ha4-2I-lVa"/>
+                            <constraint firstItem="QeL-5J-G8q" firstAttribute="leading" secondItem="3th-WV-71H" secondAttribute="leading" id="j4J-zC-OXx"/>
+                            <constraint firstItem="RsQ-a1-27F" firstAttribute="centerX" secondItem="3th-WV-71H" secondAttribute="centerX" id="s7t-eU-wmb"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="AP6-6W-Ghn" secondAttribute="trailing" id="IKe-vL-xq9"/>
+                    <constraint firstAttribute="trailing" secondItem="3th-WV-71H" secondAttribute="trailing" id="K0G-aP-6LA"/>
+                    <constraint firstItem="AP6-6W-Ghn" firstAttribute="leading" secondItem="W8n-Pe-g99" secondAttribute="leading" id="XKS-pI-Pkq"/>
+                    <constraint firstItem="3th-WV-71H" firstAttribute="leading" secondItem="W8n-Pe-g99" secondAttribute="leading" id="jVN-GN-Tew"/>
+                    <constraint firstAttribute="bottom" secondItem="3th-WV-71H" secondAttribute="bottom" id="kwe-2b-8ah"/>
+                    <constraint firstItem="AP6-6W-Ghn" firstAttribute="top" secondItem="W8n-Pe-g99" secondAttribute="top" id="zDq-Xh-vGj"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <size key="customSize" width="49" height="88"/>
+            <connections>
+                <outlet property="dayLabel" destination="RsQ-a1-27F" id="ouE-tb-3hx"/>
+                <outlet property="dayView" destination="3th-WV-71H" id="5qH-rL-lah"/>
+                <outlet property="indicatorView" destination="QeL-5J-G8q" id="S1B-IO-EXn"/>
+                <outlet property="weekdayLabel" destination="AP6-6W-Ghn" id="5GL-o6-pZg"/>
+            </connections>
+            <point key="canvasLocation" x="-25.190839694656489" y="66.197183098591552"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

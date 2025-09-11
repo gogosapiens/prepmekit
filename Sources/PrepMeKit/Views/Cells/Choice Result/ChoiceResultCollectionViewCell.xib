@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChoiceResultCollectionViewCell" id="uXa-4u-bXO" customClass="ChoiceResultCollectionViewCell" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="444" height="101"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NaT-0r-cFt">
+                <rect key="frame" x="0.0" y="0.0" width="444" height="101"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bbi-GP-Ytp">
+                        <rect key="frame" x="16" y="12" width="412" height="77"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hxc-fD-tPo">
+                                <rect key="frame" x="0.0" y="0.0" width="412" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-vU-kKO">
+                                        <rect key="frame" x="0.0" y="0.0" width="372" height="24"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                        <color key="textColor" name="SCEPShade1Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="Correct" translatesAutoresizingMaskIntoConstraints="NO" id="nzo-Ki-bHX">
+                                        <rect key="frame" x="388" y="0.0" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="2Cy-Dx-JTX"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuI-tR-y9U">
+                                <rect key="frame" x="0.0" y="32" width="412" height="45"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                <color key="textColor" name="SCEPTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Bbi-GP-Ytp" firstAttribute="top" secondItem="NaT-0r-cFt" secondAttribute="top" constant="12" id="QdP-Wq-9Ol"/>
+                    <constraint firstAttribute="trailing" secondItem="Bbi-GP-Ytp" secondAttribute="trailing" constant="16" id="ay0-Hg-Zzg"/>
+                    <constraint firstAttribute="bottom" secondItem="Bbi-GP-Ytp" secondAttribute="bottom" constant="12" id="eYD-y2-ZNN"/>
+                    <constraint firstItem="Bbi-GP-Ytp" firstAttribute="leading" secondItem="NaT-0r-cFt" secondAttribute="leading" constant="16" id="jsn-kq-iqW"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" name="SCEPShade4Color"/>
+            <size key="customSize" width="444" height="101"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="8"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="indicatorImageView" destination="nzo-Ki-bHX" id="fop-IL-GdA"/>
+                <outlet property="questionLabel" destination="WuI-tR-y9U" id="hqC-3J-ShV"/>
+                <outlet property="subjectLabel" destination="QsH-vU-kKO" id="QG4-sM-rbs"/>
+            </connections>
+            <point key="canvasLocation" x="282.44274809160305" y="18.661971830985916"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Correct" width="24" height="24"/>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

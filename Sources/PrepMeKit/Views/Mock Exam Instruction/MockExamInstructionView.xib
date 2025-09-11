@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="MockExamInstructionView" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VjQ-pR-LcI">
+                    <rect key="frame" x="16" y="8" width="361" height="844"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="What to Expect" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ib-BW-hm4">
+                            <rect key="frame" x="0.0" y="0.0" width="361" height="91"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                            <color key="textColor" name="SCEPTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJe-pO-ubB" userLabel="Spacer">
+                            <rect key="frame" x="0.0" y="91" width="361" height="16"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="CRK-lZ-brt"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujX-kN-eb4" userLabel="Separator">
+                            <rect key="frame" x="0.0" y="107" width="361" height="1"/>
+                            <color key="backgroundColor" name="SCEPShade2Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Aew-nk-yR4"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbC-zh-tqH" userLabel="Spacer">
+                            <rect key="frame" x="0.0" y="108" width="361" height="16"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="szk-iY-knN"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prep Interface" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeg-61-UNf">
+                            <rect key="frame" x="0.0" y="124.00000000000001" width="361" height="22.666666666666671"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                            <color key="textColor" name="SCEPTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkX-Tn-Etm" userLabel="Spacer">
+                            <rect key="frame" x="0.0" y="146.66666666666666" width="361" height="8"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="Z2o-jt-utX"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This mock exam will use the App user interface and is not representative of how the official exam will appear." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-xC-sfz">
+                            <rect key="frame" x="0.0" y="154.66666666666666" width="361" height="67.333333333333343"/>
+                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                            <color key="textColor" name="SCEPTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnj-Ob-D2O" userLabel="Spacer">
+                            <rect key="frame" x="0.0" y="222" width="361" height="16"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="H4t-eO-yRL"/>
+                            </constraints>
+                        </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MockExamInstruction1" translatesAutoresizingMaskIntoConstraints="NO" id="UXZ-li-hf6">
+                            <rect key="frame" x="0.0" y="238" width="361" height="218.66666666666663"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="UXZ-li-hf6" secondAttribute="height" multiplier="343:208" id="ONM-F2-g1M"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9eX-Cb-qnv" userLabel="Spacer">
+                            <rect key="frame" x="0.0" y="456.66666666666669" width="361" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="mJg-Yv-VQ8"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgH-6c-8PT">
+                            <rect key="frame" x="0.0" y="496.66666666666669" width="361" height="22.666666666666686"/>
+                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                            <color key="textColor" name="SCEPTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Enu-dS-ueP" userLabel="Spacer">
+                            <rect key="frame" x="0.0" y="519.33333333333337" width="361" height="8"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="ipT-bG-hSn"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The timer cannot be paused." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bW3-1H-uhU">
+                            <rect key="frame" x="0.0" y="527.33333333333337" width="361" height="22.666666666666629"/>
+                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                            <color key="textColor" name="SCEPTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZoH-mH-e6u" userLabel="Spacer">
+                            <rect key="frame" x="0.0" y="550" width="361" height="16"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="9wC-va-WVG"/>
+                            </constraints>
+                        </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MockExamInstruction2" translatesAutoresizingMaskIntoConstraints="NO" id="TnL-CN-JxO">
+                            <rect key="frame" x="0.0" y="566" width="361" height="164.33333333333337"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="TnL-CN-JxO" secondAttribute="height" multiplier="343:156" id="y9Y-M2-qdn"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPX-MJ-Knn" userLabel="Spacer">
+                            <rect key="frame" x="0.0" y="730.33333333333337" width="361" height="24"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="a7b-79-gnr"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZX-PR-MpU">
+                            <rect key="frame" x="0.0" y="754.33333333333337" width="361" height="89.666666666666629"/>
+                            <string key="text">Ok! Take a deep breath. Make sure you’re in a quiet environment. Do your best to imitate the real testing environment. Stand up and do a biiig stretch, this is a long one.</string>
+                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                            <color key="textColor" name="SCEPTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="VjQ-pR-LcI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="XKn-5t-MmC"/>
+                <constraint firstItem="VjQ-pR-LcI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ZGq-ro-Mxl"/>
+                <constraint firstAttribute="trailing" secondItem="VjQ-pR-LcI" secondAttribute="trailing" constant="16" id="hsE-ef-V4R"/>
+                <constraint firstAttribute="bottom" secondItem="VjQ-pR-LcI" secondAttribute="bottom" id="t26-RK-udE"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="140" y="42"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="MockExamInstruction1" width="343" height="208"/>
+        <image name="MockExamInstruction2" width="343" height="156"/>
+        <namedColor name="SCEPShade2Color">
+            <color red="0.81568627450980391" green="0.83921568627450982" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

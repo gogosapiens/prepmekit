@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Quiz Result Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="QuizResultController" customModule="PrepMeKit" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nm-ki-UZb">
+                                <rect key="frame" x="0.0" y="118" width="393" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s31-BJ-jaO">
+                                        <rect key="frame" x="56" y="0.0" width="281" height="56"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" name="SCEPTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-aI-g4X">
+                                        <rect key="frame" x="337" y="0.0" width="56" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="OMm-dB-H9d"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Close">
+                                            <color key="baseForegroundColor" name="SCEPTextColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="closeClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="oA9-am-E0z"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="0Os-aI-g4X" secondAttribute="trailing" id="7yT-hL-Mfc"/>
+                                    <constraint firstItem="0Os-aI-g4X" firstAttribute="top" secondItem="1nm-ki-UZb" secondAttribute="top" id="FYK-BQ-gKJ"/>
+                                    <constraint firstItem="s31-BJ-jaO" firstAttribute="top" secondItem="1nm-ki-UZb" secondAttribute="top" id="GM2-mA-HPL"/>
+                                    <constraint firstAttribute="bottom" secondItem="s31-BJ-jaO" secondAttribute="bottom" id="QRk-1d-W6R"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Os-aI-g4X" secondAttribute="bottom" id="irD-0e-43G"/>
+                                    <constraint firstAttribute="height" constant="56" id="qY3-z6-DaK"/>
+                                    <constraint firstItem="s31-BJ-jaO" firstAttribute="leading" secondItem="1nm-ki-UZb" secondAttribute="leading" constant="56" id="s5J-NA-u8V"/>
+                                    <constraint firstItem="0Os-aI-g4X" firstAttribute="leading" secondItem="s31-BJ-jaO" secondAttribute="trailing" id="t83-gi-GEH"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQt-dO-urx">
+                                <rect key="frame" x="0.0" y="174" width="393" height="678"/>
+                                <color key="backgroundColor" name="SCEPShade3Color"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="dbq-q5-L82">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="13Z-jj-HNu"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="J8E-jK-LEi"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="SCEPShade4Color"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="DQt-dO-urx" secondAttribute="bottom" id="BfE-DW-pam"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="DQt-dO-urx" secondAttribute="trailing" id="Lne-Dg-aC2"/>
+                            <constraint firstItem="DQt-dO-urx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YhK-2W-AKx"/>
+                            <constraint firstItem="1nm-ki-UZb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ca5-w6-Np6"/>
+                            <constraint firstItem="1nm-ki-UZb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="kxt-Xk-PFn"/>
+                            <constraint firstItem="DQt-dO-urx" firstAttribute="top" secondItem="1nm-ki-UZb" secondAttribute="bottom" id="sfx-nq-xrI"/>
+                            <constraint firstItem="1nm-ki-UZb" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="y8M-th-FyC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="DQt-dO-urx" id="lYO-8G-Lwm"/>
+                        <outlet property="titleLabel" destination="s31-BJ-jaO" id="G5K-ID-Pdn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="24.647887323943664"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Close" width="24" height="24"/>
+        <namedColor name="SCEPShade3Color">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

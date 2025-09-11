@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SetupExamTitleTableViewCell" rowHeight="119" id="3yz-Jf-Y2O" customClass="SetupExamTitleTableViewCell" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="475" height="119"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3yz-Jf-Y2O" id="c90-AD-bpY">
+                <rect key="frame" x="0.0" y="0.0" width="475" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MIL-s9-iBn">
+                        <rect key="frame" x="16" y="16" width="443" height="87"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AACN CCRN (Adult)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6G-8V-o6H">
+                                <rect key="frame" x="0.0" y="0.0" width="443" height="25.333333333333332"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                                <color key="textColor" name="SCEPTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Critical-Care Registered Nurse (Adult)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-Ee-6zn">
+                                <rect key="frame" x="0.0" y="29.333333333333339" width="443" height="57.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                <color key="textColor" name="SCEPShade1Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MIL-s9-iBn" firstAttribute="top" secondItem="c90-AD-bpY" secondAttribute="top" constant="16" id="0HA-P0-Ktb"/>
+                    <constraint firstAttribute="bottom" secondItem="MIL-s9-iBn" secondAttribute="bottom" constant="16" id="BUf-td-5kG"/>
+                    <constraint firstItem="MIL-s9-iBn" firstAttribute="leading" secondItem="c90-AD-bpY" secondAttribute="leading" constant="16" id="Nqf-zF-7RF"/>
+                    <constraint firstAttribute="trailing" secondItem="MIL-s9-iBn" secondAttribute="trailing" constant="16" id="wOs-AK-fhK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="subtitleLabel" destination="Vmq-Ee-6zn" id="ZfV-y7-xwE"/>
+                <outlet property="titleLabel" destination="L6G-8V-o6H" id="lSd-Iw-Hyl"/>
+            </connections>
+            <point key="canvasLocation" x="188.54961832061068" y="17.95774647887324"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Font-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="ResultHeaderView" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="598"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEI-gl-YMN" userLabel="Separator">
+                    <rect key="frame" x="0.0" y="597" width="390" height="1"/>
+                    <color key="backgroundColor" name="SCEPShade2Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="2o9-1s-fcJ"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="b7N-uM-Y4B">
+                    <rect key="frame" x="16" y="16" width="358" height="490"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="August 05, 5:19pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikd-TI-akk">
+                            <rect key="frame" x="0.0" y="0.0" width="358" height="97"/>
+                            <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                            <color key="textColor" name="SCEPShade1Color"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7Z-qY-Sye">
+                            <rect key="frame" x="0.0" y="113" width="358" height="155"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="86%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8d-pU-aQ5">
+                                    <rect key="frame" x="110" y="53.33333333333335" width="138" height="89.666666666666686"/>
+                                    <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="64"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="P8d-pU-aQ5" secondAttribute="bottom" constant="12" id="Lx5-eh-95w"/>
+                                <constraint firstAttribute="height" constant="155" id="NRT-1c-PMZ"/>
+                                <constraint firstItem="P8d-pU-aQ5" firstAttribute="centerX" secondItem="C7Z-qY-Sye" secondAttribute="centerX" id="ym7-wv-JUL"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RA7-6P-AO1">
+                            <rect key="frame" x="0.0" y="284" width="358" height="80"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G60-Jf-wUS">
+                                    <rect key="frame" x="0.0" y="0.0" width="175" height="80"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7er-sL-6K8">
+                                            <rect key="frame" x="8" y="12" width="159" height="52"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="28/34" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbi-d1-c6h">
+                                                    <rect key="frame" x="0.0" y="0.0" width="159" height="33.666666666666664"/>
+                                                    <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
+                                                    <color key="textColor" name="SCEPTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answered correctly" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JV-Ji-yXM">
+                                                    <rect key="frame" x="0.0" y="37.666666666666686" width="159" height="14.333333333333336"/>
+                                                    <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                                    <color key="textColor" name="SCEPTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.90196078431372551" green="0.97254901960784312" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="7er-sL-6K8" secondAttribute="trailing" constant="8" id="3ga-Vv-kQ3"/>
+                                        <constraint firstItem="7er-sL-6K8" firstAttribute="top" secondItem="G60-Jf-wUS" secondAttribute="top" constant="12" id="FvB-iZ-n4S"/>
+                                        <constraint firstAttribute="bottom" secondItem="7er-sL-6K8" secondAttribute="bottom" constant="16" id="i9l-nq-o9l"/>
+                                        <constraint firstItem="7er-sL-6K8" firstAttribute="leading" secondItem="G60-Jf-wUS" secondAttribute="leading" constant="8" id="wZU-hb-R72"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ud4-6y-aLO">
+                                    <rect key="frame" x="183" y="0.0" width="175" height="80"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="c52-Rk-ICx">
+                                            <rect key="frame" x="8" y="12" width="159" height="52"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3m 32s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGh-Ry-fAQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="159" height="33.666666666666664"/>
+                                                    <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
+                                                    <color key="textColor" name="SCEPTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIz-Qa-sNf">
+                                                    <rect key="frame" x="0.0" y="37.666666666666686" width="159" height="14.333333333333336"/>
+                                                    <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                                    <color key="textColor" name="SCEPTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.90196078430000004" green="0.97254901959999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="c52-Rk-ICx" firstAttribute="leading" secondItem="ud4-6y-aLO" secondAttribute="leading" constant="8" id="Vpz-Rh-sTU"/>
+                                        <constraint firstItem="c52-Rk-ICx" firstAttribute="top" secondItem="ud4-6y-aLO" secondAttribute="top" constant="12" id="Zhh-E5-Guh"/>
+                                        <constraint firstAttribute="bottom" secondItem="c52-Rk-ICx" secondAttribute="bottom" constant="16" id="cdg-O8-G2x"/>
+                                        <constraint firstAttribute="trailing" secondItem="c52-Rk-ICx" secondAttribute="trailing" constant="8" id="r7u-Bh-ucw"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="0Ci-tS-4Tx"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xas-9c-uXH">
+                            <rect key="frame" x="0.0" y="380" width="358" height="38"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jbq-FM-SFF">
+                                    <rect key="frame" x="79.333333333333329" y="0.0" width="199.33333333333337" height="38"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="deV-mx-stX">
+                                            <rect key="frame" x="0.0" y="15" width="8" height="8"/>
+                                            <color key="backgroundColor" name="SCEPTextColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="8" id="6gb-8B-0OC"/>
+                                                <constraint firstAttribute="width" constant="8" id="gZX-RO-7cN"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="67% Community Score" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f57-jX-kjW">
+                                            <rect key="frame" x="16" y="7.6666666666666874" width="183.33333333333334" height="22.666666666666671"/>
+                                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                            <color key="textColor" name="SCEPTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="38" id="Wq2-G2-HeU"/>
+                                <constraint firstAttribute="bottom" secondItem="jbq-FM-SFF" secondAttribute="bottom" id="eit-Ys-mqn"/>
+                                <constraint firstItem="jbq-FM-SFF" firstAttribute="centerX" secondItem="xas-9c-uXH" secondAttribute="centerX" id="jr7-eA-0UM"/>
+                                <constraint firstItem="jbq-FM-SFF" firstAttribute="top" secondItem="xas-9c-uXH" secondAttribute="top" id="mIS-rA-HjI"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPO-t4-GNB">
+                            <rect key="frame" x="0.0" y="434" width="358" height="56"/>
+                            <color key="backgroundColor" name="SCEPAccentColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="0I6-nT-EX1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Retake Quiz">
+                                <color key="titleColor" name="SCEPButtonTextColor"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="retakeQuizClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="FGb-Ht-Xeu"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v5W-hz-1Dp">
+                    <rect key="frame" x="0.0" y="538" width="390" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52V-iM-v0L" customClass="ResultPageButton" customModule="PrepMeKit">
+                            <rect key="frame" x="0.0" y="0.0" width="130" height="60"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <connections>
+                                <action selector="allPageClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="QhC-0K-MXM"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVL-fM-Z6L" customClass="ResultPageButton" customModule="PrepMeKit">
+                            <rect key="frame" x="130" y="0.0" width="130" height="60"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <connections>
+                                <action selector="incorrectPageClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="iJU-4M-Y3L"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvz-jy-kq6" customClass="ResultPageButton" customModule="PrepMeKit">
+                            <rect key="frame" x="260" y="0.0" width="130" height="60"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <connections>
+                                <action selector="correctPageClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="S9B-cW-FEd"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="Anp-BR-1Q4"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" name="SCEPShade4Color"/>
+            <constraints>
+                <constraint firstItem="b7N-uM-Y4B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="8c0-5x-s7A"/>
+                <constraint firstAttribute="trailing" secondItem="v5W-hz-1Dp" secondAttribute="trailing" id="Kex-jo-oEu"/>
+                <constraint firstAttribute="bottom" secondItem="BEI-gl-YMN" secondAttribute="bottom" id="Ovi-BE-XMb"/>
+                <constraint firstItem="b7N-uM-Y4B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Zms-Dv-NEV"/>
+                <constraint firstAttribute="trailing" secondItem="BEI-gl-YMN" secondAttribute="trailing" id="cb2-Uv-ZGu"/>
+                <constraint firstItem="BEI-gl-YMN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dvs-Zl-OxH"/>
+                <constraint firstItem="v5W-hz-1Dp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eXb-Mv-S8W"/>
+                <constraint firstItem="v5W-hz-1Dp" firstAttribute="top" secondItem="b7N-uM-Y4B" secondAttribute="bottom" constant="32" id="pbc-at-AZW"/>
+                <constraint firstAttribute="trailing" secondItem="b7N-uM-Y4B" secondAttribute="trailing" constant="16" id="qAg-tK-cCd"/>
+                <constraint firstAttribute="bottom" secondItem="v5W-hz-1Dp" secondAttribute="bottom" id="uhD-8X-wqI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="allPageButton" destination="52V-iM-v0L" id="NT5-H0-pqa"/>
+                <outlet property="communityScoreLabel" destination="f57-jX-kjW" id="ipb-fn-H5S"/>
+                <outlet property="correctAnswersLabel" destination="mbi-d1-c6h" id="RPy-Va-wqu"/>
+                <outlet property="correctAnswersView" destination="G60-Jf-wUS" id="Ury-uB-nPN"/>
+                <outlet property="correctPageButton" destination="gvz-jy-kq6" id="T7O-ZD-XlE"/>
+                <outlet property="dateLabel" destination="Ikd-TI-akk" id="UpI-Cw-Z5w"/>
+                <outlet property="incorrectPageButton" destination="PVL-fM-Z6L" id="2iZ-J1-OkJ"/>
+                <outlet property="progressLabel" destination="P8d-pU-aQ5" id="cNl-p4-B8g"/>
+                <outlet property="progressView" destination="C7Z-qY-Sye" id="vpT-tk-Hf2"/>
+                <outlet property="quizTimeLabel" destination="oGh-Ry-fAQ" id="bJJ-ef-LhL"/>
+                <outlet property="quizTimeView" destination="ud4-6y-aLO" id="Txe-hN-uFS"/>
+            </connections>
+            <point key="canvasLocation" x="137.40458015267174" y="31.690140845070424"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="SCEPAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPButtonTextColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade2Color">
+            <color red="0.81568627450980391" green="0.83921568627450982" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

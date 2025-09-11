@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExamCollectionViewCell" id="OcZ-WJ-5og" customClass="ExamCollectionViewCell" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="402" height="134"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ot8-Jd-05k">
+                <rect key="frame" x="0.0" y="0.0" width="402" height="134"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3pk-iN-znR">
+                        <rect key="frame" x="16" y="12" width="370" height="110"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ANCC FNP-BC" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPb-pa-anq">
+                                <rect key="frame" x="0.0" y="0.0" width="370" height="22.666666666666668"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <color key="textColor" name="SCEPTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9J-gX-wz1" userLabel="Spacer">
+                                <rect key="frame" x="0.0" y="22.666666666666664" width="370" height="4"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="4" id="7xL-EG-g5J"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Critical-Care Registered Nurse (Adult)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggr-zf-iaq">
+                                <rect key="frame" x="0.0" y="26.666666666666668" width="370" height="51.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                <color key="textColor" name="SCEPTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dt-8a-RL8" userLabel="Spacer">
+                                <rect key="frame" x="0.0" y="78.333333333333329" width="370" height="12"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="4fe-uH-QCG"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="2000 questions, 6 subjects" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xt-c4-uDt">
+                                <rect key="frame" x="0.0" y="90.333333333333329" width="370" height="19.666666666666671"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                <color key="textColor" name="SCEPShade1Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="3pk-iN-znR" secondAttribute="trailing" constant="16" id="0dk-Ox-ks9"/>
+                    <constraint firstItem="3pk-iN-znR" firstAttribute="top" secondItem="Ot8-Jd-05k" secondAttribute="top" constant="12" id="AfF-bH-186"/>
+                    <constraint firstItem="3pk-iN-znR" firstAttribute="leading" secondItem="Ot8-Jd-05k" secondAttribute="leading" constant="16" id="FWy-gO-PRz"/>
+                    <constraint firstAttribute="bottom" secondItem="3pk-iN-znR" secondAttribute="bottom" constant="12" id="alW-Xc-Uqc"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" name="SCEPShade3Color"/>
+            <size key="customSize" width="402" height="134"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="8"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="descriptionLabel" destination="8xt-c4-uDt" id="YcY-LY-aa7"/>
+                <outlet property="subtitleLabel" destination="ggr-zf-iaq" id="dfw-iO-iqA"/>
+                <outlet property="titleLabel" destination="kPb-pa-anq" id="YMg-TA-kcM"/>
+            </connections>
+            <point key="canvasLocation" x="279.38931297709922" y="139.43661971830986"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade3Color">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

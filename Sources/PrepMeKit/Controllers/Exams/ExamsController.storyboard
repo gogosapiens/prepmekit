@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Exams Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ExamsController" customModule="PrepMeKit" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xlY-JM-hfI">
+                                <rect key="frame" x="0.0" y="118" width="393" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeu-lH-WiD">
+                                        <rect key="frame" x="337" y="0.0" width="56" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="4k8-zn-6xZ"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Close">
+                                            <color key="baseForegroundColor" name="SCEPTextColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="closeClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pzt-0t-ErR"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch exam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cW-yw-EVR">
+                                        <rect key="frame" x="56" y="0.0" width="281" height="56"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yeu-lH-WiD" secondAttribute="trailing" id="8YR-8d-9GI"/>
+                                    <constraint firstItem="yeu-lH-WiD" firstAttribute="leading" secondItem="9cW-yw-EVR" secondAttribute="trailing" id="8b5-vY-c35"/>
+                                    <constraint firstItem="yeu-lH-WiD" firstAttribute="top" secondItem="xlY-JM-hfI" secondAttribute="top" id="Aln-H4-ZWr"/>
+                                    <constraint firstItem="9cW-yw-EVR" firstAttribute="leading" secondItem="xlY-JM-hfI" secondAttribute="leading" constant="56" id="Egr-ef-LBX"/>
+                                    <constraint firstItem="9cW-yw-EVR" firstAttribute="top" secondItem="xlY-JM-hfI" secondAttribute="top" id="HT3-K2-RQE"/>
+                                    <constraint firstAttribute="height" constant="56" id="Hqg-Ub-n4E"/>
+                                    <constraint firstAttribute="bottom" secondItem="yeu-lH-WiD" secondAttribute="bottom" id="XK6-lG-Qqe"/>
+                                    <constraint firstAttribute="bottom" secondItem="9cW-yw-EVR" secondAttribute="bottom" id="qM6-Yv-TAf"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbG-LJ-0KL">
+                                <rect key="frame" x="0.0" y="174" width="393" height="678"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="12" minimumInteritemSpacing="12" id="OH1-SK-AvH">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="16"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="kG3-w1-Wbe"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Qyd-pX-wJ9"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="SCEPShade4Color"/>
+                        <constraints>
+                            <constraint firstItem="EbG-LJ-0KL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="8EV-Fg-d9z"/>
+                            <constraint firstItem="xlY-JM-hfI" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="8mz-De-lqj"/>
+                            <constraint firstAttribute="bottom" secondItem="EbG-LJ-0KL" secondAttribute="bottom" id="J9k-HB-pyk"/>
+                            <constraint firstItem="xlY-JM-hfI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="JM0-52-dBp"/>
+                            <constraint firstItem="EbG-LJ-0KL" firstAttribute="top" secondItem="xlY-JM-hfI" secondAttribute="bottom" id="Jj8-gG-CNm"/>
+                            <constraint firstItem="xlY-JM-hfI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="SIL-lX-WXt"/>
+                            <constraint firstItem="EbG-LJ-0KL" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="xgb-v8-bMZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="EbG-LJ-0KL" id="Qyv-tK-17e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="24.647887323943664"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Close" width="24" height="24"/>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QuestionDayCollectionViewCell" id="ku7-Mb-esN" customClass="QuestionDayCollectionViewCell" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="415" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LCe-Ow-rBu">
+                <rect key="frame" x="0.0" y="0.0" width="415" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf9-53-exg">
+                        <rect key="frame" x="0.0" y="0.0" width="8" height="56"/>
+                        <color key="backgroundColor" name="SCEPAccentColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="eOl-j2-v2l"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="xaI-ou-a7a">
+                        <rect key="frame" x="16" y="16" width="383" height="24"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="QuestionOfTheDay" translatesAutoresizingMaskIntoConstraints="NO" id="B0e-iB-KNE">
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                <color key="tintColor" name="SCEPAccentColor"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Question of the day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oub-YI-mlL">
+                                <rect key="frame" x="30" y="0.66666666666666785" width="287.33333333333331" height="22.666666666666668"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <color key="textColor" name="SCEPTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDh-ET-oWC">
+                                <rect key="frame" x="323.33333333333331" y="8" width="8" height="8"/>
+                                <color key="backgroundColor" name="SCEPAccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="8" id="iA2-fh-Muu"/>
+                                    <constraint firstAttribute="height" constant="8" id="y0c-Ej-H5X"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="21 July" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3T0-3d-pUw">
+                                <rect key="frame" x="337.33333333333331" y="2.3333333333333321" width="45.666666666666686" height="19.666666666666668"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                <color key="textColor" name="SCEPTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="mf9-53-exg" secondAttribute="bottom" id="9nl-65-0fa"/>
+                    <constraint firstItem="xaI-ou-a7a" firstAttribute="centerY" secondItem="LCe-Ow-rBu" secondAttribute="centerY" id="ZYX-7e-6Iq"/>
+                    <constraint firstAttribute="trailing" secondItem="xaI-ou-a7a" secondAttribute="trailing" constant="16" id="aBV-FY-Qcm"/>
+                    <constraint firstItem="mf9-53-exg" firstAttribute="leading" secondItem="LCe-Ow-rBu" secondAttribute="leading" id="e8d-mX-v8A"/>
+                    <constraint firstItem="mf9-53-exg" firstAttribute="top" secondItem="LCe-Ow-rBu" secondAttribute="top" id="ijc-qk-QCH"/>
+                    <constraint firstItem="xaI-ou-a7a" firstAttribute="leading" secondItem="mf9-53-exg" secondAttribute="trailing" constant="8" id="sUm-hw-UPV"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <color key="backgroundColor" name="SCEPShade3Color"/>
+            <size key="customSize" width="415" height="56"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="8"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="dateLabel" destination="3T0-3d-pUw" id="hBS-Lj-XMY"/>
+                <outlet property="dotIndicatorView" destination="QDh-ET-oWC" id="fyX-rU-cww"/>
+                <outlet property="edgeIndicatorView" destination="mf9-53-exg" id="rf6-8P-Ccv"/>
+                <outlet property="imageView" destination="B0e-iB-KNE" id="UaA-Ju-OEh"/>
+                <outlet property="titleLabel" destination="oub-YI-mlL" id="KEU-dP-xhR"/>
+            </connections>
+            <point key="canvasLocation" x="335.1145038167939" y="7.746478873239437"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="QuestionOfTheDay" width="24" height="24"/>
+        <namedColor name="SCEPAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade3Color">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

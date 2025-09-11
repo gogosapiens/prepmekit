@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Setup Exam Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="SetupExamController" customModule="PrepMeKit" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpf-dP-PlP">
+                                <rect key="frame" x="0.0" y="118" width="393" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvf-B9-fmp">
+                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="B8V-9y-eLo"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="ChevronLeft">
+                                            <color key="baseForegroundColor" name="SCEPTextColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CrC-Xr-eRM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set up exam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65o-iD-ODR">
+                                        <rect key="frame" x="56" y="0.0" width="281" height="56"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" name="SCEPTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Wvf-B9-fmp" secondAttribute="bottom" id="CcC-4L-1BE"/>
+                                    <constraint firstItem="65o-iD-ODR" firstAttribute="leading" secondItem="Wvf-B9-fmp" secondAttribute="trailing" id="DhP-lt-QMw"/>
+                                    <constraint firstAttribute="bottom" secondItem="65o-iD-ODR" secondAttribute="bottom" id="IZ9-Gj-Xym"/>
+                                    <constraint firstItem="65o-iD-ODR" firstAttribute="top" secondItem="tpf-dP-PlP" secondAttribute="top" id="MT9-Lg-Pgr"/>
+                                    <constraint firstAttribute="trailing" secondItem="65o-iD-ODR" secondAttribute="trailing" constant="56" id="XzH-az-HLl"/>
+                                    <constraint firstItem="Wvf-B9-fmp" firstAttribute="top" secondItem="tpf-dP-PlP" secondAttribute="top" id="h6Z-gM-dc0"/>
+                                    <constraint firstItem="Wvf-B9-fmp" firstAttribute="leading" secondItem="tpf-dP-PlP" secondAttribute="leading" id="kYP-r3-DZn"/>
+                                    <constraint firstAttribute="height" constant="56" id="nW0-PA-eHO"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="16" estimatedSectionHeaderHeight="16" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Nd0-Eb-LgS">
+                                <rect key="frame" x="0.0" y="174" width="393" height="678"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="UYr-Te-zKE"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="DxN-YR-kZU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="SecondaryBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Nd0-Eb-LgS" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="9cP-lm-POQ"/>
+                            <constraint firstItem="tpf-dP-PlP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ByX-BQ-xUd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tpf-dP-PlP" secondAttribute="trailing" id="Zjx-fU-kz1"/>
+                            <constraint firstAttribute="bottom" secondItem="Nd0-Eb-LgS" secondAttribute="bottom" id="dbu-zo-14g"/>
+                            <constraint firstItem="tpf-dP-PlP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="dxt-LH-2lq"/>
+                            <constraint firstItem="Nd0-Eb-LgS" firstAttribute="top" secondItem="tpf-dP-PlP" secondAttribute="bottom" id="krv-no-5lu"/>
+                            <constraint firstItem="Nd0-Eb-LgS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ytE-lK-82o"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Nd0-Eb-LgS" id="mPD-W5-A8V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="24.647887323943664"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ChevronLeft" width="24" height="24"/>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryBackgroundColor">
+            <color red="1" green="0.96470588235294119" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

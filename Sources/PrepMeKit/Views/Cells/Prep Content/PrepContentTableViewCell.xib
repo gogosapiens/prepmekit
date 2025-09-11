@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PrepContentTableViewCell" rowHeight="415" id="kAv-FB-jzc" customClass="PrepContentTableViewCell" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="415"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kAv-FB-jzc" id="bWo-dK-YPW">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="415"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prep content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFK-ia-itf">
+                        <rect key="frame" x="16" y="15.999999999999998" width="117" height="25.333333333333329"/>
+                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
+                        <color key="textColor" name="SCEPTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrM-iK-6bg">
+                        <rect key="frame" x="298" y="16" width="100" height="19.666666666666671"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="Link" imagePlacement="trailing" title="Learn more" imagePadding="4">
+                            <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                            <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                            <color key="baseForegroundColor" name="SCEPAccentColor"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="learnMoreClicked:" destination="kAv-FB-jzc" eventType="touchUpInside" id="Z4I-ZC-F6L"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaR-bm-BdZ">
+                        <rect key="frame" x="16" y="49.333333333333343" width="382" height="349.66666666666663"/>
+                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                        <color key="textColor" name="SCEPShade1Color"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FFK-ia-itf" firstAttribute="top" secondItem="bWo-dK-YPW" secondAttribute="top" constant="16" id="1Wn-Is-PKX"/>
+                    <constraint firstItem="iaR-bm-BdZ" firstAttribute="top" secondItem="FFK-ia-itf" secondAttribute="bottom" constant="8" id="Szd-mf-4rb"/>
+                    <constraint firstAttribute="trailing" secondItem="qrM-iK-6bg" secondAttribute="trailing" constant="16" id="T9c-Fi-hhr"/>
+                    <constraint firstItem="FFK-ia-itf" firstAttribute="leading" secondItem="bWo-dK-YPW" secondAttribute="leading" constant="16" id="ktM-rE-KMR"/>
+                    <constraint firstAttribute="bottom" secondItem="iaR-bm-BdZ" secondAttribute="bottom" constant="16" id="lo5-70-RA8"/>
+                    <constraint firstItem="qrM-iK-6bg" firstAttribute="top" secondItem="bWo-dK-YPW" secondAttribute="top" constant="16" id="mF2-3j-hmP"/>
+                    <constraint firstItem="iaR-bm-BdZ" firstAttribute="leading" secondItem="bWo-dK-YPW" secondAttribute="leading" constant="16" id="num-cF-pCN"/>
+                    <constraint firstAttribute="trailing" secondItem="iaR-bm-BdZ" secondAttribute="trailing" constant="16" id="s53-Lr-CSv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="iaR-bm-BdZ" id="clB-F4-pse"/>
+            </connections>
+            <point key="canvasLocation" x="193.89312977099235" y="103.16901408450705"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Link" width="16" height="16"/>
+        <namedColor name="SCEPAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
