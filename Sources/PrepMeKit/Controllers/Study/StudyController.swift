@@ -149,10 +149,16 @@ extension StudyController: UICollectionViewDelegate {
                         return mockExam.questionSerials.contains(question.serial)
                     }) ?? []
                     
-                    let mockExamPreparationController = MockExamPreparationController.instantiate(bundle: .module)
-                    mockExamPreparationController.mockExam = mockExam
-                    mockExamPreparationController.questions = questions
-                    present(mockExamPreparationController, animated: true)
+                    if questions.isEmpty {
+                        let alert = UIAlertController(title: "Error", message: "There are no questions", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                        present(alert, animated: true)
+                    } else {
+                        let mockExamPreparationController = MockExamPreparationController.instantiate(bundle: .module)
+                        mockExamPreparationController.mockExam = mockExam
+                        mockExamPreparationController.questions = questions
+                        present(mockExamPreparationController, animated: true)
+                    }
                 default:
                     let quizController = QuizController.instantiate(bundle: .module)
                     quizController.questions = quizMode.filterQuestions(questions)

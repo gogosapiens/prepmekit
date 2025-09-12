@@ -13,8 +13,11 @@ class PrepMeKitInternal {
     func configure() {
         setupAppearance()
         
-        if Settings.shared.selectedExamId == nil && ExamStorage.shared.isThereOnlyOneExam {
-            Settings.shared.selectedExamId = ExamStorage.shared.exams.first?.value.first?.id
+        if Settings.shared.selectedExamId == nil,
+           ExamStorage.shared.isThereOnlyOneExam,
+            let exam = ExamStorage.shared.exams.first?.value.first {
+            Settings.shared.selectedExamId = exam.id
+            Settings.shared.selectedSubjectIds = exam.subjects.map(\.id)
         }
         
         if let lastQuizDate = ResultStorage.shared.quizResults.map(\.date).max() {
