@@ -13,4 +13,10 @@ struct QuizResult: Codable {
             selectedChoiceIds[$0.objectId].flatMap($0.choices.first)?.isCorrect == true
         }.count
     }
+    
+    var wrongAnsweredQuestions: [Question] {
+        return questions.filter {
+            selectedChoiceIds[$0.objectId].flatMap($0.choices.first)?.isCorrect == false
+        }
+    }
 }

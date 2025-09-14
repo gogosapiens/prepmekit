@@ -39,11 +39,12 @@ class QuizController: UIViewController {
         isModalInPresentation = true
         
         titleLabel.text = quizMode.title
-        paginationView.isHidden = quizMode != .quickTenQuiz
+        paginationView.isHidden = true
         timerView.isHidden = true
         
         switch quizMode {
-        case .quickTenQuiz, .toughTopicQuiz:
+        case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz:
+            paginationView.isHidden = false
             paginationView.setup(numberOfPages: questions.count)
         case .timedQuiz, .mockExam:
             timerView.isHidden = false
@@ -99,7 +100,7 @@ class QuizController: UIViewController {
         switch quizMode {
         case .questionOfTheDay:
             questionCounterLabel.text = Date.now.formatted(date: .long, time: .omitted)
-        case .quickTenQuiz, .toughTopicQuiz:
+        case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz:
             paginationView.setCurrentIndex(currentQuestionIndex)
             questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)/\(questions.count)"
         case .timedQuiz:

@@ -4,6 +4,7 @@ enum QuizMode: Codable, CaseIterable {
     case questionOfTheDay
     case quickTenQuiz
     case timedQuiz
+    case mistakesQuiz
     case toughTopicQuiz
     case mockExam
     
@@ -12,6 +13,7 @@ enum QuizMode: Codable, CaseIterable {
         case .questionOfTheDay: return UIImage(resource: .questionOfTheDay)
         case .quickTenQuiz: return UIImage(resource: .quickTenQuiz)
         case .timedQuiz: return UIImage(resource: .timedQuiz)
+        case .mistakesQuiz: return UIImage(resource: .mistakesQuiz)
         case .toughTopicQuiz: return UIImage(resource: .toughTopicQuiz)
         case .mockExam: return UIImage(resource: .mockExam)
         }
@@ -22,6 +24,7 @@ enum QuizMode: Codable, CaseIterable {
         case .questionOfTheDay: return "Question of the day"
         case .quickTenQuiz: return "Quick 10 Quiz"
         case .timedQuiz: return "Timed Quiz"
+        case .mistakesQuiz: return "Mistakes Quiz"
         case .toughTopicQuiz: return "Tough topic Quiz"
         case .mockExam: return "Mock exam"
         }
@@ -42,6 +45,8 @@ enum QuizMode: Codable, CaseIterable {
             return Array(questions.shuffled().prefix(10))
         case .timedQuiz:
             return questions.shuffled()
+        case .mistakesQuiz:
+            return questions
         case .toughTopicQuiz:
             guard let subjectId = questions.map(\.subject.id).randomElement() else { return [] }
             return Array(questions.filter({ $0.subject.id == subjectId }).shuffled().prefix(10))

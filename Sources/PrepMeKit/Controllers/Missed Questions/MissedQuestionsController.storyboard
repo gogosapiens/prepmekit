@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wcg-fK-VeL">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Missed Questions Controller-->
+        <scene sceneID="gSK-fo-Rdn">
+            <objects>
+                <viewController id="wcg-fK-VeL" customClass="MissedQuestionsController" customModule="PrepMeKit" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wXX-8n-JSl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="598"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEX-dF-AmZ">
+                                <rect key="frame" x="0.0" y="118" width="393" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Missed questions Quiz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txt-V9-lbN">
+                                        <rect key="frame" x="106.33333333333333" y="16.666666666666657" width="180.33333333333337" height="22.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" name="SCEPTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88r-Rj-S7q">
+                                        <rect key="frame" x="337" y="0.0" width="56" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="riN-Rq-P83"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="Close">
+                                            <color key="baseForegroundColor" name="SCEPTextColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="closeClicked:" destination="wcg-fK-VeL" eventType="touchUpInside" id="Odj-8m-INr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="88r-Rj-S7q" firstAttribute="top" secondItem="gEX-dF-AmZ" secondAttribute="top" id="46L-fj-hZg"/>
+                                    <constraint firstItem="Txt-V9-lbN" firstAttribute="centerY" secondItem="gEX-dF-AmZ" secondAttribute="centerY" id="7ab-DL-Sn5"/>
+                                    <constraint firstAttribute="bottom" secondItem="88r-Rj-S7q" secondAttribute="bottom" id="JiT-Nx-u3u"/>
+                                    <constraint firstAttribute="height" constant="56" id="XdL-K2-WOy"/>
+                                    <constraint firstAttribute="trailing" secondItem="88r-Rj-S7q" secondAttribute="trailing" id="oEf-xz-c0o"/>
+                                    <constraint firstItem="Txt-V9-lbN" firstAttribute="centerX" secondItem="gEX-dF-AmZ" secondAttribute="centerX" id="uL0-gN-rmq"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5y-i2-iIq">
+                                <rect key="frame" x="131" y="182" width="131" height="88"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BLN-J1-Pez">
+                                        <rect key="frame" x="0.0" y="14.000000000000004" width="131" height="60.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-nE-jQ1">
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="33.666666666666664"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
+                                                <color key="textColor" name="SCEPTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incorrect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8E-MU-bNd">
+                                                <rect key="frame" x="0.0" y="37.666666666666657" width="131" height="22.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BLN-J1-Pez" secondAttribute="trailing" id="1IC-BR-Jib"/>
+                                    <constraint firstAttribute="width" constant="131" id="2bB-Sd-m0Q"/>
+                                    <constraint firstAttribute="height" constant="88" id="6D2-Rr-N85"/>
+                                    <constraint firstItem="BLN-J1-Pez" firstAttribute="centerY" secondItem="j5y-i2-iIq" secondAttribute="centerY" id="GAm-ZL-dnk"/>
+                                    <constraint firstItem="BLN-J1-Pez" firstAttribute="leading" secondItem="j5y-i2-iIq" secondAttribute="leading" id="WNY-Ck-Ip3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cr6-Nr-s2i">
+                                <rect key="frame" x="16" y="294" width="361" height="178"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many questions?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKn-oU-bWW">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="22.666666666666668"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                        <color key="textColor" name="SCEPTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEh-J4-FV0">
+                                        <rect key="frame" x="0.0" y="30.666666666666679" width="361" height="109.33333333333331"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="38"/>
+                                        <color key="textColor" name="SCEPTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sEx-JU-LXS">
+                                        <rect key="frame" x="0.0" y="148" width="361" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLJ-Sx-kR5">
+                                                <rect key="frame" x="0.0" y="0.0" width="5.666666666666667" height="30"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                                <color key="textColor" name="SCEPShade1Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="35" translatesAutoresizingMaskIntoConstraints="NO" id="jOj-hA-67t">
+                                                <rect key="frame" x="11.666666666666657" y="0.0" width="323.33333333333337" height="31"/>
+                                                <color key="minimumTrackTintColor" name="SCEPAccentColor"/>
+                                                <color key="maximumTrackTintColor" name="SCEPShade2Color"/>
+                                                <color key="thumbTintColor" name="SCEPShade4Color"/>
+                                                <connections>
+                                                    <action selector="timeChanged:" destination="wcg-fK-VeL" eventType="valueChanged" id="mqo-Db-WXM"/>
+                                                </connections>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9i-5m-i3a">
+                                                <rect key="frame" x="341" y="0.0" width="20" height="30"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                                <color key="textColor" name="SCEPShade1Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxE-PA-Nkv">
+                                <rect key="frame" x="16" y="504" width="361" height="56"/>
+                                <color key="backgroundColor" name="SCEPAccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="w9i-vF-sk4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Start Quiz">
+                                    <color key="titleColor" name="SCEPButtonTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="continueClicked:" destination="wcg-fK-VeL" eventType="touchUpInside" id="0aK-s2-kAg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bWJ-rg-gpX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="j5y-i2-iIq" firstAttribute="centerX" secondItem="wXX-8n-JSl" secondAttribute="centerX" id="686-OM-CC7"/>
+                            <constraint firstItem="gEX-dF-AmZ" firstAttribute="top" secondItem="bWJ-rg-gpX" secondAttribute="top" id="6UT-dJ-EH4"/>
+                            <constraint firstItem="bWJ-rg-gpX" firstAttribute="trailing" secondItem="gEX-dF-AmZ" secondAttribute="trailing" id="CyZ-tH-AwN"/>
+                            <constraint firstItem="bWJ-rg-gpX" firstAttribute="bottom" secondItem="lxE-PA-Nkv" secondAttribute="bottom" constant="4" id="E1B-GX-jbJ"/>
+                            <constraint firstItem="bWJ-rg-gpX" firstAttribute="trailing" secondItem="lxE-PA-Nkv" secondAttribute="trailing" constant="16" id="Edc-eS-HAB"/>
+                            <constraint firstItem="cr6-Nr-s2i" firstAttribute="leading" secondItem="bWJ-rg-gpX" secondAttribute="leading" constant="16" id="EtP-G2-KHh"/>
+                            <constraint firstItem="lxE-PA-Nkv" firstAttribute="leading" secondItem="wXX-8n-JSl" secondAttribute="leading" constant="16" id="UnJ-zM-sWo"/>
+                            <constraint firstItem="j5y-i2-iIq" firstAttribute="top" secondItem="gEX-dF-AmZ" secondAttribute="bottom" constant="8" id="ZVM-eg-6KU"/>
+                            <constraint firstItem="lxE-PA-Nkv" firstAttribute="top" secondItem="cr6-Nr-s2i" secondAttribute="bottom" constant="32" id="hOF-I4-tkN"/>
+                            <constraint firstItem="gEX-dF-AmZ" firstAttribute="leading" secondItem="wXX-8n-JSl" secondAttribute="leading" id="jd4-cW-AWO"/>
+                            <constraint firstItem="bWJ-rg-gpX" firstAttribute="trailing" secondItem="cr6-Nr-s2i" secondAttribute="trailing" constant="16" id="lDl-A4-rfK"/>
+                            <constraint firstItem="cr6-Nr-s2i" firstAttribute="top" secondItem="j5y-i2-iIq" secondAttribute="bottom" constant="24" id="vVH-ot-V8a"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="393" height="598"/>
+                    <connections>
+                        <outlet property="continueButton" destination="lxE-PA-Nkv" id="USc-aW-XNg"/>
+                        <outlet property="countLabel" destination="SEh-J4-FV0" id="Y7O-pM-MPx"/>
+                        <outlet property="incorrectCountLabel" destination="8G5-nE-jQ1" id="VzB-1d-fng"/>
+                        <outlet property="incorrectView" destination="j5y-i2-iIq" id="88c-AH-xNc"/>
+                        <outlet property="maxSliderValueLabel" destination="Z9i-5m-i3a" id="BkQ-mu-nnT"/>
+                        <outlet property="slider" destination="jOj-hA-67t" id="YjD-Sv-8p8"/>
+                        <outlet property="sliderStackView" destination="sEx-JU-LXS" id="0Ts-T1-ncZ"/>
+                        <outlet property="subtitleLabel" destination="fKn-oU-bWW" id="qAN-95-9RT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vn9-g1-klG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="100.35211267605634"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Close" width="24" height="24"/>
+        <namedColor name="SCEPAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPButtonTextColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade1Color">
+            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade2Color">
+            <color red="0.81568627450980391" green="0.83921568627450982" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

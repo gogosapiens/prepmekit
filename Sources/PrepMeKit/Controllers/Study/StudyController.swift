@@ -149,6 +149,11 @@ extension StudyController: UICollectionViewDelegate {
             let durationController = DurationController.instantiate(bundle: .module)
             durationController.questions = quizMode.filterQuestions(questions)
             presentAutoHeight(durationController)
+        case .mistakesQuiz:
+            let missedQuestionsController = MissedQuestionsController.instantiate(bundle: .module)
+            let wrongAnsweredQuestionIds = Set(ResultStorage.shared.quizResults.flatMap(\.wrongAnsweredQuestions).map(\.objectId))
+            missedQuestionsController.questions = questions.filter({ wrongAnsweredQuestionIds.contains($0.objectId) })
+            presentAutoHeight(missedQuestionsController)
         case .mockExam:
             let mockExam = exam.mockExams.first ?? MockExam(
                 name: exam.descriptiveName,
