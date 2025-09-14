@@ -116,56 +116,59 @@ extension StudyController: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        if Settings.shared.selectedExamId == nil {
+        guard let exam = ExamStorage.shared.getExam(id: Settings.shared.selectedExamId) else {
             showExams()
-        } else {
-            let quizMode = quizModes[indexPath.row]
-            
-            guard !quizMode.isPremium || SCEPKit.isPremium else {
-                SCEPKit.showPaywallController(from: self)
-                return
-            }
-            
-            guard quizMode != .questionOfTheDay || isQuestionOfTheDayQuizEnabled else { return }
-                    
-            if let exam = ExamStorage.shared.getExam(id: Settings.shared.selectedExamId) {
-                let isPremium = SCEPKit.isPremium
-                let subjectIds = Settings.shared.selectedSubjectIds
-                let questions = ExamStorage.shared.questions[exam.id]?.filter({ question in
-                    return question.isFree || isPremium
-                }).filter({ question in
-                    return subjectIds.contains(question.subject.id)
-                }) ?? []
+            return
+        }
+        let quizMode = quizModes[indexPath.row]
+        
+        guard !quizMode.isPremium || SCEPKit.isPremium else {
+            SCEPKit.showPaywallController(from: self)
+            return
+        }
+        
+        guard quizMode != .questionOfTheDay || isQuestionOfTheDayQuizEnabled else { return }
                 
-                switch quizMode {
-                case .mockExam:
-                    let mockExam = exam.mockExams.first ?? MockExam(
-                        name: exam.descriptiveName,
-                        duration: 10800,
-                        description: nil,
-                        questionSerials: quizMode.filterQuestions(ExamStorage.shared.questions[exam.id] ?? []).map(\.serial)
-                    )
-                    let questions = ExamStorage.shared.questions[exam.id]?.filter({ question in
-                        return mockExam.questionSerials.contains(question.serial)
-                    }) ?? []
-                    
-                    if questions.isEmpty {
-                        let alert = UIAlertController(title: "Error", message: "There are no questions", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                        present(alert, animated: true)
-                    } else {
-                        let mockExamPreparationController = MockExamPreparationController.instantiate(bundle: .module)
-                        mockExamPreparationController.mockExam = mockExam
-                        mockExamPreparationController.questions = questions
-                        present(mockExamPreparationController, animated: true)
-                    }
-                default:
-                    let quizController = QuizController.instantiate(bundle: .module)
-                    quizController.questions = quizMode.filterQuestions(questions)
-                    quizController.quizMode = quizMode
-                    present(quizController, animated: true)
-                }
-            }
+        let isPremium = SCEPKit.isPremium
+        let subjectIds = Settings.shared.selectedSubjectIds
+        let questions = ExamStorage.shared.questions[exam.id]?.filter({ question in
+            return question.isFree || isPremium
+        }).filter({ question in
+            return subjectIds.contains(question.subject.id)
+        }) ?? []
+        
+        guard !questions.isEmpty else  {
+            let alert = UIAlertController(title: "Error", message: "There are no questions", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            present(alert, animated: true)
+            return
+        }
+        
+        switch quizMode {
+        case .timedQuiz:
+            let durationController = DurationController.instantiate(bundle: .module)
+            durationController.questions = quizMode.filterQuestions(questions)
+            presentAutoHeight(durationController)
+        case .mockExam:
+            let mockExam = exam.mockExams.first ?? MockExam(
+                name: exam.descriptiveName,
+                duration: 10800,
+                description: nil,
+                questionSerials: quizMode.filterQuestions(ExamStorage.shared.questions[exam.id] ?? []).map(\.serial)
+            )
+            let questions = ExamStorage.shared.questions[exam.id]?.filter({ question in
+                return mockExam.questionSerials.contains(question.serial)
+            }) ?? []
+            
+            let mockExamPreparationController = MockExamPreparationController.instantiate(bundle: .module)
+            mockExamPreparationController.mockExam = mockExam
+            mockExamPreparationController.questions = questions
+            present(mockExamPreparationController, animated: true)
+        default:
+            let quizController = QuizController.instantiate(bundle: .module)
+            quizController.questions = quizMode.filterQuestions(questions)
+            quizController.quizMode = quizMode
+            present(quizController, animated: true)
         }
     }
     
