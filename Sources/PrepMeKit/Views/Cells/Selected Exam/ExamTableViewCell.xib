@@ -24,15 +24,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExamTableViewCell" rowHeight="187" id="7SU-T5-RdU" customClass="ExamTableViewCell" customModule="PrepMeKit">
-            <rect key="frame" x="0.0" y="0.0" width="396" height="187"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExamTableViewCell" rowHeight="221" id="7SU-T5-RdU" customClass="ExamTableViewCell" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="396" height="221"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7SU-T5-RdU" id="PzX-Qt-96K">
-                <rect key="frame" x="0.0" y="0.0" width="396" height="187"/>
+                <rect key="frame" x="0.0" y="0.0" width="396" height="221"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="W4V-o6-twY">
-                        <rect key="frame" x="16" y="16" width="364" height="155"/>
+                        <rect key="frame" x="16" y="16" width="364" height="189"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AACN CCRN (Adult)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKv-GP-AJ2">
                                 <rect key="frame" x="0.0" y="0.0" width="364" height="25.333333333333332"/>
@@ -54,27 +54,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c45-Pz-TlV" userLabel="Spacer">
-                                <rect key="frame" x="0.0" y="52" width="364" height="8"/>
+                                <rect key="frame" x="0.0" y="52" width="364" height="61.333333333333343"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="8" id="Q5G-TC-WMa"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="8" id="Q5G-TC-WMa"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free study progress • 0/65 questions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxF-7g-9aM">
-                                <rect key="frame" x="0.0" y="59.999999999999993" width="364" height="19.666666666666664"/>
+                                <rect key="frame" x="0.0" y="113.33333333333334" width="364" height="19.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                 <color key="textColor" name="SCEPShade1Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Ngd-fD-gUP" userLabel="Spacer">
-                                <rect key="frame" x="0.0" y="79.666666666666671" width="364" height="19.333333333333329"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="hNc-g4-LK5"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hp6-R2-XWf">
-                                <rect key="frame" x="0.0" y="99" width="364" height="56"/>
+                                <rect key="frame" x="0.0" y="133" width="364" height="56"/>
                                 <color key="backgroundColor" name="SCEPAccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="2i3-9J-bu5"/>
@@ -93,7 +86,7 @@
                         </subviews>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLy-Cr-uP7" userLabel="Separator">
-                        <rect key="frame" x="0.0" y="186" width="396" height="1"/>
+                        <rect key="frame" x="0.0" y="220" width="396" height="1"/>
                         <color key="backgroundColor" name="SCEPShade3Color"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="B3u-BT-Srj"/>
@@ -112,10 +105,12 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="descriptionLabel" destination="LxF-7g-9aM" id="dXa-KB-Byc"/>
+                <outlet property="stackView" destination="W4V-o6-twY" id="7fE-uA-vXb"/>
                 <outlet property="subtitleLabel" destination="VN5-lc-ZCw" id="24B-fx-k0c"/>
+                <outlet property="switchExamButton" destination="Hp6-R2-XWf" id="nTe-H6-9Ao"/>
                 <outlet property="titleLabel" destination="NKv-GP-AJ2" id="3OT-rr-eNi"/>
             </connections>
-            <point key="canvasLocation" x="174.04580152671755" y="34.859154929577464"/>
+            <point key="canvasLocation" x="174.04580152671755" y="46.83098591549296"/>
         </tableViewCell>
     </objects>
     <resources>

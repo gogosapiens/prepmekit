@@ -64,7 +64,11 @@ extension ExamSettingsController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(of: ExamTableViewCell.self, for: indexPath)
             if let exam = ExamStorage.shared.getExam(id: Settings.shared.selectedExamId) {
                 let studyQuestionCount = Set(ResultStorage.shared.quizResults.flatMap(\.questions).map(\.objectId)).count
-                cell.setup(with: exam, studyQuestionCount: studyQuestionCount)
+                cell.setup(
+                    with: exam,
+                    studyQuestionCount: studyQuestionCount,
+                    hideSwitchButton: ExamStorage.shared.isThereOnlyOneExam
+                )
             }
             return cell
         case .setupExam:
@@ -90,6 +94,7 @@ extension ExamSettingsController: UITableViewDelegate {
         let setting = data[indexPath.section][indexPath.row]
         switch setting {
         case .switchExam:
+            guard !ExamStorage.shared.isThereOnlyOneExam else { return }
             let examsController = ExamsController.instantiate(bundle: .module)
             present(examsController, animated: true)
         case .setupExam:

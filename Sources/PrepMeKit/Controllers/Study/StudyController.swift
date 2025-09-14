@@ -39,8 +39,7 @@ class StudyController: UIViewController {
     @objc private func reloadData() {
         let exam = ExamStorage.shared.getExam(id: Settings.shared.selectedExamId)
         examButton.setTitle(exam?.name ?? "Select exam", for: .normal)
-        examButton.setImage(exam == nil || ExamStorage.shared.isThereOnlyOneExam ? nil : UIImage(resource: .examSettings), for: .normal)
-        examButton.isUserInteractionEnabled = !ExamStorage.shared.isThereOnlyOneExam
+        examButton.setImage(exam == nil ? nil : UIImage(resource: .examSettings), for: .normal)
         
         let calendar = Calendar.current
         let isStreakActive = ResultStorage.shared.quizResults.contains { quizResult in
