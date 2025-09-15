@@ -111,6 +111,7 @@ class QuizController: UIViewController {
         questionLabel.text = question.prompt.removingHTMLTags()
         isExplanationVisible = false
         answersCollectionView.reloadData()
+        answersCollectionView.contentOffset = .zero
         updateNavigationButtons()
     }
     
