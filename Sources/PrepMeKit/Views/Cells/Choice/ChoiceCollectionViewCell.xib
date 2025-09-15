@@ -49,6 +49,7 @@
                                     <constraint firstAttribute="height" constant="18" id="Cit-y7-RuL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                <color key="tintColor" name="SCEPAccentColor"/>
                                 <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Show explanation" image="SmallChevronDown">
                                     <color key="titleColor" name="SCEPAccentColor"/>

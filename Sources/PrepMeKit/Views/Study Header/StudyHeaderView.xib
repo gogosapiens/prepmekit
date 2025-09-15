@@ -72,7 +72,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17 Days streak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHU-CK-6Ki">
                                     <rect key="frame" x="22.000000000000021" y="0.0" width="99.333333333333314" height="20.333333333333332"/>
                                     <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" name="SCEPTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

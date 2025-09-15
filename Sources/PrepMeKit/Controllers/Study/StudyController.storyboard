@@ -47,6 +47,7 @@
                                                             <constraint firstAttribute="height" constant="24" id="hWj-78-2dK"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                                        <color key="tintColor" name="SCEPAccentColor"/>
                                                         <inset key="imageEdgeInsets" minX="12" minY="0.0" maxX="6" maxY="0.0"/>
                                                         <state key="normal" title="CCRN Adult 2025" image="ExamSettings">
                                                             <color key="titleColor" name="SCEPAccentColor"/>

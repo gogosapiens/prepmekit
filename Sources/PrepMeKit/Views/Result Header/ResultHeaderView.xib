@@ -47,7 +47,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="86%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8d-pU-aQ5">
                                     <rect key="frame" x="110" y="53.33333333333335" width="138" height="89.666666666666686"/>
                                     <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="64"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" name="SCEPTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

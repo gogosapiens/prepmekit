@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -128,7 +127,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZqT-io-ABJ">
                                                         <rect key="frame" x="0.0" y="88" width="361" height="456"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yzL-Av-kwQ">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yzL-Av-kwQ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="456"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJ2-vy-UVc">
@@ -384,7 +383,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="SCEPShade4Color"/>
                         <constraints>
                             <constraint firstItem="fUC-zR-G4K" firstAttribute="top" secondItem="7ri-hi-8oK" secondAttribute="bottom" constant="16" id="BLn-zw-emZ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="fUC-zR-G4K" secondAttribute="bottom" constant="4" id="K5x-VA-h9Z"/>
@@ -446,8 +445,5 @@
         <namedColor name="SCEPTextColor">
             <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
