@@ -1,20 +1,30 @@
 import UIKit
 
+@MainActor
+protocol SubjectsControllerDelegate: AnyObject {
+    func subjectsController(_ subjectsController: SubjectsController, didSelect subjectIds: Set<String>)
+}
+
 class SubjectsController: UIViewController {
     
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var examTitleLabel: UILabel!
     @IBOutlet private weak var selectAllButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var saveButton: UIButton!
     
-    private var selectedSubjectIds = Set<Subject.ID>(Settings.shared.selectedSubjectIds)
-    
+    var selectedSubjectIds = Set<Subject.ID>()
     var exam: Exam!
+    var isEditMode = false
+    
+    weak var delegate: SubjectsControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        examTitleLabel.text = exam.name
+        titleLabel.text = isEditMode ? "Edit subjects" : "Select subjects"
+        examTitleLabel.text = isEditMode ? exam.name : nil
+        saveButton.setTitle(isEditMode ? "Save" : "Apply", for: .normal)
         
         tableView.sectionHeaderTopPadding = 0
         tableView.register(SubjectTableViewCell.self)
@@ -37,8 +47,8 @@ class SubjectsController: UIViewController {
     }
     
     @IBAction private func saveClicked(_ sender: Any) {
-        Settings.shared.selectedSubjectIds = Array(selectedSubjectIds)
         dismiss(animated: true)
+        delegate?.subjectsController(self, didSelect: selectedSubjectIds)
     }
     
     private func updateButtons() {

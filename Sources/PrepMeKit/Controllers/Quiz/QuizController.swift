@@ -43,7 +43,7 @@ class QuizController: UIViewController {
         timerView.isHidden = true
         
         switch quizMode {
-        case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz:
+        case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz, .buildOwnQuiz:
             paginationView.isHidden = false
             paginationView.setup(numberOfPages: questions.count)
         case .timedQuiz, .mockExam:
@@ -100,7 +100,7 @@ class QuizController: UIViewController {
         switch quizMode {
         case .questionOfTheDay:
             questionCounterLabel.text = Date.now.formatted(date: .long, time: .omitted)
-        case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz:
+        case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz, .buildOwnQuiz:
             paginationView.setCurrentIndex(currentQuestionIndex)
             questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)/\(questions.count)"
         case .timedQuiz:

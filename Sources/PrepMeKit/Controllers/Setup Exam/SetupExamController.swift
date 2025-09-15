@@ -89,6 +89,9 @@ extension SetupExamController: UITableViewDelegate {
         case .subjects:
             let subjectsController = SubjectsController.instantiate(bundle: .module)
             subjectsController.exam = exam
+            subjectsController.selectedSubjectIds = Set(Settings.shared.selectedSubjectIds)
+            subjectsController.isEditMode = true
+            subjectsController.delegate = self
             present(subjectsController, animated: true)
         case .reset:
             let alert = UIAlertController(title: "Reset Progress", message: "Are you sure you want to delete your progress for this exam and start over? This cannot be undone.", preferredStyle: .alert)
@@ -137,6 +140,17 @@ extension SetupExamController: PrepContentTableViewCellDelegate {
         _ prepContentTableViewCell: PrepContentTableViewCell
     ) {
         
+    }
+    
+}
+
+extension SetupExamController: SubjectsControllerDelegate {
+    
+    func subjectsController(
+        _ subjectsController: SubjectsController,
+        didSelect subjectIds: Set<String>
+    ) {
+        Settings.shared.selectedSubjectIds = Array(subjectIds)
     }
     
 }

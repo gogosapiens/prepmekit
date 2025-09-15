@@ -10,6 +10,19 @@ struct Question: Codable {
     let subject: Subject
 }
 
+extension Question: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.objectId == rhs.objectId && lhs.serial == rhs.serial
+    }
+}
+
+extension Question: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(objectId)
+        hasher.combine(serial)
+    }
+}
+
 extension Array where Element == Question {
     func first(id: Question.ID) -> Element? {
         return first(where: { $0.objectId == id })

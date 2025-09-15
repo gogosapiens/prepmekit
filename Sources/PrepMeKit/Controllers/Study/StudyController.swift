@@ -153,6 +153,11 @@ extension StudyController: UICollectionViewDelegate {
             let wrongAnsweredQuestionIds = Set(ResultStorage.shared.quizResults.flatMap(\.wrongAnsweredQuestions).map(\.objectId))
             missedQuestionsController.questions = questions.filter({ wrongAnsweredQuestionIds.contains($0.objectId) })
             presentAutoHeight(missedQuestionsController)
+        case .buildOwnQuiz:
+            let quizBuildController = QuizBuildController.instantiate(bundle: .module)
+            quizBuildController.selectedSubjectIds = Set(subjectIds)
+            quizBuildController.exam = exam
+            present(quizBuildController, height: 550, animated: true)
         case .mockExam:
             let mockExam = exam.mockExams.first ?? MockExam(
                 name: exam.descriptiveName,
