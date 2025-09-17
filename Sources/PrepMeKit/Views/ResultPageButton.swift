@@ -53,7 +53,7 @@ class ResultPageButton: UIButton {
     private func update() {
         pageTitleLabel.textColor = isActive ? .scepTextColor : .scepShade1
         pageSubtitleLabel.textColor = isActive ? .scepTextColor : .scepShade1
-        indicatorView.backgroundColor = isActive ? .scepAccent : .clear
+        indicatorView.backgroundColor = isActive ? .prepMeAccent : .clear
     }
     
 }

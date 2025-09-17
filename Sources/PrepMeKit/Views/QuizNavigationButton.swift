@@ -29,9 +29,9 @@ class QuizNavigationButton: UIButton {
             borderWidth = 0
             tintColor = .scepTextColor
         } else if isActive {
-            borderColor = .scepAccent
+            borderColor = .prepMeAccent
             borderWidth = 1
-            tintColor = .scepAccent
+            tintColor = .prepMeAccent
         } else {
             borderColor = .scepShade2
             borderWidth = 1

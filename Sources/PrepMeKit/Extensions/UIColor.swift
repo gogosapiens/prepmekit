@@ -2,6 +2,8 @@ import UIKit
 
 extension UIColor {
     
+    static let prepMeAccent = UIColor(named: "PrepMeAccentColor", in: .main, compatibleWith: nil) ?? .clear
+    
     convenience init(hex: UInt64, alpha: CGFloat = 1) {
         let divisor = CGFloat(255)
         let red     = CGFloat((hex & 0xFF0000) >> 16) / divisor

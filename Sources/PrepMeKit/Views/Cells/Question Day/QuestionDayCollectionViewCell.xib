@@ -28,7 +28,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf9-53-exg">
                         <rect key="frame" x="0.0" y="0.0" width="8" height="56"/>
-                        <color key="backgroundColor" name="SCEPAccentColor"/>
+                        <color key="backgroundColor" name="PrepMeAccentColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="8" id="eOl-j2-v2l"/>
                         </constraints>
@@ -38,7 +38,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="QuestionOfTheDay" translatesAutoresizingMaskIntoConstraints="NO" id="B0e-iB-KNE">
                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                <color key="tintColor" name="SCEPAccentColor"/>
+                                <color key="tintColor" name="PrepMeAccentColor"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Question of the day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oub-YI-mlL">
                                 <rect key="frame" x="30" y="0.66666666666666785" width="287.33333333333331" height="22.666666666666668"/>
@@ -48,7 +48,7 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDh-ET-oWC">
                                 <rect key="frame" x="323.33333333333331" y="8" width="8" height="8"/>
-                                <color key="backgroundColor" name="SCEPAccentColor"/>
+                                <color key="backgroundColor" name="PrepMeAccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="8" id="iA2-fh-Muu"/>
                                     <constraint firstAttribute="height" constant="8" id="y0c-Ej-H5X"/>
@@ -96,7 +96,7 @@
     </objects>
     <resources>
         <image name="QuestionOfTheDay" width="24" height="24"/>
-        <namedColor name="SCEPAccentColor">
+        <namedColor name="PrepMeAccentColor">
             <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SCEPShade3Color">

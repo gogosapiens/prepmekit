@@ -84,7 +84,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBm-Bd-jda">
                                 <rect key="frame" x="16" y="730" width="361" height="48"/>
-                                <color key="backgroundColor" name="SCEPAccentColor"/>
+                                <color key="backgroundColor" name="PrepMeAccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="uAg-89-bH5"/>
                                 </constraints>
@@ -135,7 +135,7 @@
     <resources>
         <image name="ChevronLeft" width="24" height="24"/>
         <image name="Reminder" width="68" height="68"/>
-        <namedColor name="SCEPAccentColor">
+        <namedColor name="PrepMeAccentColor">
             <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SCEPButtonTextColor">

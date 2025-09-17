@@ -22,7 +22,7 @@ class StudyHeaderView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         allStudyingButton.layer.borderWidth = 1
-        allStudyingButton.layer.borderColor = UIColor.scepAccent.cgColor
+        allStudyingButton.layer.borderColor = UIColor.prepMeAccent.cgColor
         qotdButton.layer.borderWidth = 1
         qotdButton.layer.borderColor = UIColor.clear.cgColor
         collectionView.register(DayCollectionViewCell.self)
@@ -53,8 +53,8 @@ class StudyHeaderView: UIView {
     }
     
     @IBAction private func allStudyingClicked(_ sender: Any) {
-        allStudyingButton.layer.borderColor = UIColor.scepAccent.cgColor
-        allStudyingButton.setTitleColor(.scepAccent, for: .normal)
+        allStudyingButton.layer.borderColor = UIColor.prepMeAccent.cgColor
+        allStudyingButton.setTitleColor(.prepMeAccent, for: .normal)
         qotdButton.layer.borderColor = UIColor.clear.cgColor
         qotdButton.setTitleColor(.scepTextColor, for: .normal)
         tab = .allStudying
@@ -64,8 +64,8 @@ class StudyHeaderView: UIView {
     @IBAction private func qotdClicked(_ sender: Any) {
         allStudyingButton.layer.borderColor = UIColor.clear.cgColor
         allStudyingButton.setTitleColor(.scepTextColor, for: .normal)
-        qotdButton.layer.borderColor = UIColor.scepAccent.cgColor
-        qotdButton.setTitleColor(.scepAccent, for: .normal)
+        qotdButton.layer.borderColor = UIColor.prepMeAccent.cgColor
+        qotdButton.setTitleColor(.prepMeAccent, for: .normal)
         tab = .qotd
         collectionView.reloadData()
     }
@@ -91,7 +91,7 @@ extension StudyHeaderView: UICollectionViewDataSource {
         let indicatorColor: UIColor
         switch tab {
         case .allStudying:
-            indicatorColor = studyDates.contains(where: { calendar.isDate($0, inSameDayAs: date) }) ? .scepAccent : .clear
+            indicatorColor = studyDates.contains(where: { calendar.isDate($0, inSameDayAs: date) }) ? .prepMeAccent : .clear
         case .qotd:
             if let result = qotdResults.first(where: { calendar.isDate($0.date, inSameDayAs: date) }) {
                 indicatorColor = UIColor(resource: result.correctAnswerCount > 0 ? .correct : .wrong)

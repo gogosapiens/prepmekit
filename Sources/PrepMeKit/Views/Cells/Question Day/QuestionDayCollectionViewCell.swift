@@ -16,10 +16,10 @@ class QuestionDayCollectionViewCell: UICollectionViewCell {
     }
     
     func enable() {
-        imageView.tintColor = .scepAccent
+        imageView.tintColor = .prepMeAccent
         titleLabel.textColor = .scepTextColor
-        edgeIndicatorView.backgroundColor = .scepAccent
-        dotIndicatorView.backgroundColor = .scepAccent
+        edgeIndicatorView.backgroundColor = .prepMeAccent
+        dotIndicatorView.backgroundColor = .prepMeAccent
         dateLabel.textColor = .scepTextColor
     }
     

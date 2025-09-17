@@ -58,7 +58,7 @@ class SubjectsController: UIViewController {
         }
         
         let isSaveEnabled = !selectedSubjectIds.isEmpty
-        saveButton.backgroundColor = isSaveEnabled ? .scepAccent : .scepShade2
+        saveButton.backgroundColor = isSaveEnabled ? .prepMeAccent : .scepShade2
         saveButton.isUserInteractionEnabled = isSaveEnabled
     }
     

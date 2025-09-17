@@ -10,9 +10,9 @@ class ExamCollectionViewCell: UICollectionViewCell {
         titleLabel.text = exam.name
         subtitleLabel.text = exam.descriptiveName
         descriptionLabel.text = "\(exam.questionCount) questions, \(exam.subjects.count) subjects"
-        layer.borderColor = UIColor.scepAccent.cgColor
+        layer.borderColor = UIColor.prepMeAccent.cgColor
         layer.borderWidth = isSelected ? 2 : 0
-        titleLabel.textColor = isSelected ? .scepAccent : .scepTextColor
+        titleLabel.textColor = isSelected ? .prepMeAccent : .scepTextColor
     }
     
     override func systemLayoutSizeFitting(

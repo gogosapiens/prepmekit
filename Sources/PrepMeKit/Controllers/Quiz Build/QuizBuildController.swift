@@ -83,7 +83,7 @@ class QuizBuildController: UIViewController {
         sliderMaxValueLabel.text = String(questions.count)
         
         let isStartEnabled = !questions.isEmpty
-        startButton.backgroundColor = isStartEnabled ? .scepAccent : .scepShade2
+        startButton.backgroundColor = isStartEnabled ? .prepMeAccent : .scepShade2
         startButton.isUserInteractionEnabled = isStartEnabled
     }
     

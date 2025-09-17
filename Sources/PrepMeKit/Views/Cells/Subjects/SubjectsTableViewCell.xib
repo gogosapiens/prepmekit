@@ -52,7 +52,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit subjects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6UN-3k-WId">
                         <rect key="frame" x="323" y="16" width="103" height="22.666666666666671"/>
                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
-                        <color key="textColor" name="SCEPAccentColor"/>
+                        <color key="textColor" name="PrepMeAccentColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -74,7 +74,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="SCEPAccentColor">
+        <namedColor name="PrepMeAccentColor">
             <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SCEPShade1Color">

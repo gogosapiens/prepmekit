@@ -43,7 +43,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Critical-Care Registered Nurse (Adult)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggr-zf-iaq">
-                                <rect key="frame" x="0.0" y="26.666666666666668" width="370" height="51.666666666666657"/>
+                                <rect key="frame" x="0.0" y="26.666666666666668" width="370" height="51.666666666666643"/>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                 <color key="textColor" name="SCEPTextColor"/>
                                 <nil key="highlightedColor"/>

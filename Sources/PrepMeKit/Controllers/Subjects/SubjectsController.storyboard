@@ -81,7 +81,7 @@
                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="SELECT ALL">
-                                            <color key="titleColor" name="SCEPAccentColor"/>
+                                            <color key="titleColor" name="PrepMeAccentColor"/>
                                         </state>
                                         <connections>
                                             <action selector="selectAllClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tZE-rl-hfa"/>
@@ -108,7 +108,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCL-NH-f9e">
                                 <rect key="frame" x="16" y="724" width="361" height="56"/>
-                                <color key="backgroundColor" name="SCEPAccentColor"/>
+                                <color key="backgroundColor" name="PrepMeAccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="oNI-jM-oMi"/>
                                 </constraints>
@@ -163,7 +163,7 @@
     </scenes>
     <resources>
         <image name="Close" width="24" height="24"/>
-        <namedColor name="SCEPAccentColor">
+        <namedColor name="PrepMeAccentColor">
             <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SCEPButtonTextColor">

@@ -49,10 +49,10 @@
                                     <constraint firstAttribute="height" constant="18" id="Cit-y7-RuL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
-                                <color key="tintColor" name="SCEPAccentColor"/>
+                                <color key="tintColor" name="PrepMeAccentColor"/>
                                 <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Show explanation" image="SmallChevronDown">
-                                    <color key="titleColor" name="SCEPAccentColor"/>
+                                    <color key="titleColor" name="PrepMeAccentColor"/>
                                 </state>
                                 <connections>
                                     <action selector="collapseButtonClicked:" destination="wp6-qo-2zk" eventType="touchUpInside" id="r5m-k8-qbD"/>
@@ -95,7 +95,7 @@
     <resources>
         <image name="Correct" width="24" height="24"/>
         <image name="SmallChevronDown" width="16" height="16"/>
-        <namedColor name="SCEPAccentColor">
+        <namedColor name="PrepMeAccentColor">
             <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SCEPShade1Color">

@@ -25,7 +25,7 @@ class PaginationView: UIStackView {
     
     func setCurrentIndex(_ currentIndex: Int) {
         for (index, view) in arrangedSubviews.enumerated() {
-            view.backgroundColor = index <= currentIndex ? .scepAccent : .scepShade2
+            view.backgroundColor = index <= currentIndex ? .prepMeAccent : .scepShade2
         }
     }
     

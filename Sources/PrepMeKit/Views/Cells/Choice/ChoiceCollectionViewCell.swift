@@ -60,7 +60,7 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
     }
     
     func select() {
-        layer.borderColor = UIColor.scepAccent.cgColor
+        layer.borderColor = UIColor.prepMeAccent.cgColor
     }
     
     func selectCorrect() {
