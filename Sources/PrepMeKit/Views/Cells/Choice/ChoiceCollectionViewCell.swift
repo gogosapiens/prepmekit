@@ -14,7 +14,8 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
         isIndicatorVisible: Bool,
         isCollapseButtonVisible: Bool,
         isExplanationVisible: Bool,
-        explanation: String
+        explanation: String,
+        reference: String
     ) -> CGFloat {
         let contentWidth = width - 28
         let titleWidth = contentWidth - (isIndicatorVisible ? 40 : 0)
@@ -25,7 +26,7 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
             height += 22
         }
         if isExplanationVisible {
-            height += 8 + explanation.removingHTMLTags().height(withConstrainedWidth: contentWidth, font: SCEPKit.font(ofSize: 14, weight: .medium))
+            height += 8 + explanation.removingHTMLTags().height(withConstrainedWidth: contentWidth, font: SCEPKit.font(ofSize: 14, weight: .medium)) + 16 + "Reference:".height(withConstrainedWidth: contentWidth, font: SCEPKit.font(ofSize: 14, weight: .semiBold)) + 2 + reference.removingHTMLTags().height(withConstrainedWidth: contentWidth, font: SCEPKit.font(ofSize: 14, weight: .regular))
         }
         return height + 24
     }
@@ -36,6 +37,8 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var indicatorImageView: UIImageView!
     @IBOutlet private weak var collapseButton: UIButton!
     @IBOutlet private weak var explanationLabel: UILabel!
+    @IBOutlet private weak var referenceTitleLabel: UILabel!
+    @IBOutlet private weak var referenceLabel: UILabel!
     
     weak var delegate: ChoiceCollectionViewCellDelegate?
     
@@ -44,11 +47,14 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
         layer.borderWidth = 2
         stackView.setCustomSpacing(4, after: titleStackView)
         stackView.setCustomSpacing(8, after: collapseButton)
+        stackView.setCustomSpacing(16, after: explanationLabel)
+        stackView.setCustomSpacing(2, after: referenceTitleLabel)
     }
     
-    func setup(with choice: Choice, explanation: String) {
+    func setup(with choice: Choice, explanation: String, reference: String) {
         titleLabel.text = choice.text.removingHTMLTags()
         explanationLabel.text = explanation.removingHTMLTags()
+        referenceLabel.text = reference.removingHTMLTags()
         deselect()
     }
     
@@ -56,6 +62,8 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
         collapseButton.isHidden = true
         indicatorImageView.isHidden = true
         explanationLabel.isHidden = true
+        referenceTitleLabel.isHidden = true
+        referenceLabel.isHidden = true
         layer.borderColor = UIColor.clear.cgColor
     }
     
@@ -79,6 +87,8 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
     
     @IBAction private func collapseButtonClicked(_ sender: Any) {
         explanationLabel.isHidden.toggle()
+        referenceTitleLabel.isHidden.toggle()
+        referenceLabel.isHidden.toggle()
         updateCollapseButton()
         delegate?.choiceCollectionViewCellCollapse(self)
     }

@@ -12,19 +12,25 @@
         <array key="Font-Medium.ttf">
             <string>Poppins-Medium</string>
         </array>
+        <array key="Font-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChoiceCollectionViewCell" id="wp6-qo-2zk" customClass="ChoiceCollectionViewCell" customModule="PrepMeKit">
-            <rect key="frame" x="0.0" y="0.0" width="434" height="160"/>
+            <rect key="frame" x="0.0" y="0.0" width="434" height="195"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Hcr-Pf-qKa">
-                <rect key="frame" x="0.0" y="0.0" width="434" height="160"/>
+                <rect key="frame" x="0.0" y="0.0" width="434" height="195"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="N0w-9B-FB8">
-                        <rect key="frame" x="16" y="12" width="406" height="136"/>
+                        <rect key="frame" x="16" y="12" width="406" height="171"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="qdO-E1-4wA">
                                 <rect key="frame" x="0.0" y="0.0" width="406" height="24"/>
@@ -58,10 +64,22 @@
                                     <action selector="collapseButtonClicked:" destination="wp6-qo-2zk" eventType="touchUpInside" id="r5m-k8-qbD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mND-ja-a0K">
-                                <rect key="frame" x="0.0" y="42" width="406" height="94"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mND-ja-a0K">
+                                <rect key="frame" x="0.0" y="42.000000000000007" width="406" height="89.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                 <color key="textColor" name="SCEPShade1Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reference:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MwU-ln-hBw">
+                                <rect key="frame" x="0.0" y="131.66666666666666" width="406" height="19.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                <color key="textColor" name="SCEPTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBy-Gd-psC">
+                                <rect key="frame" x="0.0" y="151.33333333333334" width="406" height="19.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                <color key="textColor" name="SCEPTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -75,7 +93,7 @@
                 </constraints>
             </collectionViewCellContentView>
             <color key="backgroundColor" name="SCEPShade4Color"/>
-            <size key="customSize" width="434" height="160"/>
+            <size key="customSize" width="434" height="195"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                     <integer key="value" value="8"/>
@@ -85,11 +103,13 @@
                 <outlet property="collapseButton" destination="DjJ-5f-y2e" id="9F1-fn-SHP"/>
                 <outlet property="explanationLabel" destination="mND-ja-a0K" id="twi-el-eV0"/>
                 <outlet property="indicatorImageView" destination="lCs-oK-9sA" id="cOZ-m7-hPm"/>
+                <outlet property="referenceLabel" destination="bBy-Gd-psC" id="VZg-Y7-gpe"/>
+                <outlet property="referenceTitleLabel" destination="MwU-ln-hBw" id="MHE-eB-0dO"/>
                 <outlet property="stackView" destination="N0w-9B-FB8" id="PRz-1H-Jm4"/>
                 <outlet property="titleLabel" destination="juK-FR-v5u" id="P4N-fr-tOD"/>
                 <outlet property="titleStackView" destination="qdO-E1-4wA" id="Nge-IV-tZn"/>
             </connections>
-            <point key="canvasLocation" x="303.81679389312978" y="46.478873239436624"/>
+            <point key="canvasLocation" x="303.81679389312978" y="58.802816901408455"/>
         </collectionViewCell>
     </objects>
     <resources>

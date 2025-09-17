@@ -244,7 +244,7 @@ extension QuizController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(of: ChoiceCollectionViewCell.self, for: indexPath)
         let question = questions[currentQuestionIndex]
         let choice = question.choices[indexPath.row]
-        cell.setup(with: choice, explanation: question.explanation)
+        cell.setup(with: choice, explanation: question.explanation, reference: question.references.joined(separator: "\n"))
         cell.delegate = self
         if let selectedChoiceId = selectedChoiceIds[question.objectId] {
             if choice.id == selectedChoiceId || choice.isCorrect {
@@ -310,7 +310,8 @@ extension QuizController: UICollectionViewDelegateFlowLayout {
             isIndicatorVisible: isQuestionConfirmed ? isChoiceSelected || choice.isCorrect : false,
             isCollapseButtonVisible: isQuestionConfirmed && choice.isCorrect,
             isExplanationVisible: isExplanationVisible && choice.isCorrect,
-            explanation: question.explanation
+            explanation: question.explanation,
+            reference: question.references.joined(separator: "\n")
         )
         return CGSize(width: width, height: height)
     }

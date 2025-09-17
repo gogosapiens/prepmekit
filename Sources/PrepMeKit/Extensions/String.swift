@@ -2,7 +2,8 @@ import UIKit
 
 extension String {
     func removingHTMLTags() -> String {
-        if let data = data(using: .utf8) {
+        let html = replacingOccurrences(of: "</p>", with: "</p><br>")
+        if let data = html.data(using: .utf8) {
             do {
                 return try NSAttributedString(
                     data: data,

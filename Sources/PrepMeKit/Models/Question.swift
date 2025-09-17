@@ -8,6 +8,7 @@ struct Question: Codable {
     let prompt: String
     let explanation: String
     let subject: Subject
+    let references: [String]
 }
 
 extension Question: Equatable {
