@@ -13,7 +13,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "SCEPKit", url: "https://github.com/gogosapiens/scepkit", .exact("1.1.12"))
+        .package(url: "https://github.com/gogosapiens/scepkit", branch: "main")
     ],
     targets: [
         .target(
