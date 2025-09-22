@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
@@ -19,7 +19,7 @@ let package = Package(
         .target(
             name: "PrepMeKit",
             dependencies: [
-                .product(name: "SCEPKit", package: "SCEPKit")
+                .product(name: "SCEPKit", package: "scepkit")
             ],
             resources: [
                 .process("Resources")
