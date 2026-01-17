@@ -16,7 +16,7 @@ class QuizController: UIViewController {
     
     private let startDate = Date.now
     private var currentQuestionIndex = 0
-    private var selectedChoiceIds = [Question.ID: Choice.ID]()
+    private var selectedChoiceIds = [Question.ID: Set<Choice.ID>]()
     private var confirmedQuestionIds = Set<Question.ID>()
     private var timer: Timer?
     private var isTimerFinished: Bool {
@@ -117,7 +117,7 @@ class QuizController: UIViewController {
     
     private func updateNavigationButtons() {
         let question = questions[currentQuestionIndex]
-        let hasSelection = selectedChoiceIds[question.objectId] != nil
+        let hasSelection = selectedChoiceIds[question.objectId]?.isEmpty == false
         let isConfirmedSelection = confirmedQuestionIds.contains(question.objectId)
         previousButton.isEnabled = currentQuestionIndex > 0
         nextButton.isActive = hasSelection
@@ -137,25 +137,27 @@ class QuizController: UIViewController {
     private func confirmSelection() {
         let question = questions[currentQuestionIndex]
         confirmedQuestionIds.insert(question.objectId)
-        guard
-            let selectedChoiceId = selectedChoiceIds[question.objectId],
-            let selectedChoiceIndex = question.choices.firstIndex(where: { $0.id == selectedChoiceId })
-        else {
-            return
-        }
         
-        let indexPath = IndexPath(row: selectedChoiceIndex, section: 0)
-        let cell = answersCollectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
+        var selectedIndexes = Set<Int>()
         
-        if question.choices[selectedChoiceIndex].isCorrect {
-            cell?.selectCorrect()
-        } else {
-            cell?.selectWrong()
+        let selectedChoiceIndexes = question.choices.enumerated().filter { _, choice in
+            return selectedChoiceIds[question.objectId]?.contains(choice.id) == true
+        }.map(\.offset)
+        selectedIndexes.formUnion(selectedChoiceIndexes)
+        
+        let correctChoiceIndexes = question.choices.enumerated().filter { _, choice in
+            return choice.isCorrect
+        }.map(\.offset)
+        selectedIndexes.formUnion(correctChoiceIndexes)
+        
+        for selectedIndex in selectedIndexes {
+            let indexPath = IndexPath(row: selectedIndex, section: 0)
+            let cell = answersCollectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
             
-            if let correctChoiceIndex = question.choices.firstIndex(where: \.isCorrect) {
-                let indexPath = IndexPath(row: correctChoiceIndex, section: 0)
-                let cell = answersCollectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
+            if question.choices[selectedIndex].isCorrect {
                 cell?.selectCorrect()
+            } else {
+                cell?.selectWrong()
             }
         }
         
@@ -246,8 +248,8 @@ extension QuizController: UICollectionViewDataSource {
         let choice = question.choices[indexPath.row]
         cell.setup(with: choice, explanation: question.explanation, reference: question.references.joined(separator: "\n"))
         cell.delegate = self
-        if let selectedChoiceId = selectedChoiceIds[question.objectId] {
-            if choice.id == selectedChoiceId || choice.isCorrect {
+        if let selectedChoiceIds = self.selectedChoiceIds[question.objectId] {
+            if selectedChoiceIds.contains(choice.id) || choice.isCorrect {
                 if !confirmedQuestionIds.contains(question.objectId) {
                     cell.select()
                 } else if choice.isCorrect {
@@ -271,19 +273,38 @@ extension QuizController: UICollectionViewDelegate {
         let question = questions[currentQuestionIndex]
         guard !confirmedQuestionIds.contains(question.objectId) else { return }
         
-        if let selectedChoiceId = selectedChoiceIds[question.objectId], let selectedChoiceIndex = question.choices.firstIndex(where: { $0.id == selectedChoiceId }) {
-            let indexPath = IndexPath(row: selectedChoiceIndex, section: 0)
-            let cell = collectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
-            cell?.deselect()
+        let cell = collectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
+        let choice = question.choices[indexPath.row]
+        
+        if question.isMultipleCorrectChoice {
+            if selectedChoiceIds[question.objectId, default: []].contains(choice.id) {
+                cell?.deselect()
+                
+                selectedChoiceIds[question.objectId, default: []].remove(choice.id)
+            } else {
+                cell?.select()
+                
+                selectedChoiceIds[question.objectId, default: []].insert(choice.id)
+            }
+        } else {
+            let selectedChoiceIndexes = question.choices.enumerated().filter { _, choice in
+                return selectedChoiceIds[question.objectId]?.contains(choice.id) == true
+            }.map(\.offset)
+            
+            for selectedChoiceIndex in selectedChoiceIndexes {
+                let indexPath = IndexPath(row: selectedChoiceIndex, section: 0)
+                let cell = collectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
+                cell?.deselect()
+            }
+            
+            cell?.select()
+            
+            selectedChoiceIds[question.objectId] = [choice.id]
         }
         
-        let choice = question.choices[indexPath.row]
-        selectedChoiceIds[question.objectId] = choice.id
         UISelectionFeedbackGenerator().selectionChanged()
         
-        if quizMode == .questionOfTheDay {
-            let cell = collectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
-            cell?.select()
+        if quizMode == .questionOfTheDay || question.isMultipleCorrectChoice {
             updateNavigationButtons()
         } else {
             confirmSelection()
@@ -303,7 +324,7 @@ extension QuizController: UICollectionViewDelegateFlowLayout {
         let question = questions[currentQuestionIndex]
         let choice = question.choices[indexPath.row]
         let isQuestionConfirmed = confirmedQuestionIds.contains(question.objectId)
-        let isChoiceSelected = selectedChoiceIds[question.objectId] == choice.id
+        let isChoiceSelected = selectedChoiceIds[question.objectId]?.contains(choice.id) == true
         let height = ChoiceCollectionViewCell.getHeight(
             for: width,
             choice: choice,

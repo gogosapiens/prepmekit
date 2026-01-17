@@ -8,6 +8,11 @@ protocol ChoiceCollectionViewCellDelegate: AnyObject {
 
 class ChoiceCollectionViewCell: UICollectionViewCell {
     
+    static let titleLabelFont = SCEPKit.font(ofSize: 16, weight: .medium)
+    static let explanationLabelFont = SCEPKit.font(ofSize: 14, weight: .medium)
+    static let referenceTitleLabelFont = SCEPKit.font(ofSize: 14, weight: .semiBold)
+    static let referenceLabelFont = SCEPKit.font(ofSize: 14, weight: .regular)
+    
     static func getHeight(
         for width: CGFloat,
         choice: Choice,
@@ -19,14 +24,14 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
     ) -> CGFloat {
         let contentWidth = width - 28
         let titleWidth = contentWidth - (isIndicatorVisible ? 40 : 0)
-        let titleHeight = max(24, choice.text.removingHTMLTags().height(withConstrainedWidth: titleWidth, font: SCEPKit.font(ofSize: 16, weight: .medium)))
+        let titleHeight = max(24, choice.text.removingHTMLTags().height(withConstrainedWidth: titleWidth, font: titleLabelFont))
         
         var height = titleHeight
         if isCollapseButtonVisible {
             height += 22
         }
         if isExplanationVisible {
-            height += 8 + explanation.removingHTMLTags().height(withConstrainedWidth: contentWidth, font: SCEPKit.font(ofSize: 14, weight: .medium)) + 16 + "Reference:".height(withConstrainedWidth: contentWidth, font: SCEPKit.font(ofSize: 14, weight: .semiBold)) + 2 + reference.removingHTMLTags().height(withConstrainedWidth: contentWidth, font: SCEPKit.font(ofSize: 14, weight: .regular))
+            height += 8 + explanation.removingHTMLTags().height(withConstrainedWidth: contentWidth, font: explanationLabelFont) + 16 + "Reference:".height(withConstrainedWidth: contentWidth, font: referenceTitleLabelFont) + 2 + reference.removingHTMLTags().height(withConstrainedWidth: contentWidth, font: referenceLabelFont)
         }
         return height + 24
     }
@@ -49,6 +54,10 @@ class ChoiceCollectionViewCell: UICollectionViewCell {
         stackView.setCustomSpacing(8, after: collapseButton)
         stackView.setCustomSpacing(16, after: explanationLabel)
         stackView.setCustomSpacing(2, after: referenceTitleLabel)
+        titleLabel.font = Self.titleLabelFont
+        explanationLabel.font = Self.explanationLabelFont
+        referenceTitleLabel.font = Self.referenceTitleLabelFont
+        referenceLabel.font = Self.referenceLabelFont
     }
     
     func setup(with choice: Choice, explanation: String, reference: String) {

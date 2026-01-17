@@ -8,6 +8,9 @@ class ResultStorage {
     static let shared = ResultStorage()
     
     @UserDefault(key: "ResultStorage.quizResults", defaultValue: [])
+    private var quizResultsV1: [QuizResultV1]
+    
+    @UserDefault(key: "ResultStorage.quizResults.v2", defaultValue: [])
     var quizResults: [QuizResult]
     
     @UserDefault(key: "ResultStorage.streak", defaultValue: 0)
@@ -15,6 +18,25 @@ class ResultStorage {
     
     private init() {
         
+    }
+    
+    func migrate() {
+        if quizResultsV1.isEmpty { return }
+        
+        for quizResultV1 in quizResultsV1 {
+            quizResults.append(QuizResult(
+                mode: quizResultV1.mode,
+                date: quizResultV1.date,
+                questions: quizResultV1.questions,
+                selectedChoiceIds: .init(
+                    uniqueKeysWithValues: quizResultV1.selectedChoiceIds.map({ ($0.key, [$0.value]) })
+                ),
+                duration: quizResultV1.duration,
+                communityScore: quizResultV1.communityScore
+            ))
+        }
+        
+        quizResultsV1.removeAll()
     }
     
     func save(quizResult: QuizResult) {

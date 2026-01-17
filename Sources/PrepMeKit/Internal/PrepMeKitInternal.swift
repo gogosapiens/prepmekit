@@ -11,6 +11,7 @@ class PrepMeKitInternal {
     }
     
     func configure() {
+        ResultStorage.shared.migrate()
         setupAppearance()
         
         if Settings.shared.selectedExamId == nil,

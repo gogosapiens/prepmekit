@@ -50,7 +50,7 @@ extension QuizResultController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(of: ChoiceResultCollectionViewCell.self, for: indexPath)
         let question = filteredQuestions[indexPath.row]
-        let isCorrect = quizResult.selectedChoiceIds[question.objectId].flatMap(question.choices.first)?.isCorrect == true
+        let isCorrect = quizResult.isCorrectAnswer(question: question)
         cell.setup(question: question, isCorrect: isCorrect)
         return cell
     }
@@ -90,16 +90,12 @@ extension QuizResultController: ResultHeaderViewDelegate {
     }
     
     func resultHeaderViewIncorrectPage(_ resultHeaderView: ResultHeaderView) {
-        filteredQuestions = quizResult.questions.filter {
-            quizResult.selectedChoiceIds[$0.objectId].flatMap($0.choices.first)?.isCorrect == false
-        }
+        filteredQuestions = quizResult.wrongAnsweredQuestions
         collectionView.reloadData()
     }
     
     func resultHeaderViewCorrectPage(_ resultHeaderView: ResultHeaderView) {
-        filteredQuestions = quizResult.questions.filter {
-            quizResult.selectedChoiceIds[$0.objectId].flatMap($0.choices.first)?.isCorrect == true
-        }
+        filteredQuestions = quizResult.correctAnsweredQuestions
         collectionView.reloadData()
     }
     

@@ -9,6 +9,14 @@ struct Question: Codable {
     let explanation: String
     let subject: Subject
     let references: [String]
+    
+    var correctChoiceCount: Int {
+        return choices.count(where: \.isCorrect)
+    }
+    
+    var isMultipleCorrectChoice: Bool {
+        return correctChoiceCount > 1
+    }
 }
 
 extension Question: Equatable {
