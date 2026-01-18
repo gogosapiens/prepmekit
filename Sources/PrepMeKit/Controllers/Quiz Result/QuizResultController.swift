@@ -57,6 +57,24 @@ extension QuizResultController: UICollectionViewDataSource {
     
 }
 
+extension QuizResultController: UICollectionViewDelegate {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        let quizController = QuizController.instantiate(bundle: .module)
+        quizController.questions = filteredQuestions
+        quizController.quizMode = .quickTenQuiz
+        quizController.isReview = true
+        quizController.currentQuestionIndex = indexPath.row
+        quizController.selectedChoiceIds = quizResult.selectedChoiceIds
+        quizController.confirmedQuestionIds = Set(filteredQuestions.map(\.objectId))
+        navigationController?.pushViewController(quizController, animated: true)
+    }
+    
+}
+
 extension QuizResultController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(

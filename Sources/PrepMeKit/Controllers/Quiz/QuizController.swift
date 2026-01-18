@@ -2,11 +2,13 @@ import UIKit
 
 class QuizController: UIViewController {
     
+    @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var contentStackView: UIStackView!
     @IBOutlet private weak var paginationView: PaginationView!
     @IBOutlet private weak var timerView: UIView!
     @IBOutlet private weak var timerLabel: UILabel!
+    @IBOutlet private weak var reviewQuestionCounterLabel: UILabel!
     @IBOutlet private weak var questionCounterLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private weak var answersCollectionView: UICollectionView!
@@ -15,37 +17,43 @@ class QuizController: UIViewController {
     @IBOutlet private weak var submitButton: UIButton!
     
     private let startDate = Date.now
-    private var currentQuestionIndex = 0
-    private var selectedChoiceIds = [Question.ID: Set<Choice.ID>]()
-    private var confirmedQuestionIds = Set<Question.ID>()
     private var timer: Timer?
     private var isTimerFinished: Bool {
         return timer?.isValid == false
     }
     private var isExplanationVisible = false
     
+    var currentQuestionIndex = 0
+    var selectedChoiceIds = [Question.ID: Set<Choice.ID>]()
+    var confirmedQuestionIds = Set<Question.ID>()
     var questions = [Question]()
     var quizMode: QuizMode = .quickTenQuiz
     var remainingSeconds = 600
+    var isReview = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         contentStackView.setCustomSpacing(24, after: paginationView)
+        contentStackView.setCustomSpacing(12, after: reviewQuestionCounterLabel)
         contentStackView.setCustomSpacing(8, after: questionCounterLabel)
         contentStackView.setCustomSpacing(24, after: questionLabel)
         answersCollectionView.register(ChoiceCollectionViewCell.self)
         
         isModalInPresentation = true
         
-        titleLabel.text = quizMode.title
+        closeButton.setImage(UIImage(resource: isReview ? .chevronLeft : .close), for: .normal)
+        titleLabel.text = isReview ? "Review correct" : quizMode.title
         paginationView.isHidden = true
         timerView.isHidden = true
+        reviewQuestionCounterLabel.isHidden = !isReview
         
         switch quizMode {
         case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz, .buildOwnQuiz:
-            paginationView.isHidden = false
-            paginationView.setup(numberOfPages: questions.count)
+            if !isReview {
+                paginationView.isHidden = false
+                paginationView.setup(numberOfPages: questions.count)
+            }
         case .timedQuiz, .mockExam:
             timerView.isHidden = false
             timer = .scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
@@ -63,7 +71,7 @@ class QuizController: UIViewController {
             questions[index].choices.shuffle()
         }
         
-        questions.first.map(setupQuestion)
+        setupQuestion(questions[currentQuestionIndex])
         
         view.layoutIfNeeded()
         if let flowLayout = answersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -102,7 +110,12 @@ class QuizController: UIViewController {
             questionCounterLabel.text = Date.now.formatted(date: .long, time: .omitted)
         case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz, .buildOwnQuiz:
             paginationView.setCurrentIndex(currentQuestionIndex)
-            questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)/\(questions.count)"
+            reviewQuestionCounterLabel.text = "\(currentQuestionIndex + 1)/\(questions.count)"
+            if isReview {
+                questionCounterLabel.text = question.subject.name.uppercased()
+            } else {
+                questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)/\(questions.count)"
+            }
         case .timedQuiz:
             questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)"
         case .mockExam:
@@ -125,7 +138,7 @@ class QuizController: UIViewController {
         submitButton.backgroundColor = hasSelection ? .prepMeAccent : .scepShade2
         submitButton.isUserInteractionEnabled = hasSelection
         submitButton.isHidden = currentQuestionIndex < questions.count - 1
-        submitButton.setTitle(isConfirmedSelection && quizMode == .questionOfTheDay ? "Close" : "Submit", for: .normal)
+        submitButton.setTitle(isConfirmedSelection && quizMode == .questionOfTheDay || isReview ? "Close" : "Submit", for: .normal)
         
         if isTimerFinished {
             previousButton.isEnabled = false
@@ -166,7 +179,9 @@ class QuizController: UIViewController {
     }
     
     @IBAction private func closeClicked(_ sender: Any) {
-        if confirmedQuestionIds.isEmpty {
+        if isReview {
+            navigationController?.popViewController(animated: true)
+        } else if confirmedQuestionIds.isEmpty {
             dismiss(animated: true)
         } else {
             let quitQuizController = QuitQuizController.instantiate(bundle: .module)
@@ -189,6 +204,8 @@ class QuizController: UIViewController {
                 submitQuiz()
             } else if let question = questions[safe: currentQuestionIndex] {
                 setupQuestion(question)
+            } else if isReview {
+                navigationController?.popViewController(animated: true)
             } else {
                 submitQuiz()
             }
@@ -220,7 +237,8 @@ class QuizController: UIViewController {
         } else {
             let quizResultController = QuizResultController.instantiate(bundle: .module)
             quizResultController.quizResult = quizResult
-            present(quizResultController, animated: true)
+            let navigationController = NavigationController(rootViewController: quizResultController)
+            present(navigationController, animated: true)
         }
     }
     
