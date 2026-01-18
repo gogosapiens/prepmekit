@@ -2,7 +2,7 @@ struct MockExam: Decodable {
     let name: String
     let duration: Int
     let description: String?
-    let questionSerials: [String]
+    var questionSerials: [String]
     
     enum CodingKeys: String, CodingKey {
         case name

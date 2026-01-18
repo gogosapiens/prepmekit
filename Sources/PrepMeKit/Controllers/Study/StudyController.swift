@@ -159,12 +159,15 @@ extension StudyController: UICollectionViewDelegate {
             quizBuildController.exam = exam
             present(quizBuildController, height: 550, animated: true)
         case .mockExam:
-            let mockExam = exam.mockExams.first ?? MockExam(
+            var mockExam = exam.mockExams.first ?? MockExam(
                 name: exam.descriptiveName,
                 duration: 10800,
                 description: nil,
-                questionSerials: quizMode.filterQuestions(ExamStorage.shared.questions[exam.id] ?? []).map(\.serial)
+                questionSerials: []
             )
+            if mockExam.questionSerials.isEmpty {
+                mockExam.questionSerials = quizMode.filterQuestions(ExamStorage.shared.questions[exam.id] ?? []).map(\.serial)
+            }
             let questions = ExamStorage.shared.questions[exam.id]?.filter({ question in
                 return mockExam.questionSerials.contains(question.serial)
             }) ?? []
