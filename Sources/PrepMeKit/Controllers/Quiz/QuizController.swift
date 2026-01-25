@@ -10,8 +10,9 @@ class QuizController: UIViewController {
     @IBOutlet private weak var timerLabel: UILabel!
     @IBOutlet private weak var reviewQuestionCounterLabel: UILabel!
     @IBOutlet private weak var questionCounterLabel: UILabel!
-    @IBOutlet private weak var questionLabel: UILabel!
-    @IBOutlet private weak var answersCollectionView: UICollectionView!
+    @IBOutlet private weak var mainScrollView: UIScrollView!
+    @IBOutlet private weak var questionWebView: WebView!
+    @IBOutlet private weak var answersStackView: UIStackView!
     @IBOutlet private weak var previousButton: QuizNavigationButton!
     @IBOutlet private weak var nextButton: QuizNavigationButton!
     @IBOutlet private weak var submitButton: UIButton!
@@ -21,7 +22,6 @@ class QuizController: UIViewController {
     private var isTimerFinished: Bool {
         return timer?.isValid == false
     }
-    private var isExplanationVisible = false
     
     var currentQuestionIndex = 0
     var selectedChoiceIds = [Question.ID: Set<Choice.ID>]()
@@ -36,9 +36,6 @@ class QuizController: UIViewController {
         
         contentStackView.setCustomSpacing(24, after: paginationView)
         contentStackView.setCustomSpacing(12, after: reviewQuestionCounterLabel)
-        contentStackView.setCustomSpacing(8, after: questionCounterLabel)
-        contentStackView.setCustomSpacing(24, after: questionLabel)
-        answersCollectionView.register(ChoiceCollectionViewCell.self)
         
         isModalInPresentation = true
         
@@ -47,6 +44,7 @@ class QuizController: UIViewController {
         paginationView.isHidden = true
         timerView.isHidden = true
         reviewQuestionCounterLabel.isHidden = !isReview
+        questionWebView.setFont(size: 16, weight: .semibold)
         
         switch quizMode {
         case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz, .buildOwnQuiz:
@@ -72,14 +70,6 @@ class QuizController: UIViewController {
         }
         
         setupQuestion(questions[currentQuestionIndex])
-        
-        view.layoutIfNeeded()
-        if let flowLayout = answersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(
-                width: answersCollectionView.bounds.width,
-                height: 48
-            )
-        }
     }
     
     private func updateTimer() {
@@ -121,11 +111,37 @@ class QuizController: UIViewController {
         case .mockExam:
             questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)/\(questions.count)"
         }
-        questionLabel.text = question.prompt.removingHTMLTags()
-        isExplanationVisible = false
-        answersCollectionView.reloadData()
-        answersCollectionView.contentOffset = .zero
+        questionWebView.setContent(question.prompt)
+        reloadAnswers(question: question)
+        mainScrollView.contentOffset = .zero
         updateNavigationButtons()
+    }
+    
+    private func reloadAnswers(question: Question) {
+        for (index, choice) in question.choices.enumerated() {
+            let choiceView = (answersStackView.arrangedSubviews[safe: index] as? ChoiceView) ?? .instantiate()
+            choiceView.setup(with: choice, explanation: question.explanation, reference: question.references.joined(separator: "\n"))
+            choiceView.delegate = self
+            if let selectedChoiceIds = self.selectedChoiceIds[question.objectId] {
+                if selectedChoiceIds.contains(choice.id) || choice.isCorrect {
+                    if !confirmedQuestionIds.contains(question.objectId) {
+                        choiceView.select()
+                    } else if choice.isCorrect {
+                        choiceView.selectCorrect()
+                    } else {
+                        choiceView.selectWrong()
+                    }
+                }
+            }
+            if choiceView.superview == nil {
+                answersStackView.addArrangedSubview(choiceView)
+            }
+        }
+        answersStackView.arrangedSubviews.dropFirst(question.choices.count).forEach { $0.removeFromSuperview() }
+    }
+    
+    private func getChoiceView(at index: Int) -> ChoiceView? {
+        return answersStackView.arrangedSubviews[safe: index] as? ChoiceView
     }
     
     private func updateNavigationButtons() {
@@ -164,17 +180,15 @@ class QuizController: UIViewController {
         selectedIndexes.formUnion(correctChoiceIndexes)
         
         for selectedIndex in selectedIndexes {
-            let indexPath = IndexPath(row: selectedIndex, section: 0)
-            let cell = answersCollectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
+            let choiceView = getChoiceView(at: selectedIndex)
             
             if question.choices[selectedIndex].isCorrect {
-                cell?.selectCorrect()
+                choiceView?.selectCorrect()
             } else {
-                cell?.selectWrong()
+                choiceView?.selectWrong()
             }
         }
         
-        (answersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.invalidateLayout()
         updateNavigationButtons()
     }
     
@@ -248,59 +262,23 @@ class QuizController: UIViewController {
     
 }
 
-extension QuizController: UICollectionViewDataSource {
+extension QuizController: ChoiceViewDelegate {
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        return questions[currentQuestionIndex].choices.count
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(of: ChoiceCollectionViewCell.self, for: indexPath)
-        let question = questions[currentQuestionIndex]
-        let choice = question.choices[indexPath.row]
-        cell.setup(with: choice, explanation: question.explanation, reference: question.references.joined(separator: "\n"))
-        cell.delegate = self
-        if let selectedChoiceIds = self.selectedChoiceIds[question.objectId] {
-            if selectedChoiceIds.contains(choice.id) || choice.isCorrect {
-                if !confirmedQuestionIds.contains(question.objectId) {
-                    cell.select()
-                } else if choice.isCorrect {
-                    cell.selectCorrect()
-                } else {
-                    cell.selectWrong()
-                }
-            }
-        }
-        return cell
-    }
-    
-}
-
-extension QuizController: UICollectionViewDelegate {
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath
-    ) {
+    func choiceViewDidSelect(_ choiceView: ChoiceView) {
+        guard let index = answersStackView.arrangedSubviews.firstIndex(of: choiceView) else { return }
+        
         let question = questions[currentQuestionIndex]
         guard !confirmedQuestionIds.contains(question.objectId) else { return }
         
-        let cell = collectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
-        let choice = question.choices[indexPath.row]
+        let choice = question.choices[index]
         
         if question.isMultipleCorrectChoice {
             if selectedChoiceIds[question.objectId, default: []].contains(choice.id) {
-                cell?.deselect()
+                choiceView.deselect()
                 
                 selectedChoiceIds[question.objectId, default: []].remove(choice.id)
             } else {
-                cell?.select()
+                choiceView.select()
                 
                 selectedChoiceIds[question.objectId, default: []].insert(choice.id)
             }
@@ -310,12 +288,10 @@ extension QuizController: UICollectionViewDelegate {
             }.map(\.offset)
             
             for selectedChoiceIndex in selectedChoiceIndexes {
-                let indexPath = IndexPath(row: selectedChoiceIndex, section: 0)
-                let cell = collectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
-                cell?.deselect()
+                getChoiceView(at: selectedChoiceIndex)?.deselect()
             }
             
-            cell?.select()
+            choiceView.select()
             
             selectedChoiceIds[question.objectId] = [choice.id]
         }
@@ -327,41 +303,6 @@ extension QuizController: UICollectionViewDelegate {
         } else {
             confirmSelection()
         }
-    }
-    
-}
-
-extension QuizController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let width = collectionView.bounds.width
-        let question = questions[currentQuestionIndex]
-        let choice = question.choices[indexPath.row]
-        let isQuestionConfirmed = confirmedQuestionIds.contains(question.objectId)
-        let isChoiceSelected = selectedChoiceIds[question.objectId]?.contains(choice.id) == true
-        let height = ChoiceCollectionViewCell.getHeight(
-            for: width,
-            choice: choice,
-            isIndicatorVisible: isQuestionConfirmed ? isChoiceSelected || choice.isCorrect : false,
-            isCollapseButtonVisible: isQuestionConfirmed && choice.isCorrect,
-            isExplanationVisible: isExplanationVisible && choice.isCorrect,
-            explanation: question.explanation,
-            reference: question.references.joined(separator: "\n")
-        )
-        return CGSize(width: width, height: height)
-    }
-    
-}
-
-extension QuizController: ChoiceCollectionViewCellDelegate {
-    
-    func choiceCollectionViewCellCollapse(_ choiceCollectionViewCell: ChoiceCollectionViewCell) {
-        isExplanationVisible.toggle()
-        (answersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.invalidateLayout()
     }
     
 }

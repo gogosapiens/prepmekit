@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="174" width="393" height="678"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BJw-Rh-mbL">
-                                        <rect key="frame" x="16" y="24" width="361" height="516"/>
+                                        <rect key="frame" x="16" y="24" width="361" height="77"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vql-Wo-t1k" customClass="PaginationView" customModule="PrepMeKit">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="4"/>
@@ -79,29 +79,54 @@
                                                 <color key="textColor" name="SCEPShade1Color"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1g-9S-fgk">
-                                                <rect key="frame" x="0.0" y="77" width="361" height="22.666666666666671"/>
-                                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
-                                                <color key="textColor" name="SCEPTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yv2-3W-g71">
-                                                <rect key="frame" x="0.0" y="99.666666666666714" width="361" height="416.33333333333326"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="12" minimumInteritemSpacing="12" id="0uN-C3-2HC">
-                                                    <size key="itemSize" width="128" height="128"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="psb-pj-mXE"/>
-                                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="RKc-7u-YeE"/>
-                                                </connections>
-                                            </collectionView>
                                         </subviews>
                                     </stackView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bc7-Fe-WIH">
+                                        <rect key="frame" x="0.0" y="101" width="393" height="439"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1e-r6-brU">
+                                                <rect key="frame" x="16" y="0.0" width="361" height="226"/>
+                                                <subviews>
+                                                    <wkWebView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mOn-Jj-Rpy" customClass="WebView" customModule="PrepMeKit">
+                                                        <rect key="frame" x="0.0" y="5" width="361" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="100" placeholder="YES" id="M75-Z7-xY9"/>
+                                                        </constraints>
+                                                        <wkWebViewConfiguration key="configuration">
+                                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                            <wkPreferences key="preferences"/>
+                                                        </wkWebViewConfiguration>
+                                                    </wkWebView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fGf-a2-58b">
+                                                        <rect key="frame" x="0.0" y="126" width="361" height="100"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="100" placeholder="YES" id="EA6-cT-Iqs"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="mOn-Jj-Rpy" firstAttribute="leading" secondItem="c1e-r6-brU" secondAttribute="leading" id="BQu-e5-bmz"/>
+                                                    <constraint firstItem="mOn-Jj-Rpy" firstAttribute="top" secondItem="c1e-r6-brU" secondAttribute="top" constant="5" id="Tja-L5-vUu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fGf-a2-58b" secondAttribute="bottom" id="ezr-mc-sJ5"/>
+                                                    <constraint firstItem="fGf-a2-58b" firstAttribute="leading" secondItem="c1e-r6-brU" secondAttribute="leading" id="jHo-hd-s6L"/>
+                                                    <constraint firstAttribute="trailing" secondItem="mOn-Jj-Rpy" secondAttribute="trailing" id="u3d-0h-kIS"/>
+                                                    <constraint firstItem="fGf-a2-58b" firstAttribute="top" secondItem="mOn-Jj-Rpy" secondAttribute="bottom" constant="21" id="ySS-Cr-Fca"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fGf-a2-58b" secondAttribute="trailing" id="ywB-PK-9vA"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="c1e-r6-brU" firstAttribute="trailing" secondItem="ZUN-NT-pzR" secondAttribute="trailing" id="0Tl-W2-Q1c"/>
+                                            <constraint firstItem="c1e-r6-brU" firstAttribute="top" secondItem="ZUN-NT-pzR" secondAttribute="top" id="A59-Gk-BpH"/>
+                                            <constraint firstItem="c1e-r6-brU" firstAttribute="leading" secondItem="opA-je-Ovs" secondAttribute="leading" constant="16" id="Uea-9t-iQM"/>
+                                            <constraint firstItem="c1e-r6-brU" firstAttribute="bottom" secondItem="ZUN-NT-pzR" secondAttribute="bottom" id="Wff-32-2ke"/>
+                                            <constraint firstItem="opA-je-Ovs" firstAttribute="trailing" secondItem="c1e-r6-brU" secondAttribute="trailing" constant="16" id="vXn-Ai-4d3"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="ZUN-NT-pzR"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="opA-je-Ovs"/>
+                                    </scrollView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zws-Yo-Awr">
                                         <rect key="frame" x="16" y="556" width="361" height="48"/>
                                         <subviews>
@@ -166,10 +191,13 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="BJw-Rh-mbL" secondAttribute="trailing" constant="16" id="8fr-aM-wxf"/>
                                     <constraint firstItem="BJw-Rh-mbL" firstAttribute="top" secondItem="aEl-Uu-ga0" secondAttribute="top" constant="24" id="E4Z-ky-88w"/>
-                                    <constraint firstItem="Zws-Yo-Awr" firstAttribute="top" secondItem="BJw-Rh-mbL" secondAttribute="bottom" constant="16" id="X1J-id-M4M"/>
+                                    <constraint firstItem="Bc7-Fe-WIH" firstAttribute="top" secondItem="BJw-Rh-mbL" secondAttribute="bottom" id="QxK-aD-0Ey"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bc7-Fe-WIH" secondAttribute="trailing" id="ayY-YO-jcG"/>
                                     <constraint firstItem="BJw-Rh-mbL" firstAttribute="leading" secondItem="aEl-Uu-ga0" secondAttribute="leading" constant="16" id="ec1-wf-bNm"/>
+                                    <constraint firstItem="Bc7-Fe-WIH" firstAttribute="leading" secondItem="aEl-Uu-ga0" secondAttribute="leading" id="hxG-jJ-OGa"/>
                                     <constraint firstAttribute="trailing" secondItem="Zws-Yo-Awr" secondAttribute="trailing" constant="16" id="kDA-ra-4dA"/>
                                     <constraint firstItem="Zws-Yo-Awr" firstAttribute="leading" secondItem="aEl-Uu-ga0" secondAttribute="leading" constant="16" id="msN-28-xsP"/>
+                                    <constraint firstItem="Zws-Yo-Awr" firstAttribute="top" secondItem="Bc7-Fe-WIH" secondAttribute="bottom" constant="16" id="vgJ-cF-LyV"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -215,14 +243,15 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="answersCollectionView" destination="Yv2-3W-g71" id="rDH-XG-t06"/>
+                        <outlet property="answersStackView" destination="fGf-a2-58b" id="200-t8-nM2"/>
                         <outlet property="closeButton" destination="Okz-hX-4aq" id="AkX-mf-8sT"/>
                         <outlet property="contentStackView" destination="BJw-Rh-mbL" id="dAB-gC-ilK"/>
+                        <outlet property="mainScrollView" destination="Bc7-Fe-WIH" id="rUo-kh-RuO"/>
                         <outlet property="nextButton" destination="erR-Qm-S0r" id="IXl-u7-6AI"/>
                         <outlet property="paginationView" destination="Vql-Wo-t1k" id="EQf-hf-4rW"/>
                         <outlet property="previousButton" destination="N19-Kn-19d" id="5ai-gC-x4C"/>
                         <outlet property="questionCounterLabel" destination="Lxb-86-jII" id="qe8-L9-ORG"/>
-                        <outlet property="questionLabel" destination="A1g-9S-fgk" id="Du9-91-0mL"/>
+                        <outlet property="questionWebView" destination="mOn-Jj-Rpy" id="fda-4c-TPi"/>
                         <outlet property="reviewQuestionCounterLabel" destination="Plf-Bk-zUJ" id="aFw-ts-Mjg"/>
                         <outlet property="submitButton" destination="wfN-po-fie" id="iCN-hS-hd8"/>
                         <outlet property="timerLabel" destination="hME-zY-2wk" id="5uM-Jc-NGo"/>
