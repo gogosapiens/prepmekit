@@ -122,17 +122,27 @@ class QuizController: UIViewController {
             let choiceView = (answersStackView.arrangedSubviews[safe: index] as? ChoiceView) ?? .instantiate()
             choiceView.setup(with: choice, explanation: question.explanation, reference: question.references.joined(separator: "\n"))
             choiceView.delegate = self
-            if let selectedChoiceIds = self.selectedChoiceIds[question.objectId] {
-                if selectedChoiceIds.contains(choice.id) || choice.isCorrect {
-                    if !confirmedQuestionIds.contains(question.objectId) {
-                        choiceView.select()
-                    } else if choice.isCorrect {
+            
+            if confirmedQuestionIds.contains(question.objectId) && choice.isCorrect {
+                if question.isMultipleCorrectChoice {
+                    choiceView.selectMissedCorrect()
+                } else {
+                    choiceView.selectCorrect()
+                }
+            }
+            
+            if selectedChoiceIds[question.objectId]?.contains(choice.id) == true {
+                if confirmedQuestionIds.contains(question.objectId) {
+                    if choice.isCorrect {
                         choiceView.selectCorrect()
                     } else {
                         choiceView.selectWrong()
                     }
+                } else {
+                    choiceView.select()
                 }
             }
+            
             if choiceView.superview == nil {
                 answersStackView.addArrangedSubview(choiceView)
             }
@@ -167,22 +177,26 @@ class QuizController: UIViewController {
         let question = questions[currentQuestionIndex]
         confirmedQuestionIds.insert(question.objectId)
         
-        var selectedIndexes = Set<Int>()
+        let correctChoiceIndexes = question.choices.enumerated().filter { _, choice in
+            return choice.isCorrect
+        }.map(\.offset)
+        for index in correctChoiceIndexes {
+            let choiceView = getChoiceView(at: index)
+            
+            if question.isMultipleCorrectChoice {
+                choiceView?.selectMissedCorrect()
+            } else {
+                choiceView?.selectCorrect()
+            }
+        }
         
         let selectedChoiceIndexes = question.choices.enumerated().filter { _, choice in
             return selectedChoiceIds[question.objectId]?.contains(choice.id) == true
         }.map(\.offset)
-        selectedIndexes.formUnion(selectedChoiceIndexes)
-        
-        let correctChoiceIndexes = question.choices.enumerated().filter { _, choice in
-            return choice.isCorrect
-        }.map(\.offset)
-        selectedIndexes.formUnion(correctChoiceIndexes)
-        
-        for selectedIndex in selectedIndexes {
-            let choiceView = getChoiceView(at: selectedIndex)
+        for index in selectedChoiceIndexes {
+            let choiceView = getChoiceView(at: index)
             
-            if question.choices[selectedIndex].isCorrect {
+            if question.choices[index].isCorrect {
                 choiceView?.selectCorrect()
             } else {
                 choiceView?.selectWrong()
