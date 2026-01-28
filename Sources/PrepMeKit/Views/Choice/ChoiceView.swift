@@ -59,7 +59,11 @@ class ChoiceView: UIView {
     }
     
     func setup(with choice: Choice, explanation: String, reference: String) {
-        titleWebView.setContent(choice.text)
+        setup(with: choice.text, explanation: explanation, reference: reference)
+    }
+    
+    func setup(with text: String, explanation: String, reference: String) {
+        titleWebView.setContent(text)
         self.explanation = explanation
         referenceLabel.text = reference.removingHTMLTags()
         deselect()
@@ -81,19 +85,13 @@ class ChoiceView: UIView {
     }
     
     func selectCorrect() {
-        updateCollapseButton()
-        collapseButton.isHidden = false
         indicatorImageView.image = UIImage(resource: .correct)
-        explanationWebView.setContent(explanation)
         layer.borderColor = UIColor(resource: .correct).cgColor
         dashBorder.isHidden = true
     }
     
     func selectMissedCorrect() {
-        updateCollapseButton()
-        collapseButton.isHidden = false
         indicatorImageView.image = UIImage(resource: .correct)
-        explanationWebView.setContent(explanation)
         layer.borderColor = UIColor.clear.cgColor
         dashBorder.isHidden = false
     }
@@ -102,6 +100,12 @@ class ChoiceView: UIView {
         indicatorImageView.image = UIImage(resource: .wrong)
         layer.borderColor = UIColor(resource: .wrong).cgColor
         dashBorder.isHidden = true
+    }
+    
+    func showCollapseButton() {
+        updateCollapseButton()
+        collapseButton.isHidden = false
+        explanationWebView.setContent(explanation)
     }
     
     @IBAction private func collapseButtonClicked(_ sender: Any) {

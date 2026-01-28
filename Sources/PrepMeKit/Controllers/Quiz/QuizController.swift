@@ -118,23 +118,29 @@ class QuizController: UIViewController {
     }
     
     private func reloadAnswers(question: Question) {
+        let isQuestionConfirmed = confirmedQuestionIds.contains(question.objectId)
+        
         for (index, choice) in question.choices.enumerated() {
             let choiceView = (answersStackView.arrangedSubviews[safe: index] as? ChoiceView) ?? .instantiate()
             choiceView.setup(with: choice, explanation: question.explanation, reference: question.references.joined(separator: "\n"))
             choiceView.delegate = self
             
-            if confirmedQuestionIds.contains(question.objectId) && choice.isCorrect {
+            if isQuestionConfirmed && choice.isCorrect {
                 if question.isMultipleCorrectChoice {
                     choiceView.selectMissedCorrect()
                 } else {
                     choiceView.selectCorrect()
+                    choiceView.showCollapseButton()
                 }
             }
             
             if selectedChoiceIds[question.objectId]?.contains(choice.id) == true {
-                if confirmedQuestionIds.contains(question.objectId) {
+                if isQuestionConfirmed {
                     if choice.isCorrect {
                         choiceView.selectCorrect()
+                        if !question.isMultipleCorrectChoice {
+                            choiceView.showCollapseButton()
+                        }
                     } else {
                         choiceView.selectWrong()
                     }
@@ -147,7 +153,15 @@ class QuizController: UIViewController {
                 answersStackView.addArrangedSubview(choiceView)
             }
         }
-        answersStackView.arrangedSubviews.dropFirst(question.choices.count).forEach { $0.removeFromSuperview() }
+        
+        var choiceViewCount = question.choices.count
+        
+        if isQuestionConfirmed && question.isMultipleCorrectChoice {
+            addExplanationView()
+            choiceViewCount += 1
+        }
+        
+        answersStackView.arrangedSubviews.dropFirst(choiceViewCount).forEach { $0.removeFromSuperview() }
     }
     
     private func getChoiceView(at index: Int) -> ChoiceView? {
@@ -187,6 +201,7 @@ class QuizController: UIViewController {
                 choiceView?.selectMissedCorrect()
             } else {
                 choiceView?.selectCorrect()
+                choiceView?.showCollapseButton()
             }
         }
         
@@ -198,12 +213,39 @@ class QuizController: UIViewController {
             
             if question.choices[index].isCorrect {
                 choiceView?.selectCorrect()
+                if !question.isMultipleCorrectChoice {
+                    choiceView?.showCollapseButton()
+                }
             } else {
                 choiceView?.selectWrong()
             }
         }
         
+        if question.isMultipleCorrectChoice {
+            addExplanationView()
+        }
+        
         updateNavigationButtons()
+    }
+    
+    private func addExplanationView() {
+        let question = questions[currentQuestionIndex]
+        let selectedChoices = selectedChoiceIds[question.objectId, default: []]
+            .compactMap(question.choices.first)
+        let correctChoiceCount = selectedChoices.count(where: \.isCorrect)
+        let containsWrongChoice = selectedChoices.contains(where: { !$0.isCorrect })
+        let isCorrectAnswer = correctChoiceCount == question.correctChoiceCount && !containsWrongChoice
+        let choiceView = (answersStackView.arrangedSubviews[safe: question.choices.count] as? ChoiceView) ?? .instantiate()
+        choiceView.setup(
+            with: isCorrectAnswer ? "Correct" : "Incorrect",
+            explanation: question.explanation,
+            reference: question.references.joined(separator: "\n")
+        )
+        choiceView.showCollapseButton()
+        choiceView.delegate = nil
+        if choiceView.superview == nil {
+            answersStackView.addArrangedSubview(choiceView)
+        }
     }
     
     @IBAction private func closeClicked(_ sender: Any) {
