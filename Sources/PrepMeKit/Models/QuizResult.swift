@@ -21,10 +21,11 @@ struct QuizResult: Codable {
     }
     
     func isCorrectAnswer(question: Question) -> Bool {
-        let selectedCorrectChoiceCount = selectedChoiceIds[question.objectId, default: []]
+        let selectedChoices = selectedChoiceIds[question.objectId, default: []]
             .compactMap(question.choices.first)
-            .count(where: \.isCorrect)
-        return selectedCorrectChoiceCount == question.correctChoiceCount
+        let correctChoiceCount = selectedChoices.count(where: \.isCorrect)
+        let containsWrongChoice = selectedChoices.contains(where: { !$0.isCorrect })
+        return correctChoiceCount == question.correctChoiceCount && !containsWrongChoice
     }
 }
 
