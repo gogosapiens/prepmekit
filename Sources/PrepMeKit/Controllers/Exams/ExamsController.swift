@@ -1,4 +1,5 @@
 import UIKit
+import SCEPKit
 
 class ExamsController: UIViewController {
     
@@ -85,6 +86,10 @@ extension ExamsController: UICollectionViewDelegate {
         Settings.shared.selectedExamId = exam.id
         Settings.shared.selectedSubjectIds = exam.subjects.map(\.id)
         ResultStorage.shared.removeAll()
+        SCEPKit.trackEvent("[PrepMeKit] exam_selected", properties: [
+            "exam": exam.name,
+            "is_automatic": false
+        ])
         dismiss(animated: true)
     }
     

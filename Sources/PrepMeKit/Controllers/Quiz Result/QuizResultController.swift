@@ -1,4 +1,6 @@
 import UIKit
+import SCEPKit
+import StoreKit
 
 class QuizResultController: UIViewController {
     
@@ -29,8 +31,37 @@ class QuizResultController: UIViewController {
         collectionView.addSubview(header)
     }
     
+    private func requestReviewIfNeeded() {
+        let configVariant = SCEPKit.remoteConfigValue(of: String.self, for: "prepme_kit_config_var")
+        let configs = SCEPKit.remoteConfigValue(of: [String: Config].self, for: "prepme_kit_config")
+        let config = configVariant.flatMap({ configs?[$0] })
+        switch config?.askForRatingAfterQuizMode {
+        case "true":
+            requestReview()
+        case "good_result_only":
+            if quizResult.score > 80 {
+                requestReview()
+            }
+        default:
+            break
+        }
+    }
+    
+    private func requestReview() {
+        SCEPKit.trackEvent("[PrepMeKit] asked_for_rating_after_quiz", properties: [
+            "quiz_result": quizResult.score
+        ])
+        
+        if let scene = UIApplication.shared.connectedScenes.first(
+            where: { $0.activationState == .foregroundActive }
+        ) as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: scene)
+        }
+    }
+    
     @IBAction private func closeClicked(_ sender: Any) {
         presentingViewController?.presentingViewController?.dismiss(animated: true)
+        requestReviewIfNeeded()
     }
     
 }

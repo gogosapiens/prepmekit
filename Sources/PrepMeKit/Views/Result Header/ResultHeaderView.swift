@@ -27,11 +27,14 @@ class ResultHeaderView: UIView {
     func setup(with quizResult: QuizResult) {
         dateLabel.text = quizResult.date.formatted(date: .numeric, time: .shortened)
         
-        let progress = Int(Double(quizResult.correctAnswerCount) / Double(quizResult.questions.count) * 100)
-        setupProgress(CGFloat(progress), point: CGFloat(quizResult.communityScore), color: UIColor(hex: progress >= quizResult.communityScore ? 0x049775 : 0xDD0000))
-        progressLabel.text = String(progress) + "%"
+        setupProgress(
+            CGFloat(quizResult.score),
+            point: CGFloat(quizResult.communityScore),
+            color: UIColor(hex: quizResult.score >= quizResult.communityScore ? 0x049775 : 0xDD0000)
+        )
+        progressLabel.text = String(quizResult.score) + "%"
         
-        let infoBackgroundColor = UIColor(hex: progress >= quizResult.communityScore ? 0xE6F8F4 : 0xFFEEEE)
+        let infoBackgroundColor = UIColor(hex: quizResult.score >= quizResult.communityScore ? 0xE6F8F4 : 0xFFEEEE)
         correctAnswersView.backgroundColor = infoBackgroundColor
         quizTimeView.backgroundColor = infoBackgroundColor
         

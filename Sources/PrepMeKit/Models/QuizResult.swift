@@ -8,6 +8,10 @@ struct QuizResult: Codable {
     let duration: Int
     let communityScore: Int
     
+    var score: Int {
+        return Int(Double(correctAnswerCount) / Double(questions.count) * 100)
+    }
+    
     var correctAnswerCount: Int {
         return questions.count(where: isCorrectAnswer)
     }

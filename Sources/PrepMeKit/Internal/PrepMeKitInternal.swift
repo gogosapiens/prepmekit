@@ -19,6 +19,10 @@ class PrepMeKitInternal {
             let exam = ExamStorage.shared.exams.first?.value.first {
             Settings.shared.selectedExamId = exam.id
             Settings.shared.selectedSubjectIds = exam.subjects.map(\.id)
+            SCEPKit.trackEvent("[PrepMeKit] exam_selected", properties: [
+                "exam": exam.name,
+                "is_automatic": true
+            ])
         }
         
         if let lastQuizDate = ResultStorage.shared.quizResults.map(\.date).max() {
