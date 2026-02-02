@@ -8,6 +8,7 @@ class QuizResultController: UIViewController {
     private let header = ResultHeaderView.instantiate()
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    private var selectedQuestionFilter: QuestionFilter?
     private var filteredQuestions = [Question]()
     
     var quizResult: QuizResult!
@@ -101,6 +102,13 @@ extension QuizResultController: UICollectionViewDelegate {
         quizController.currentQuestionIndex = indexPath.row
         quizController.selectedChoiceIds = quizResult.selectedChoiceIds
         quizController.confirmedQuestionIds = Set(filteredQuestions.map(\.objectId))
+        let title: String
+        switch selectedQuestionFilter {
+        case .none: title = "Review all"
+        case .incorrect: title = "Review incorrect"
+        case .correct: title = "Review correct"
+        }
+        quizController.customTitle = title
         navigationController?.pushViewController(quizController, animated: true)
     }
     
@@ -134,18 +142,26 @@ extension QuizResultController: ResultHeaderViewDelegate {
     }
     
     func resultHeaderViewAllPage(_ resultHeaderView: ResultHeaderView) {
+        selectedQuestionFilter = nil
         filteredQuestions = quizResult.questions
         collectionView.reloadData()
     }
     
     func resultHeaderViewIncorrectPage(_ resultHeaderView: ResultHeaderView) {
+        selectedQuestionFilter = .incorrect
         filteredQuestions = quizResult.wrongAnsweredQuestions
         collectionView.reloadData()
     }
     
     func resultHeaderViewCorrectPage(_ resultHeaderView: ResultHeaderView) {
+        selectedQuestionFilter = .correct
         filteredQuestions = quizResult.correctAnsweredQuestions
         collectionView.reloadData()
     }
     
+}
+
+enum QuestionFilter {
+    case incorrect
+    case correct
 }

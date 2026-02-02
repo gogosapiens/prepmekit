@@ -30,6 +30,7 @@ class QuizController: UIViewController {
     var quizMode: QuizMode = .quickTenQuiz
     var remainingSeconds = 600
     var isReview = false
+    var customTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class QuizController: UIViewController {
         isModalInPresentation = true
         
         closeButton.setImage(UIImage(resource: isReview ? .chevronLeft : .close), for: .normal)
-        titleLabel.text = isReview ? "Review correct" : quizMode.title
+        titleLabel.text = customTitle ?? quizMode.title
         paginationView.isHidden = true
         timerView.isHidden = true
         reviewQuestionCounterLabel.isHidden = !isReview
@@ -223,6 +224,7 @@ class QuizController: UIViewController {
         
         if question.isMultipleCorrectChoice {
             addExplanationView()
+            scrollToBottom()
         }
         
         updateNavigationButtons()
@@ -246,6 +248,14 @@ class QuizController: UIViewController {
         if choiceView.superview == nil {
             answersStackView.addArrangedSubview(choiceView)
         }
+    }
+    
+    private func scrollToBottom() {
+        view.layoutIfNeeded()
+        mainScrollView.setContentOffset(
+            CGPoint(x: 0, y: max(0, mainScrollView.contentSize.height - mainScrollView.bounds.size.height)),
+            animated: true
+        )
     }
     
     @IBAction private func closeClicked(_ sender: Any) {
