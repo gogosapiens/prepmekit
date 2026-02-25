@@ -4,7 +4,8 @@ struct QuizResult: Codable {
     let mode: QuizMode
     let date: Date
     let questions: [Question]
-    let selectedChoiceIds: [Question.ID: Set<Choice.ID>]
+    let selectedChoiceIds: [Question.ID: [Choice.ID]]
+    let selectedSubquestionAnswerIndexes: [Question.ID: [Set<Int>]]
     let duration: Int
     let communityScore: Int
     
@@ -25,18 +26,20 @@ struct QuizResult: Codable {
     }
     
     func isCorrectAnswer(question: Question) -> Bool {
-        let selectedChoices = selectedChoiceIds[question.objectId, default: []]
-            .compactMap(question.choices.first)
-        let correctChoiceCount = selectedChoices.count(where: \.isCorrect)
-        let containsWrongChoice = selectedChoices.contains(where: { !$0.isCorrect })
-        return correctChoiceCount == question.correctChoiceCount && !containsWrongChoice
+        if question.hasSubquestions {
+            return selectedSubquestionAnswerIndexes[question.objectId] == question.correctSubquestionAnswerIndexes
+        } else if question.type == .buildList {
+            return selectedChoiceIds[question.objectId] == question.correctChoiceIds
+        } else {
+            return selectedChoiceIds[question.objectId].map(Set.init) == Set(question.correctChoiceIds)
+        }
     }
 }
 
 struct QuizResultV1: Codable {
     let mode: QuizMode
     let date: Date
-    let questions: [Question]
+    let questions: [QuestionV1]
     let selectedChoiceIds: [Question.ID: Choice.ID]
     let duration: Int
     let communityScore: Int

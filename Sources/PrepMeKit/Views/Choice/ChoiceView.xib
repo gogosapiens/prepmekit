@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Font-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
         <array key="Font-Medium.ttf">
             <string>Poppins-Medium</string>
         </array>
@@ -22,34 +25,117 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="ChoiceView" customModule="PrepMeKit">
-            <rect key="frame" x="0.0" y="0.0" width="421" height="213"/>
+            <rect key="frame" x="0.0" y="0.0" width="421" height="419"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="G70-oY-6U1">
-                    <rect key="frame" x="16" y="12" width="393" height="189"/>
+                    <rect key="frame" x="16" y="12" width="393" height="395"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tP7-o2-YWK">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="26"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tP7-o2-YWK">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="32"/>
                             <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kq-8a-mvS">
+                                    <rect key="frame" x="0.0" y="4" width="24" height="24"/>
+                                    <color key="backgroundColor" name="SCEPTextColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="Fxg-WV-wOf"/>
+                                        <constraint firstAttribute="width" constant="24" id="cLy-xt-Dww"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="12"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RadioButtonUnchecked" translatesAutoresizingMaskIntoConstraints="NO" id="v8d-hZ-gOw">
+                                    <rect key="frame" x="32" y="0.0" width="32" height="32"/>
+                                    <color key="tintColor" name="SCEPAccentColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="32" id="SSm-lX-FBV"/>
+                                    </constraints>
+                                </imageView>
                                 <wkWebView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkE-wJ-eho" customClass="WebView" customModule="PrepMeKit">
-                                    <rect key="frame" x="0.0" y="0.0" width="353" height="26"/>
+                                    <rect key="frame" x="72" y="0.0" width="113" height="32"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <wkWebViewConfiguration key="configuration">
                                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                         <wkPreferences key="preferences"/>
                                     </wkWebViewConfiguration>
                                 </wkWebView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="Correct" translatesAutoresizingMaskIntoConstraints="NO" id="FRe-7d-dLR">
-                                    <rect key="frame" x="369" y="0.0" width="24" height="26"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="x2g-nH-xzE">
+                                    <rect key="frame" x="193" y="0.0" width="80" height="32"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrJ-Ua-MPi">
+                                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="32" id="sYZ-9L-nKs"/>
+                                                <constraint firstAttribute="height" constant="32" id="zmI-Tk-HpK"/>
+                                            </constraints>
+                                            <color key="tintColor" name="PrepMeAccentColor"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="ArrowUp"/>
+                                            <connections>
+                                                <action selector="upOrderButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="boW-uD-sJ5"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fnc-Av-D3R">
+                                            <rect key="frame" x="48" y="0.0" width="32" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="42g-Vf-jpt"/>
+                                                <constraint firstAttribute="width" constant="32" id="m0e-sl-sSK"/>
+                                            </constraints>
+                                            <color key="tintColor" name="PrepMeAccentColor"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="ArrowDown"/>
+                                            <connections>
+                                                <action selector="downOrderButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="MIC-KT-hel"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rf-rH-pUS">
+                                    <rect key="frame" x="281" y="4" width="80" height="24"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezX-gF-zHJ">
+                                            <rect key="frame" x="56" y="0.0" width="24" height="24"/>
+                                            <color key="backgroundColor" name="SCEPTextColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="24" id="SeU-Wr-lbO"/>
+                                                <constraint firstAttribute="height" constant="24" id="zYG-yW-ChR"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="12"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="81l-bO-hps"/>
+                                        <constraint firstAttribute="bottom" secondItem="ezX-gF-zHJ" secondAttribute="bottom" id="Dan-9V-oYw"/>
+                                        <constraint firstAttribute="width" constant="80" id="Khu-W0-CHg"/>
+                                        <constraint firstAttribute="trailing" secondItem="ezX-gF-zHJ" secondAttribute="trailing" id="O4u-pc-a5L"/>
+                                        <constraint firstItem="ezX-gF-zHJ" firstAttribute="top" secondItem="2Rf-rH-pUS" secondAttribute="top" id="eft-p1-iru"/>
+                                    </constraints>
+                                </view>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="Correct" translatesAutoresizingMaskIntoConstraints="NO" id="FRe-7d-dLR">
+                                    <rect key="frame" x="369" y="4" width="24" height="24"/>
+                                    <constraints>
                                         <constraint firstAttribute="width" constant="24" id="973-ib-dkw"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyY-Ns-Q4W">
-                            <rect key="frame" x="0.0" y="26" width="393" height="18"/>
+                            <rect key="frame" x="0.0" y="32" width="393" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="18" id="A3m-9f-8eI"/>
                             </constraints>
@@ -63,26 +149,63 @@
                                 <action selector="collapseButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="o4M-D4-nfW"/>
                             </connections>
                         </button>
-                        <wkWebView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGO-YK-adB" customClass="WebView" customModule="PrepMeKit">
-                            <rect key="frame" x="0.0" y="44.000000000000007" width="393" height="105.66666666666669"/>
+                        <wkWebView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGO-YK-adB" customClass="WebView" customModule="PrepMeKit">
+                            <rect key="frame" x="0.0" y="50" width="393" height="71"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <wkWebViewConfiguration key="configuration">
                                 <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                 <wkPreferences key="preferences"/>
                             </wkWebViewConfiguration>
                         </wkWebView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reference:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWQ-MT-Wg7">
-                            <rect key="frame" x="0.0" y="149.66666666666666" width="393" height="19.666666666666657"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Reference:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWQ-MT-Wg7">
+                            <rect key="frame" x="0.0" y="121.00000000000001" width="393" height="19.666666666666671"/>
                             <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                             <color key="textColor" name="SCEPShade1Color"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3n5-6j-Exm">
-                            <rect key="frame" x="0.0" y="169.33333333333334" width="393" height="19.666666666666657"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3n5-6j-Exm">
+                            <rect key="frame" x="0.0" y="140.66666666666666" width="393" height="19.666666666666657"/>
                             <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                             <color key="textColor" name="SCEPShade1Color"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BJ8-O4-Ksf">
+                            <rect key="frame" x="0.0" y="160.33333333333334" width="393" height="122.00000000000003"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="122" id="XJu-Id-s4I"/>
+                            </constraints>
+                        </imageView>
+                        <wkWebView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DXG-cj-ps9" customClass="WebView" customModule="PrepMeKit">
+                            <rect key="frame" x="0.0" y="282.33333333333331" width="393" height="24"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <wkWebViewConfiguration key="configuration">
+                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                <wkPreferences key="preferences"/>
+                            </wkWebViewConfiguration>
+                        </wkWebView>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" verticalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI9-BP-BUU">
+                            <rect key="frame" x="0.0" y="306.33333333333331" width="393" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="bSV-fw-XKg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                            <color key="tintColor" name="PrepMeAccentColor"/>
+                            <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Image description" image="SmallChevronDown">
+                                <color key="titleColor" name="PrepMeAccentColor"/>
+                            </state>
+                            <connections>
+                                <action selector="collapseExplanationImageDescriptionButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="La4-Rr-r53"/>
+                            </connections>
+                        </button>
+                        <wkWebView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4xO-Q0-xHe" customClass="WebView" customModule="PrepMeKit">
+                            <rect key="frame" x="0.0" y="324.33333333333331" width="393" height="70.666666666666686"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <wkWebViewConfiguration key="configuration">
+                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                <wkPreferences key="preferences"/>
+                            </wkWebViewConfiguration>
+                        </wkWebView>
                     </subviews>
                 </stackView>
             </subviews>
@@ -101,20 +224,37 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="collapseButton" destination="dyY-Ns-Q4W" id="eg2-6y-D0L"/>
+                <outlet property="collapseExplanationImageDescriptionButton" destination="gI9-BP-BUU" id="ZXF-Ka-jt8"/>
+                <outlet property="downOrderButton" destination="Fnc-Av-D3R" id="t6z-Si-NJD"/>
+                <outlet property="explanationImageDescriptionWebView" destination="4xO-Q0-xHe" id="QV8-BS-3if"/>
+                <outlet property="explanationImageView" destination="BJ8-O4-Ksf" id="h5C-9J-id1"/>
+                <outlet property="explanationImageWebView" destination="DXG-cj-ps9" id="ayM-YV-dYq"/>
                 <outlet property="explanationWebView" destination="KGO-YK-adB" id="MVp-32-Oad"/>
-                <outlet property="indicatorImageView" destination="FRe-7d-dLR" id="5n4-Ok-fpg"/>
+                <outlet property="leadingIndexLabel" destination="2kq-8a-mvS" id="cy5-kP-Yag"/>
+                <outlet property="leadingIndicatorImageView" destination="v8d-hZ-gOw" id="g9i-1A-Uj5"/>
+                <outlet property="orderButtonsView" destination="x2g-nH-xzE" id="s6L-Hp-Rff"/>
                 <outlet property="referenceLabel" destination="3n5-6j-Exm" id="99L-y1-xZN"/>
                 <outlet property="referenceTitleLabel" destination="IWQ-MT-Wg7" id="2p3-WD-xis"/>
                 <outlet property="stackView" destination="G70-oY-6U1" id="1Qk-cX-tRy"/>
                 <outlet property="titleWebView" destination="nkE-wJ-eho" id="cUl-9q-07T"/>
+                <outlet property="trailingIndexLabel" destination="ezX-gF-zHJ" id="cct-yr-SAa"/>
+                <outlet property="trailingIndexView" destination="2Rf-rH-pUS" id="v9K-gZ-Bqq"/>
+                <outlet property="trailingIndicatorImageView" destination="FRe-7d-dLR" id="uqs-iv-7z4"/>
+                <outlet property="upOrderButton" destination="PrJ-Ua-MPi" id="G2j-Zv-7u2"/>
             </connections>
-            <point key="canvasLocation" x="156.4885496183206" y="430.63380281690144"/>
+            <point key="canvasLocation" x="156.4885496183206" y="473.59154929577466"/>
         </view>
     </objects>
     <resources>
+        <image name="ArrowDown" width="32" height="32"/>
+        <image name="ArrowUp" width="32" height="32"/>
         <image name="Correct" width="24" height="24"/>
+        <image name="RadioButtonUnchecked" width="32" height="32"/>
         <image name="SmallChevronDown" width="16" height="16"/>
         <namedColor name="PrepMeAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPAccentColor">
             <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SCEPShade1Color">
@@ -122,6 +262,9 @@
         </namedColor>
         <namedColor name="SCEPShade4Color">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

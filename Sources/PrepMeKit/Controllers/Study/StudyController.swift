@@ -132,9 +132,9 @@ extension StudyController: UICollectionViewDelegate {
         let subjectIds = Settings.shared.selectedSubjectIds
         let questions = ExamStorage.shared.questions[exam.id]?.filter({ question in
             return question.isFree || isPremium
-        }).filter({ question in
-            return subjectIds.contains(question.subject.id)
-        }) ?? []
+        }) ?? []//.filter({ question in
+//            return subjectIds.contains(question.subject.id)
+//        }) ?? []
         
         guard !questions.isEmpty else  {
             let alert = UIAlertController(title: "Error", message: "There are no questions", preferredStyle: .alert)

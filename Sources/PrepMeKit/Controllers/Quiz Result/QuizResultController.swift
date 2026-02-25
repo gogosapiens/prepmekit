@@ -101,6 +101,7 @@ extension QuizResultController: UICollectionViewDelegate {
         quizController.isReview = true
         quizController.currentQuestionIndex = indexPath.row
         quizController.selectedChoiceIds = quizResult.selectedChoiceIds
+        quizController.selectedSubquestionAnswerIndexes = quizResult.selectedSubquestionAnswerIndexes
         quizController.confirmedQuestionIds = Set(filteredQuestions.map(\.objectId))
         let title: String
         switch selectedQuestionFilter {

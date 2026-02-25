@@ -15,6 +15,8 @@ class WebView: WKWebView {
         default: "Font-Regular.ttf"
         }
     }
+    private var isLoadingContent = false
+    private var loadContentCompletion: (() -> ())?
     private(set) var contentHeight: CGFloat = 0
     
     override var intrinsicContentSize: CGSize {
@@ -37,6 +39,9 @@ class WebView: WKWebView {
     }
     
     func setContent(_ body: String) {
+        isLoadingContent = true
+        loadContentCompletion = nil
+        
         let html = """
         <!DOCTYPE html>
         <html>
@@ -97,6 +102,27 @@ class WebView: WKWebView {
         loadHTMLString(html, baseURL: Bundle.main.bundleURL)
     }
     
+    func crossOutText() {
+        let handler = { [weak self] in
+            guard let self else { return }
+            evaluateJavaScript("""
+            var style = document.createElement('style');
+            style.innerHTML = `
+                body, body * {
+                    text-decoration: line-through !important;
+                }
+            `;
+            document.head.appendChild(style);
+            """)
+        }
+        
+        if isLoadingContent {
+            loadContentCompletion = handler
+        } else {
+            handler()
+        }
+    }
+    
 }
 
 extension WebView: WKNavigationDelegate {
@@ -118,6 +144,8 @@ extension WebView: WKNavigationDelegate {
                 
                 contentHeight = height
                 invalidateIntrinsicContentSize()
+                isLoadingContent = false
+                loadContentCompletion?()
             }
         }
     }

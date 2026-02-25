@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Font-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aag-ef-h5j" customClass="PassageView" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="421" height="419"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Itz-BN-OMC">
+                    <rect key="frame" x="16" y="12" width="393" height="395"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VUj-d0-usY">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="24.333333333333332"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Passage" translatesAutoresizingMaskIntoConstraints="NO" id="c3R-oc-TcT">
+                                    <rect key="frame" x="0.0" y="0.33333333333333393" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="Xdw-tE-NXB"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1N-A2-mYg">
+                                    <rect key="frame" x="32" y="1" width="329" height="22.666666666666668"/>
+                                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                    <color key="textColor" name="SCEPTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="ChevronDown" translatesAutoresizingMaskIntoConstraints="NO" id="Rzm-gX-y03">
+                                    <rect key="frame" x="369" y="0.33333333333333393" width="24" height="24"/>
+                                    <color key="tintColor" name="SCEPTextColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="0vr-D2-c0j"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                        <wkWebView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zLx-Wm-Rsg" customClass="WebView" customModule="PrepMeKit">
+                            <rect key="frame" x="0.0" y="36.333333333333343" width="393" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <wkWebViewConfiguration key="configuration">
+                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                <wkPreferences key="preferences"/>
+                            </wkWebViewConfiguration>
+                        </wkWebView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FZj-t4-hMi">
+                            <rect key="frame" x="0.0" y="98.333333333333314" width="393" height="122"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="122" id="1EC-N5-x7I"/>
+                            </constraints>
+                        </imageView>
+                        <wkWebView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Cr-pX-Pu7" customClass="WebView" customModule="PrepMeKit">
+                            <rect key="frame" x="0.0" y="232.33333333333337" width="393" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <wkWebViewConfiguration key="configuration">
+                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                <wkPreferences key="preferences"/>
+                            </wkWebViewConfiguration>
+                        </wkWebView>
+                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" verticalHuggingPriority="251" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M11-dl-9uF">
+                            <rect key="frame" x="0.0" y="294.33333333333331" width="393" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="gkd-gn-mTx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                            <color key="tintColor" name="PrepMeAccentColor"/>
+                            <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Image description" image="SmallChevronDown">
+                                <color key="titleColor" name="PrepMeAccentColor"/>
+                            </state>
+                            <connections>
+                                <action selector="collapseExplanationImageDescriptionButtonClicked:" destination="aag-ef-h5j" eventType="touchUpInside" id="epv-22-v3j"/>
+                            </connections>
+                        </button>
+                        <wkWebView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQn-Xm-FnW" customClass="WebView" customModule="PrepMeKit">
+                            <rect key="frame" x="0.0" y="324.33333333333331" width="393" height="70.666666666666686"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <wkWebViewConfiguration key="configuration">
+                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                <wkPreferences key="preferences"/>
+                            </wkWebViewConfiguration>
+                        </wkWebView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="c5y-SC-E89"/>
+            <color key="backgroundColor" name="SCEPShade4Color"/>
+            <constraints>
+                <constraint firstItem="Itz-BN-OMC" firstAttribute="top" secondItem="aag-ef-h5j" secondAttribute="top" constant="12" id="0Yz-WE-tbA"/>
+                <constraint firstAttribute="bottom" secondItem="Itz-BN-OMC" secondAttribute="bottom" constant="12" id="3yH-lY-fjk"/>
+                <constraint firstItem="Itz-BN-OMC" firstAttribute="leading" secondItem="aag-ef-h5j" secondAttribute="leading" constant="16" id="NZ3-5x-xO7"/>
+                <constraint firstAttribute="trailing" secondItem="Itz-BN-OMC" secondAttribute="trailing" constant="12" id="xQd-6Z-iAq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="8"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="collapsePassageImageDescriptionButton" destination="M11-dl-9uF" id="JCz-od-UaF"/>
+                <outlet property="passageImageDescriptionWebView" destination="bQn-Xm-FnW" id="83M-UL-8dn"/>
+                <outlet property="passageImageView" destination="FZj-t4-hMi" id="fQF-Nh-mhd"/>
+                <outlet property="passageImageWebView" destination="1Cr-pX-Pu7" id="AdV-ZO-siZ"/>
+                <outlet property="passageWebView" destination="zLx-Wm-Rsg" id="1Y0-B7-QBt"/>
+                <outlet property="titleLabel" destination="c1N-A2-mYg" id="gvU-CT-Q6v"/>
+                <outlet property="trailingIndicatorImageView" destination="Rzm-gX-y03" id="nX4-zS-1k4"/>
+            </connections>
+            <point key="canvasLocation" x="156.4885496183206" y="473.59154929577466"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ChevronDown" width="24" height="24"/>
+        <image name="Passage" width="24" height="24"/>
+        <image name="SmallChevronDown" width="16" height="16"/>
+        <namedColor name="PrepMeAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPTextColor">
+            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
