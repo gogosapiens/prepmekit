@@ -415,14 +415,15 @@ class QuizController: UIViewController {
         }
         
         if isShowSeparateExplanation(question: question) {
-            addExplanationView()
-            scrollToBottom()
+            addExplanationView { [weak self] in
+                self?.scrollToBottom()
+            }
         }
         
         updateNavigationButtons()
     }
     
-    private func addExplanationView() {
+    private func addExplanationView(completion: (() -> ())? = nil) {
         let question = questions[currentQuestionIndex]
         let isCorrectAnswer = question.hasSubquestions ? selectedSubquestionAnswerIndexes[question.objectId] == question.correctSubquestionAnswerIndexes : question.type == .buildList ? selectedChoiceIds[question.objectId] == question.correctChoiceIds : selectedChoiceIds[question.objectId].map(Set.init) == Set(question.correctChoiceIds)
         let choiceView = (answersStackView.arrangedSubviews[safe: question.hasSubquestions ? 0 : question.choices.count] as? ChoiceView) ?? .instantiate()
@@ -431,7 +432,8 @@ class QuizController: UIViewController {
             explanation: question.explanation,
             reference: question.references.joined(separator: "\n"),
             questionType: nil,
-            explanationImage: question.explanationImage
+            explanationImage: question.explanationImage,
+            completion: completion
         )
         choiceView.showCollapseButton()
         choiceView.delegate = nil

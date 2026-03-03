@@ -38,9 +38,9 @@ class WebView: WKWebView {
         fontWeight = weight
     }
     
-    func setContent(_ body: String) {
+    func setContent(_ body: String, completion: (() -> ())? = nil) {
         isLoadingContent = true
-        loadContentCompletion = nil
+        loadContentCompletion = completion
         
         let html = """
         <!DOCTYPE html>
@@ -117,7 +117,15 @@ class WebView: WKWebView {
         }
         
         if isLoadingContent {
-            loadContentCompletion = handler
+            if loadContentCompletion == nil {
+                loadContentCompletion = handler
+            } else {
+                let completion = loadContentCompletion
+                loadContentCompletion = {
+                    handler()
+                    completion?()
+                }
+            }
         } else {
             handler()
         }

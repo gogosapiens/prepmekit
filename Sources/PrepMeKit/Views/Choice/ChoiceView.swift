@@ -102,10 +102,11 @@ class ChoiceView: UIView {
         explanation: String,
         reference: String,
         questionType: String?,
-        explanationImage: Question.Image?
+        explanationImage: Question.Image?,
+        completion: (() -> ())? = nil
     ) {
         self.questionType = questionType
-        titleWebView.setContent(text)
+        titleWebView.setContent(text, completion: completion)
         self.explanation = explanation
         self.explanationImage = explanationImage
         referenceLabel.text = reference.removingHTMLTags()
