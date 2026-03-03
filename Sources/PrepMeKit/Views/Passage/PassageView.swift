@@ -101,8 +101,14 @@ class PassageView: UIView {
         loadPassageImageTask?.cancel()
         passageImageView.image = nil
         loadPassageImageTask = Task {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            passageImageView.image = UIImage(data: data)
+            do {
+                debugPrint("Start passage image loading")
+                let (data, _) = try await URLSession.shared.data(from: url)
+                passageImageView.image = UIImage(data: data)
+                debugPrint("Passage image load success")
+            } catch {
+                debugPrint("Passage image load error:", error)
+            }
         }
     }
     
