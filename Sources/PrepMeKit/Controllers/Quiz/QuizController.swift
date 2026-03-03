@@ -140,6 +140,7 @@ class QuizController: UIViewController {
                 passageLabel: question.passageLabel,
                 passageImage: question.passageImage
             )
+            passageView.delegate = self
             passageView.isHidden = false
         }
     }
@@ -607,6 +608,12 @@ extension QuizController: ChoiceViewDelegate {
         (answersStackView.arrangedSubviews[safe: index] as? ChoiceView)?.setIndex(index, of: question.choices.count)
     }
     
+    func choiceView(_ choiceView: ChoiceView, open image: UIImage) {
+        let imageController = ImageController.instantiate(bundle: .module)
+        imageController.image = image
+        present(imageController, animated: true)
+    }
+    
 }
 
 extension QuizController: SubquestionViewDelegate {
@@ -664,6 +671,16 @@ extension QuizController: QuitQuizControllerDelegate {
     
     func quitQuizControllerSubmit(_ quitQuizController: QuitQuizController) {
         submitQuiz()
+    }
+    
+}
+
+extension QuizController: PassageViewDelegate {
+    
+    func passageView(_ passageView: PassageView, open image: UIImage) {
+        let imageController = ImageController.instantiate(bundle: .module)
+        imageController.image = image
+        present(imageController, animated: true)
     }
     
 }

@@ -5,6 +5,7 @@ protocol ChoiceViewDelegate: AnyObject {
     func choiceViewDidSelect(_ choiceView: ChoiceView)
     func choiceViewUpOrder(_ choiceView: ChoiceView)
     func choiceViewDownOrder(_ choiceView: ChoiceView)
+    func choiceView(_ choiceView: ChoiceView, open image: UIImage)
 }
 
 class ChoiceView: UIView {
@@ -28,6 +29,7 @@ class ChoiceView: UIView {
     @IBOutlet private weak var explanationImageDescriptionWebView: WebView!
     private let borderWidth: CGFloat = 2
     private let tapGesture = UITapGestureRecognizer()
+    private let tapImageGesture = UITapGestureRecognizer()
     private let dashBorder = CAShapeLayer()
     private var explanation = ""
     private var explanationImage: Question.Image?
@@ -40,6 +42,8 @@ class ChoiceView: UIView {
         super.awakeFromNib()
         tapGesture.addTarget(self, action: #selector(didTap))
         addGestureRecognizer(tapGesture)
+        tapImageGesture.addTarget(self, action: #selector(didTapImage))
+        explanationImageView.addGestureRecognizer(tapImageGesture)
         layer.borderColor = UIColor.clear.cgColor
         layer.borderWidth = borderWidth
         stackView.setCustomSpacing(1, after: titleWebView)
@@ -79,6 +83,11 @@ class ChoiceView: UIView {
     @objc private func didTap() {
         guard questionType != .buildList else { return }
         delegate?.choiceViewDidSelect(self)
+    }
+    
+    @objc private func didTapImage() {
+        guard let image = explanationImageView.image else { return }
+        delegate?.choiceView(self, open: image)
     }
     
     func setup(

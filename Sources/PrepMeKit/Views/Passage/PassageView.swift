@@ -1,5 +1,10 @@
 import UIKit
 
+@MainActor
+protocol PassageViewDelegate: AnyObject {
+    func passageView(_ passageView: PassageView, open image: UIImage)
+}
+
 class PassageView: UIView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var trailingIndicatorImageView: UIImageView!
@@ -9,16 +14,21 @@ class PassageView: UIView {
     @IBOutlet private weak var collapsePassageImageDescriptionButton: UIButton!
     @IBOutlet private weak var passageImageDescriptionWebView: WebView!
     private let tapGesture = UITapGestureRecognizer()
+    private let tapImageGesture = UITapGestureRecognizer()
     private var passage: String?
     private var passageLabel: String?
     private var passageImage: Question.Image?
     private var loadPassageImageTask: Task<Void, Error>?
     private var isOpen = false
     
+    weak var delegate: PassageViewDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         tapGesture.addTarget(self, action: #selector(didTap))
         addGestureRecognizer(tapGesture)
+        tapImageGesture.addTarget(self, action: #selector(didTapImage))
+        passageImageView.addGestureRecognizer(tapImageGesture)
         passageWebView.setFont(size: 16, weight: .medium)
         passageImageWebView.setFont(size: 14, weight: .medium)
         passageImageDescriptionWebView.setFont(size: 14, weight: .medium)
@@ -43,6 +53,11 @@ class PassageView: UIView {
             }
         }
         updateTitle()
+    }
+    
+    @objc private func didTapImage() {
+        guard let image = passageImageView.image else { return }
+        delegate?.passageView(self, open: image)
     }
     
     func setup(
