@@ -34,6 +34,7 @@ class SubquestionAnswerView: UIView {
     }
     
     func deselect() {
+        accessoryImageView.tintColor = .prepMeAccent
         if isMultipleCorrectAnswer {
             accessoryImageView.image = UIImage(resource: .checkboxUnchecked)
         } else {
@@ -63,6 +64,8 @@ class SubquestionAnswerView: UIView {
         accessoryImageView.tintColor = UIColor(resource: .correct)
         if isMultipleCorrectAnswer {
             accessoryImageView.image = UIImage(resource: .checkboxCheckedOutline)
+        } else {
+            accessoryImageView.image = UIImage(resource: .radioButtonUnchecked)
         }
     }
     

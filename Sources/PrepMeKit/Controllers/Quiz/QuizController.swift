@@ -166,7 +166,7 @@ class QuizController: UIViewController {
             for subquestionAnswerIndex in 0..<answers.count {
                 if isQuestionConfirmed {
                     if question.isCorrect(subquestionIndex: subquestionIndex, answerIndex: subquestionAnswerIndex) {
-                        if question.type == .matrixCheckbox || question.type == .multiPartMultipleChoice {
+                        if question.type == .matrixCheckbox || question.type == .matrixRadioButton || question.type == .multiPartMultipleChoice {
                             subquestionView.selectMissedCorrectAnswer(index: subquestionAnswerIndex)
                         } else {
                             subquestionView.selectCorrectAnswer(index: subquestionAnswerIndex)
@@ -336,7 +336,7 @@ class QuizController: UIViewController {
                 let subquestionView = getSubquestionView(at: subquestionIndex)
                 for subquestionAnswerIndex in 0..<question.getAnswers(subquestionIndex: subquestionIndex).count {
                     if question.isCorrect(subquestionIndex: subquestionIndex, answerIndex: subquestionAnswerIndex) {
-                        if question.type == .matrixCheckbox || question.type == .multiPartMultipleChoice {
+                        if question.type == .matrixCheckbox || question.type == .matrixRadioButton || question.type == .multiPartMultipleChoice {
                             subquestionView?.selectMissedCorrectAnswer(index: subquestionAnswerIndex)
                         } else {
                             subquestionView?.selectCorrectAnswer(index: subquestionAnswerIndex)
