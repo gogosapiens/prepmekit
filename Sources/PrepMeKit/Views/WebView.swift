@@ -33,12 +33,19 @@ class WebView: WKWebView {
         scrollView.isScrollEnabled = false
     }
     
+    private func resetContentHeight() {
+        contentHeight = 0
+        invalidateIntrinsicContentSize()
+        superview?.layoutIfNeeded()
+    }
+    
     func setFont(size: CGFloat, weight: UIFont.Weight) {
         fontSize = size
         fontWeight = weight
     }
     
     func setContent(_ body: String, completion: (() -> ())? = nil) {
+        resetContentHeight()
         isLoadingContent = true
         loadContentCompletion = completion
         
@@ -159,9 +166,7 @@ extension WebView: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        contentHeight = 0
-        invalidateIntrinsicContentSize()
-        superview?.layoutIfNeeded()
+        resetContentHeight()
     }
     
 }
