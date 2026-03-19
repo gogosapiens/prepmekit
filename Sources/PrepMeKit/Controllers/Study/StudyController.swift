@@ -165,7 +165,12 @@ extension StudyController: UICollectionViewDelegate {
                 description: nil,
                 questionSerials: []
             )
-            if mockExam.questionSerials.isEmpty {
+            
+            let examQuestionSerials = Set(ExamStorage.shared.questions[exam.id]?.map(\.serial) ?? [])
+            let mockExamQuestionSerials = Set(mockExam.questionSerials)
+            let availableQuestionSerials = examQuestionSerials.intersection(mockExamQuestionSerials)
+            
+            if mockExam.questionSerials.isEmpty || availableQuestionSerials.isEmpty {
                 mockExam.questionSerials = quizMode.filterQuestions(ExamStorage.shared.questions[exam.id] ?? []).map(\.serial)
             }
             let questions = ExamStorage.shared.questions[exam.id]?.filter({ question in
