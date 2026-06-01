@@ -23,13 +23,13 @@ enum QuizMode: Codable, CaseIterable {
     
     var title: String {
         switch self {
-        case .questionOfTheDay: return "Question of the day"
+        case .questionOfTheDay: return "Question of the Day"
         case .quickTenQuiz: return "Quick 10 Quiz"
         case .timedQuiz: return "Timed Quiz"
         case .mistakesQuiz: return "Mistakes Quiz"
-        case .toughTopicQuiz: return "Tough topic Quiz"
-        case .buildOwnQuiz: return "Build own Quiz"
-        case .mockExam: return "Mock exam"
+        case .toughTopicQuiz: return "Tough Topic Quiz"
+        case .buildOwnQuiz: return "Build Own Quiz"
+        case .mockExam: return "Mock Exam"
         }
     }
     
