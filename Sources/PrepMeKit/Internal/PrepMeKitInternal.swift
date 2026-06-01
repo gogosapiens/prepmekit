@@ -11,6 +11,7 @@ class PrepMeKitInternal {
     }
     
     func configure() {
+        ResultStorage.shared.migrate()
         setupAppearance()
         
         if Settings.shared.selectedExamId == nil,
@@ -18,6 +19,13 @@ class PrepMeKitInternal {
             let exam = ExamStorage.shared.exams.first?.value.first {
             Settings.shared.selectedExamId = exam.id
             Settings.shared.selectedSubjectIds = exam.subjects.map(\.id)
+            Task {
+                try await Task.sleep(nanoseconds: 1 * NSEC_PER_SEC)
+                SCEPKit.trackEvent("[PrepMeKit] exam_selected", properties: [
+                    "exam": exam.name,
+                    "is_automatic": true
+                ])
+            }
         }
         
         if let lastQuizDate = ResultStorage.shared.quizResults.map(\.date).max() {

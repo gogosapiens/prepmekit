@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -65,10 +65,10 @@
                                 <rect key="frame" x="0.0" y="174" width="393" height="534"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pj5-Px-dH7">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="730"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="734"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xYn-Dc-4Xx">
-                                                <rect key="frame" x="16" y="16" width="361" height="698"/>
+                                                <rect key="frame" x="16" y="16" width="361" height="702"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LM8-Sp-7YG">
                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="56"/>
@@ -145,19 +145,20 @@
                                                                                 <rect key="frame" x="16" y="12" width="329" height="128"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="New questions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOa-Dg-x5o">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="265" height="128"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="257" height="128"/>
                                                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                                         <color key="textColor" name="SCEPTextColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-2W-deg">
-                                                                                        <rect key="frame" x="277" y="0.0" width="16" height="128"/>
+                                                                                        <rect key="frame" x="269" y="0.0" width="16" height="128"/>
                                                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                                         <color key="textColor" name="SCEPShade1Color"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="CheckboxChecked" translatesAutoresizingMaskIntoConstraints="NO" id="uyx-jE-VDD">
-                                                                                        <rect key="frame" x="305" y="0.0" width="24" height="128"/>
+                                                                                        <rect key="frame" x="297" y="0.0" width="32" height="128"/>
+                                                                                        <color key="tintColor" name="SCEPAccentColor"/>
                                                                                     </imageView>
                                                                                 </subviews>
                                                                             </stackView>
@@ -189,19 +190,20 @@
                                                                                 <rect key="frame" x="16" y="12" width="329" height="128"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Answered questions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpR-lz-HOp">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="270.66666666666669" height="128"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="262.66666666666669" height="128"/>
                                                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                                         <color key="textColor" name="SCEPTextColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-SF-qiY">
-                                                                                        <rect key="frame" x="282.66666666666669" y="0.0" width="10.333333333333314" height="128"/>
+                                                                                        <rect key="frame" x="274.66666666666669" y="0.0" width="10.333333333333314" height="128"/>
                                                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                                         <color key="textColor" name="SCEPShade2Color"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="CheckboxUnchecked" translatesAutoresizingMaskIntoConstraints="NO" id="8Y1-p1-Mh5">
-                                                                                        <rect key="frame" x="305" y="0.0" width="24" height="128"/>
+                                                                                        <rect key="frame" x="297" y="0.0" width="32" height="128"/>
+                                                                                        <color key="tintColor" name="SCEPAccentColor"/>
                                                                                     </imageView>
                                                                                 </subviews>
                                                                             </stackView>
@@ -233,19 +235,20 @@
                                                                                 <rect key="frame" x="16" y="12" width="329" height="128"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Incorrect questions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y42-pM-Sr8">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="265" height="128"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="257" height="128"/>
                                                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                                         <color key="textColor" name="SCEPTextColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxe-oR-nW7">
-                                                                                        <rect key="frame" x="277" y="0.0" width="16" height="128"/>
+                                                                                        <rect key="frame" x="269" y="0.0" width="16" height="128"/>
                                                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                                         <color key="textColor" name="SCEPShade1Color"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="CheckboxChecked" translatesAutoresizingMaskIntoConstraints="NO" id="szL-pX-WXy">
-                                                                                        <rect key="frame" x="305" y="0.0" width="24" height="128"/>
+                                                                                        <rect key="frame" x="297" y="0.0" width="32" height="128"/>
+                                                                                        <color key="tintColor" name="SCEPAccentColor"/>
                                                                                     </imageView>
                                                                                 </subviews>
                                                                             </stackView>
@@ -312,16 +315,16 @@
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wKT-f5-6e4">
-                                                        <rect key="frame" x="0.0" y="668" width="361" height="30"/>
+                                                        <rect key="frame" x="0.0" y="668" width="361" height="34"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gY3-Sl-Lu8">
-                                                                <rect key="frame" x="0.0" y="0.0" width="5.666666666666667" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="5.666666666666667" height="34"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                 <color key="textColor" name="SCEPShade1Color"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="1" maxValue="35" translatesAutoresizingMaskIntoConstraints="NO" id="Hsr-eS-URG">
-                                                                <rect key="frame" x="11.666666666666657" y="0.0" width="323.33333333333337" height="31"/>
+                                                                <rect key="frame" x="13.666666666666657" y="0.0" width="319.33333333333337" height="34"/>
                                                                 <color key="minimumTrackTintColor" name="PrepMeAccentColor"/>
                                                                 <color key="maximumTrackTintColor" name="SCEPShade2Color"/>
                                                                 <color key="thumbTintColor" name="SCEPShade4Color"/>
@@ -330,7 +333,7 @@
                                                                 </connections>
                                                             </slider>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MY-em-0Eb">
-                                                                <rect key="frame" x="341" y="0.0" width="20" height="30"/>
+                                                                <rect key="frame" x="341" y="0.0" width="20" height="34"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                                                 <color key="textColor" name="SCEPShade1Color"/>
                                                                 <nil key="highlightedColor"/>
@@ -419,12 +422,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CheckboxChecked" width="24" height="24"/>
-        <image name="CheckboxUnchecked" width="24" height="24"/>
+        <image name="CheckboxChecked" width="32" height="32"/>
+        <image name="CheckboxUnchecked" width="32" height="32"/>
         <image name="ChevronDown" width="24" height="24"/>
         <image name="Close" width="24" height="24"/>
         <image name="Document" width="24" height="24"/>
         <namedColor name="PrepMeAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPAccentColor">
             <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SCEPButtonTextColor">

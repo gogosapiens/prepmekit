@@ -2,50 +2,63 @@ import UIKit
 
 class QuizController: UIViewController {
     
+    @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var contentStackView: UIStackView!
+    @IBOutlet private weak var questionStackView: UIStackView!
     @IBOutlet private weak var paginationView: PaginationView!
     @IBOutlet private weak var timerView: UIView!
     @IBOutlet private weak var timerLabel: UILabel!
+    @IBOutlet private weak var reviewQuestionCounterLabel: UILabel!
     @IBOutlet private weak var questionCounterLabel: UILabel!
-    @IBOutlet private weak var questionLabel: UILabel!
-    @IBOutlet private weak var answersCollectionView: UICollectionView!
+    @IBOutlet private weak var mainScrollView: UIScrollView!
+    @IBOutlet private weak var questionWebView: WebView!
+    @IBOutlet private weak var contentStackView: UIStackView!
+    @IBOutlet private weak var subquestionsStackView: UIStackView!
+    @IBOutlet private weak var answersStackView: UIStackView!
     @IBOutlet private weak var previousButton: QuizNavigationButton!
     @IBOutlet private weak var nextButton: QuizNavigationButton!
     @IBOutlet private weak var submitButton: UIButton!
     
+    private let passageView = PassageView.instantiate()
     private let startDate = Date.now
-    private var currentQuestionIndex = 0
-    private var selectedChoiceIds = [Question.ID: Choice.ID]()
-    private var confirmedQuestionIds = Set<Question.ID>()
     private var timer: Timer?
     private var isTimerFinished: Bool {
         return timer?.isValid == false
     }
-    private var isExplanationVisible = false
     
+    var currentQuestionIndex = 0
+    var selectedChoiceIds = [Question.ID: [Choice.ID]]()
+    var selectedSubquestionAnswerIndexes = [Question.ID: [Set<Int>]]()
+    var confirmedQuestionIds = Set<Question.ID>()
     var questions = [Question]()
     var quizMode: QuizMode = .quickTenQuiz
     var remainingSeconds = 600
+    var isReview = false
+    var customTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentStackView.setCustomSpacing(24, after: paginationView)
-        contentStackView.setCustomSpacing(8, after: questionCounterLabel)
-        contentStackView.setCustomSpacing(24, after: questionLabel)
-        answersCollectionView.register(ChoiceCollectionViewCell.self)
+        questionStackView.setCustomSpacing(24, after: paginationView)
+        questionStackView.setCustomSpacing(12, after: reviewQuestionCounterLabel)
+        
+        contentStackView.insertArrangedSubview(passageView, at: 0)
         
         isModalInPresentation = true
         
-        titleLabel.text = quizMode.title
+        closeButton.setImage(UIImage(resource: isReview ? .chevronLeft : .close), for: .normal)
+        titleLabel.text = customTitle ?? quizMode.title
         paginationView.isHidden = true
         timerView.isHidden = true
+        reviewQuestionCounterLabel.isHidden = !isReview
+        questionWebView.setFont(size: 16, weight: .semibold)
         
         switch quizMode {
         case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz, .buildOwnQuiz:
-            paginationView.isHidden = false
-            paginationView.setup(numberOfPages: questions.count)
+            if !isReview {
+                paginationView.isHidden = false
+                paginationView.setup(numberOfPages: questions.count)
+            }
         case .timedQuiz, .mockExam:
             timerView.isHidden = false
             timer = .scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
@@ -59,19 +72,13 @@ class QuizController: UIViewController {
             break
         }
         
-        for index in 0..<questions.count {
-            questions[index].choices.shuffle()
+        if !isReview {
+            for index in 0..<questions.count {
+                questions[index].choices.shuffle()
+            }
         }
         
-        questions.first.map(setupQuestion)
-        
-        view.layoutIfNeeded()
-        if let flowLayout = answersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(
-                width: answersCollectionView.bounds.width,
-                height: 48
-            )
-        }
+        setupQuestion(questions[currentQuestionIndex])
     }
     
     private func updateTimer() {
@@ -102,22 +109,208 @@ class QuizController: UIViewController {
             questionCounterLabel.text = Date.now.formatted(date: .long, time: .omitted)
         case .quickTenQuiz, .toughTopicQuiz, .mistakesQuiz, .buildOwnQuiz:
             paginationView.setCurrentIndex(currentQuestionIndex)
-            questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)/\(questions.count)"
+            reviewQuestionCounterLabel.text = "\(currentQuestionIndex + 1)/\(questions.count)"
+            if isReview {
+                questionCounterLabel.text = question.subject.name.uppercased()
+            } else {
+                questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)/\(questions.count)"
+            }
         case .timedQuiz:
             questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)"
         case .mockExam:
             questionCounterLabel.text = "QUESTION \(currentQuestionIndex + 1)/\(questions.count)"
         }
-        questionLabel.text = question.prompt.removingHTMLTags()
-        isExplanationVisible = false
-        answersCollectionView.reloadData()
-        answersCollectionView.contentOffset = .zero
+        if question.type == .buildList && selectedChoiceIds[question.objectId] == nil {
+            selectedChoiceIds[question.objectId] = question.choices.map(\.id)
+        }
+        questionWebView.setContent(question.prompt)
+        setupPassage(question: question)
+        reloadSubquestions(question: question)
+        reloadAnswers(question: question)
+        mainScrollView.contentOffset = .zero
         updateNavigationButtons()
+    }
+    
+    private func setupPassage(question: Question) {
+        if question.passage?.isEmpty != false && question.passageLabel?.isEmpty != false && question.passageImage == nil {
+            passageView.isHidden = true
+        } else {
+            passageView.setup(
+                passage: question.passage,
+                passageLabel: question.passageLabel,
+                passageImage: question.passageImage
+            )
+            passageView.delegate = self
+            passageView.isHidden = false
+        }
+    }
+    
+    private func reloadSubquestions(question: Question) {
+        subquestionsStackView.isHidden = !question.hasSubquestions
+        guard question.hasSubquestions else { return }
+        let isQuestionConfirmed = confirmedQuestionIds.contains(question.objectId)
+        let selectedSubquestionAnswerIndexes = self.selectedSubquestionAnswerIndexes[question.objectId] ?? []
+        let subquestions = question.subquestions
+        
+        for (subquestionIndex, row) in subquestions.enumerated() {
+            let answers = question.getAnswers(subquestionIndex: subquestionIndex)
+            
+            let subquestionView = (subquestionsStackView.arrangedSubviews[safe: subquestionIndex] as? SubquestionView) ?? .instantiate()
+            subquestionView.setup(
+                with: row,
+                answers: answers,
+                isMultipleCorrectAnswer: question.type == .matrixCheckbox || question.type == .multiPartMultipleChoice
+            )
+            subquestionView.delegate = self
+            
+            let selectedAnswerIndexes = selectedSubquestionAnswerIndexes[safe: subquestionIndex] ?? []
+            for subquestionAnswerIndex in 0..<answers.count {
+                if isQuestionConfirmed {
+                    if question.isCorrect(subquestionIndex: subquestionIndex, answerIndex: subquestionAnswerIndex) {
+                        if question.type == .matrixCheckbox || question.type == .matrixRadioButton || question.type == .multiPartMultipleChoice {
+                            subquestionView.selectMissedCorrectAnswer(index: subquestionAnswerIndex)
+                        } else {
+                            subquestionView.selectCorrectAnswer(index: subquestionAnswerIndex)
+                        }
+                    } else {
+                        subquestionView.crossOutAnswer(index: subquestionAnswerIndex)
+                    }
+                }
+                
+                if selectedAnswerIndexes.contains(subquestionAnswerIndex) {
+                    if isQuestionConfirmed {
+                        if question.isCorrect(subquestionIndex: subquestionIndex, answerIndex: subquestionAnswerIndex) {
+                            subquestionView.selectCorrectAnswer(index: subquestionAnswerIndex)
+                        } else {
+                            subquestionView.selectWrongAnswer(index: subquestionAnswerIndex)
+                        }
+                    } else {
+                        subquestionView.selectAnswer(index: subquestionAnswerIndex)
+                    }
+                }
+            }
+            
+            if isQuestionConfirmed {
+                if selectedAnswerIndexes == question.getCorrectAnswerIndexes(subquestionIndex: subquestionIndex) {
+                    subquestionView.selectCorrect()
+                } else {
+                    subquestionView.selectWrong()
+                }
+            }
+            
+            if subquestionView.superview == nil {
+                subquestionsStackView.addArrangedSubview(subquestionView)
+            }
+        }
+        
+        subquestionsStackView.arrangedSubviews.dropFirst(subquestions.count).forEach { $0.removeFromSuperview() }
+    }
+    
+    private func reloadAnswers(question: Question) {
+        let isQuestionConfirmed = confirmedQuestionIds.contains(question.objectId)
+        
+        if !question.hasSubquestions {
+            let correctChoiceIds = question.correctChoiceIds
+            
+            for (index, choice) in question.choices.enumerated() {
+                let choiceView = (answersStackView.arrangedSubviews[safe: index] as? ChoiceView) ?? .instantiate()
+                choiceView.setup(
+                    with: choice,
+                    explanation: question.explanation,
+                    reference: question.references.joined(separator: "\n"),
+                    questionType: question.type,
+                    explanationImage: question.explanationImage
+                )
+                choiceView.delegate = self
+                
+                if question.type == .buildList {
+                    choiceView.setIndex(index, of: question.choices.count)
+                    if isQuestionConfirmed {
+                        guard let correctIndex = correctChoiceIds.firstIndex(of: choice.id) else { continue }
+                        
+                        if index == correctIndex {
+                            choiceView.selectCorrect()
+                        } else {
+                            choiceView.selectWrong()
+                            choiceView.setTrailingIndex(correctIndex)
+                        }
+                    }
+                } else {
+                    if isQuestionConfirmed && choice.isCorrect {
+                        if question.type == .multipleCorrectResponse {
+                            choiceView.selectMissedCorrect()
+                        } else {
+                            choiceView.selectCorrect()
+                            if !isShowSeparateExplanation(question: question) {
+                                choiceView.showCollapseButton()
+                            }
+                        }
+                    }
+                    
+                    if selectedChoiceIds[question.objectId]?.contains(choice.id) == true {
+                        if isQuestionConfirmed {
+                            if choice.isCorrect {
+                                choiceView.selectCorrect()
+                                if !isShowSeparateExplanation(question: question) {
+                                    choiceView.showCollapseButton()
+                                }
+                            } else {
+                                choiceView.selectWrong()
+                            }
+                            
+                            if question.type == .trueFalse {
+                                choiceView.select()
+                            }
+                        } else {
+                            choiceView.select()
+                        }
+                    }
+                }
+                
+                if choiceView.superview == nil {
+                    answersStackView.addArrangedSubview(choiceView)
+                }
+            }
+        }
+        
+        var choiceViewCount = question.hasSubquestions ? 0 : question.choices.count
+        
+        if isQuestionConfirmed && isShowSeparateExplanation(question: question) {
+            addExplanationView()
+            choiceViewCount += 1
+        }
+        
+        answersStackView.arrangedSubviews.dropFirst(choiceViewCount).forEach { $0.removeFromSuperview() }
+    }
+    
+    private func getChoiceView(at index: Int) -> ChoiceView? {
+        return answersStackView.arrangedSubviews[safe: index] as? ChoiceView
+    }
+    
+    private func getSubquestionView(at index: Int) -> SubquestionView? {
+        return subquestionsStackView.arrangedSubviews[safe: index] as? SubquestionView
+    }
+    
+    private func isShowSeparateExplanation(question: Question) -> Bool {
+        return question.type == .multipleCorrectResponse ||
+        question.type == .matrixCheckbox ||
+        question.type == .matrixRadioButton ||
+        question.type == .multiPartMultipleChoice ||
+        question.type == .buildList
+    }
+    
+    private func isManualConfirmation(question: Question) -> Bool {
+        return quizMode == .questionOfTheDay ||
+        question.type == .multipleCorrectResponse ||
+        question.type == .trueFalse ||
+        question.type == .matrixCheckbox ||
+        question.type == .matrixRadioButton ||
+        question.type == .multiPartMultipleChoice
     }
     
     private func updateNavigationButtons() {
         let question = questions[currentQuestionIndex]
-        let hasSelection = selectedChoiceIds[question.objectId] != nil
+        let hasSelection = selectedChoiceIds[question.objectId]?.isEmpty == false || selectedSubquestionAnswerIndexes[question.objectId]?.flatMap({ $0 }).isEmpty == false
         let isConfirmedSelection = confirmedQuestionIds.contains(question.objectId)
         previousButton.isEnabled = currentQuestionIndex > 0
         nextButton.isActive = hasSelection
@@ -125,7 +318,7 @@ class QuizController: UIViewController {
         submitButton.backgroundColor = hasSelection ? .prepMeAccent : .scepShade2
         submitButton.isUserInteractionEnabled = hasSelection
         submitButton.isHidden = currentQuestionIndex < questions.count - 1
-        submitButton.setTitle(isConfirmedSelection && quizMode == .questionOfTheDay ? "Close" : "Submit", for: .normal)
+        submitButton.setTitle(isConfirmedSelection && quizMode == .questionOfTheDay || isReview ? "Close" : "Submit", for: .normal)
         
         if isTimerFinished {
             previousButton.isEnabled = false
@@ -137,34 +330,131 @@ class QuizController: UIViewController {
     private func confirmSelection() {
         let question = questions[currentQuestionIndex]
         confirmedQuestionIds.insert(question.objectId)
-        guard
-            let selectedChoiceId = selectedChoiceIds[question.objectId],
-            let selectedChoiceIndex = question.choices.firstIndex(where: { $0.id == selectedChoiceId })
-        else {
-            return
-        }
         
-        let indexPath = IndexPath(row: selectedChoiceIndex, section: 0)
-        let cell = answersCollectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
-        
-        if question.choices[selectedChoiceIndex].isCorrect {
-            cell?.selectCorrect()
-        } else {
-            cell?.selectWrong()
+        switch question.type {
+        case .matrixCheckbox, .matrixRadioButton, .multiPartMultipleChoice:
+            for subquestionIndex in 0..<question.subquestions.count {
+                let subquestionView = getSubquestionView(at: subquestionIndex)
+                for subquestionAnswerIndex in 0..<question.getAnswers(subquestionIndex: subquestionIndex).count {
+                    if question.isCorrect(subquestionIndex: subquestionIndex, answerIndex: subquestionAnswerIndex) {
+                        if question.type == .matrixCheckbox || question.type == .matrixRadioButton || question.type == .multiPartMultipleChoice {
+                            subquestionView?.selectMissedCorrectAnswer(index: subquestionAnswerIndex)
+                        } else {
+                            subquestionView?.selectCorrectAnswer(index: subquestionAnswerIndex)
+                        }
+                    } else {
+                        subquestionView?.crossOutAnswer(index: subquestionAnswerIndex)
+                    }
+                }
+            }
             
-            if let correctChoiceIndex = question.choices.firstIndex(where: \.isCorrect) {
-                let indexPath = IndexPath(row: correctChoiceIndex, section: 0)
-                let cell = answersCollectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
-                cell?.selectCorrect()
+            let selectedSubquestionAnswerIndexes = self.selectedSubquestionAnswerIndexes[question.objectId] ?? []
+            for (subquestionIndex, subquestionAnswerIndexes) in selectedSubquestionAnswerIndexes.enumerated() {
+                let subquestionView = getSubquestionView(at: subquestionIndex)
+                for subquestionAnswerIndex in subquestionAnswerIndexes {
+                    if question.isCorrect(subquestionIndex: subquestionIndex, answerIndex: subquestionAnswerIndex) {
+                        subquestionView?.selectCorrectAnswer(index: subquestionAnswerIndex)
+                    } else {
+                        subquestionView?.selectWrongAnswer(index: subquestionAnswerIndex)
+                    }
+                }
+                
+                if subquestionAnswerIndexes == question.getCorrectAnswerIndexes(subquestionIndex: subquestionIndex) {
+                    subquestionView?.selectCorrect()
+                } else {
+                    subquestionView?.selectWrong()
+                }
+            }
+            
+        case .buildList:
+            let correctChoiceIds = question.correctChoiceIds
+            for (index, choiceId) in selectedChoiceIds[question.objectId, default: []].enumerated() {
+                let choiceView = getChoiceView(at: index)
+                
+                guard let correctIndex = correctChoiceIds.firstIndex(of: choiceId) else { continue }
+                
+                if index == correctIndex {
+                    choiceView?.selectCorrect()
+                } else {
+                    choiceView?.selectWrong()
+                    choiceView?.setTrailingIndex(correctIndex)
+                }
+            }
+            
+        default:
+            let correctChoiceIndexes = question.choices.enumerated().filter { _, choice in
+                return choice.isCorrect
+            }.map(\.offset)
+            for index in correctChoiceIndexes {
+                let choiceView = getChoiceView(at: index)
+                
+                if question.type == .multipleCorrectResponse {
+                    choiceView?.selectMissedCorrect()
+                } else {
+                    choiceView?.selectCorrect()
+                    if !isShowSeparateExplanation(question: question) {
+                        choiceView?.showCollapseButton()
+                    }
+                }
+            }
+            
+            let selectedChoiceIndexes = question.choices.enumerated().filter { _, choice in
+                return selectedChoiceIds[question.objectId]?.contains(choice.id) == true
+            }.map(\.offset)
+            for index in selectedChoiceIndexes {
+                let choiceView = getChoiceView(at: index)
+                
+                if question.choices[index].isCorrect {
+                    choiceView?.selectCorrect()
+                    if !isShowSeparateExplanation(question: question) {
+                        choiceView?.showCollapseButton()
+                    }
+                } else {
+                    choiceView?.selectWrong()
+                }
             }
         }
         
-        (answersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.invalidateLayout()
+        if isShowSeparateExplanation(question: question) {
+            addExplanationView { [weak self] in
+                self?.scrollToBottom()
+            }
+        }
+        
         updateNavigationButtons()
     }
     
+    private func addExplanationView(completion: (() -> ())? = nil) {
+        let question = questions[currentQuestionIndex]
+        let isCorrectAnswer = question.hasSubquestions ? selectedSubquestionAnswerIndexes[question.objectId] == question.correctSubquestionAnswerIndexes : question.type == .buildList ? selectedChoiceIds[question.objectId] == question.correctChoiceIds : selectedChoiceIds[question.objectId].map(Set.init) == Set(question.correctChoiceIds)
+        let choiceView = (answersStackView.arrangedSubviews[safe: question.hasSubquestions ? 0 : question.choices.count] as? ChoiceView) ?? .instantiate()
+        choiceView.setup(
+            with: isCorrectAnswer ? "Correct" : "Incorrect",
+            explanation: question.explanation,
+            reference: question.references.joined(separator: "\n"),
+            questionType: nil,
+            explanationImage: question.explanationImage,
+            completion: completion
+        )
+        choiceView.showCollapseButton()
+        choiceView.delegate = nil
+        if choiceView.superview == nil {
+            answersStackView.addArrangedSubview(choiceView)
+        }
+    }
+    
+    private func scrollToBottom() {
+        view.layoutIfNeeded()
+        mainScrollView.setContentOffset(
+            CGPoint(x: 0, y: max(0, mainScrollView.contentSize.height - mainScrollView.bounds.size.height)),
+            animated: true
+        )
+    }
+    
     @IBAction private func closeClicked(_ sender: Any) {
-        if confirmedQuestionIds.isEmpty {
+        if isReview {
+            navigationController?.popViewController(animated: true)
+        } else if confirmedQuestionIds.isEmpty {
             dismiss(animated: true)
         } else {
             let quitQuizController = QuitQuizController.instantiate(bundle: .module)
@@ -181,12 +471,16 @@ class QuizController: UIViewController {
     
     @IBAction private func nextQuestionClicked(_ sender: Any) {
         let question = questions[currentQuestionIndex]
-        if confirmedQuestionIds.contains(question.objectId) || selectedChoiceIds[question.objectId] == nil {
+        let isQuestionConfirmed = confirmedQuestionIds.contains(question.objectId)
+        let hasSelection = selectedChoiceIds[question.objectId]?.isEmpty == false || selectedSubquestionAnswerIndexes[question.objectId]?.flatMap({ $0 }).isEmpty == false
+        if isQuestionConfirmed || !hasSelection {
             currentQuestionIndex += 1
             if isTimerFinished {
                 submitQuiz()
             } else if let question = questions[safe: currentQuestionIndex] {
                 setupQuestion(question)
+            } else if isReview {
+                navigationController?.popViewController(animated: true)
             } else {
                 submitQuiz()
             }
@@ -202,12 +496,16 @@ class QuizController: UIViewController {
         let selectedChoiceIds = self.selectedChoiceIds.filter { questionId, _ in
             return confirmedQuestionIds.contains(questionId)
         }
+        let selectedSubquestionAnswerIndexes = self.selectedSubquestionAnswerIndexes.filter { questionId, _ in
+            return confirmedQuestionIds.contains(questionId)
+        }
         
         let quizResult = QuizResult(
             mode: quizMode,
             date: .now,
             questions: confirmedQuestion,
             selectedChoiceIds: selectedChoiceIds,
+            selectedSubquestionAnswerIndexes: selectedSubquestionAnswerIndexes,
             duration: Int(Date.now.timeIntervalSince(startDate)),
             communityScore: 67
         )
@@ -218,7 +516,8 @@ class QuizController: UIViewController {
         } else {
             let quizResultController = QuizResultController.instantiate(bundle: .module)
             quizResultController.quizResult = quizResult
-            present(quizResultController, animated: true)
+            let navigationController = NavigationController(rootViewController: quizResultController)
+            present(navigationController, animated: true)
         }
     }
     
@@ -228,101 +527,134 @@ class QuizController: UIViewController {
     
 }
 
-extension QuizController: UICollectionViewDataSource {
+extension QuizController: ChoiceViewDelegate {
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        return questions[currentQuestionIndex].choices.count
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(of: ChoiceCollectionViewCell.self, for: indexPath)
-        let question = questions[currentQuestionIndex]
-        let choice = question.choices[indexPath.row]
-        cell.setup(with: choice, explanation: question.explanation, reference: question.references.joined(separator: "\n"))
-        cell.delegate = self
-        if let selectedChoiceId = selectedChoiceIds[question.objectId] {
-            if choice.id == selectedChoiceId || choice.isCorrect {
-                if !confirmedQuestionIds.contains(question.objectId) {
-                    cell.select()
-                } else if choice.isCorrect {
-                    cell.selectCorrect()
-                } else {
-                    cell.selectWrong()
-                }
-            }
-        }
-        return cell
-    }
-    
-}
-
-extension QuizController: UICollectionViewDelegate {
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath
-    ) {
+    func choiceViewDidSelect(_ choiceView: ChoiceView) {
+        guard let index = answersStackView.arrangedSubviews.firstIndex(of: choiceView) else { return }
+        
         let question = questions[currentQuestionIndex]
         guard !confirmedQuestionIds.contains(question.objectId) else { return }
         
-        if let selectedChoiceId = selectedChoiceIds[question.objectId], let selectedChoiceIndex = question.choices.firstIndex(where: { $0.id == selectedChoiceId }) {
-            let indexPath = IndexPath(row: selectedChoiceIndex, section: 0)
-            let cell = collectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
-            cell?.deselect()
+        let choice = question.choices[index]
+        
+        if question.type == .multipleCorrectResponse {
+            if let index = selectedChoiceIds[question.objectId]?.firstIndex(of: choice.id) {
+                choiceView.deselect()
+                
+                selectedChoiceIds[question.objectId]?.remove(at: index)
+            } else {
+                choiceView.select()
+                
+                selectedChoiceIds[question.objectId, default: []].append(choice.id)
+            }
+        } else {
+            let selectedChoiceIndexes = question.choices.enumerated().filter { _, choice in
+                return selectedChoiceIds[question.objectId]?.contains(choice.id) == true
+            }.map(\.offset)
+            
+            for selectedChoiceIndex in selectedChoiceIndexes {
+                getChoiceView(at: selectedChoiceIndex)?.deselect()
+            }
+            
+            choiceView.select()
+            
+            selectedChoiceIds[question.objectId] = [choice.id]
         }
         
-        let choice = question.choices[indexPath.row]
-        selectedChoiceIds[question.objectId] = choice.id
         UISelectionFeedbackGenerator().selectionChanged()
         
-        if quizMode == .questionOfTheDay {
-            let cell = collectionView.cellForItem(at: indexPath) as? ChoiceCollectionViewCell
-            cell?.select()
+        if isManualConfirmation(question: question) {
             updateNavigationButtons()
         } else {
             confirmSelection()
         }
     }
     
-}
-
-extension QuizController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let width = collectionView.bounds.width
+    func choiceViewUpOrder(_ choiceView: ChoiceView) {
+        guard let index = answersStackView.arrangedSubviews.firstIndex(of: choiceView) else { return }
+        
         let question = questions[currentQuestionIndex]
-        let choice = question.choices[indexPath.row]
-        let isQuestionConfirmed = confirmedQuestionIds.contains(question.objectId)
-        let isChoiceSelected = selectedChoiceIds[question.objectId] == choice.id
-        let height = ChoiceCollectionViewCell.getHeight(
-            for: width,
-            choice: choice,
-            isIndicatorVisible: isQuestionConfirmed ? isChoiceSelected || choice.isCorrect : false,
-            isCollapseButtonVisible: isQuestionConfirmed && choice.isCorrect,
-            isExplanationVisible: isExplanationVisible && choice.isCorrect,
-            explanation: question.explanation,
-            reference: question.references.joined(separator: "\n")
-        )
-        return CGSize(width: width, height: height)
+        
+        if let choiceId = selectedChoiceIds[question.objectId]?.remove(at: index) {
+            selectedChoiceIds[question.objectId]?.insert(choiceId, at: index - 1)
+        }
+        
+        let choice = questions[currentQuestionIndex].choices.remove(at: index)
+        questions[currentQuestionIndex].choices.insert(choice, at: index - 1)
+        
+        answersStackView.removeArrangedSubview(choiceView)
+        answersStackView.insertArrangedSubview(choiceView, at: index - 1)
+        
+        choiceView.setIndex(index - 1, of: question.choices.count)
+        (answersStackView.arrangedSubviews[safe: index] as? ChoiceView)?.setIndex(index, of: question.choices.count)
+    }
+    
+    func choiceViewDownOrder(_ choiceView: ChoiceView) {
+        guard let index = answersStackView.arrangedSubviews.firstIndex(of: choiceView) else { return }
+        
+        let question = questions[currentQuestionIndex]
+        
+        if let choiceId = selectedChoiceIds[question.objectId]?.remove(at: index) {
+            selectedChoiceIds[question.objectId]?.insert(choiceId, at: index + 1)
+        }
+        
+        let choice = questions[currentQuestionIndex].choices.remove(at: index)
+        questions[currentQuestionIndex].choices.insert(choice, at: index + 1)
+        
+        answersStackView.removeArrangedSubview(choiceView)
+        answersStackView.insertArrangedSubview(choiceView, at: index + 1)
+        
+        choiceView.setIndex(index + 1, of: question.choices.count)
+        (answersStackView.arrangedSubviews[safe: index] as? ChoiceView)?.setIndex(index, of: question.choices.count)
+    }
+    
+    func choiceView(_ choiceView: ChoiceView, open image: UIImage) {
+        let imageController = ImageController.instantiate(bundle: .module)
+        imageController.image = image
+        present(imageController, animated: true)
     }
     
 }
 
-extension QuizController: ChoiceCollectionViewCellDelegate {
+extension QuizController: SubquestionViewDelegate {
     
-    func choiceCollectionViewCellCollapse(_ choiceCollectionViewCell: ChoiceCollectionViewCell) {
-        isExplanationVisible.toggle()
-        (answersCollectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.invalidateLayout()
+    func subquestionView(_ subquestionView: SubquestionView, didSelect answerIndex: Int) {
+        guard let subquestionIndex = subquestionsStackView.arrangedSubviews.firstIndex(of: subquestionView) else { return }
+        
+        let question = questions[currentQuestionIndex]
+        guard !confirmedQuestionIds.contains(question.objectId) else { return }
+        
+        if selectedSubquestionAnswerIndexes[question.objectId] == nil {
+            selectedSubquestionAnswerIndexes[question.objectId] = .init(repeating: [], count: question.subquestions.count)
+        }
+        let subquestionAnswerIndexes = selectedSubquestionAnswerIndexes[question.objectId]?[subquestionIndex] ?? []
+        
+        switch question.type {
+        case .matrixCheckbox, .multiPartMultipleChoice:
+            if subquestionAnswerIndexes.contains(answerIndex) {
+                subquestionView.deselectAnswer(index: answerIndex)
+                
+                selectedSubquestionAnswerIndexes[question.objectId]?[subquestionIndex].remove(answerIndex)
+            } else {
+                subquestionView.selectAnswer(index: answerIndex)
+                
+                selectedSubquestionAnswerIndexes[question.objectId]?[subquestionIndex].insert(answerIndex)
+            }
+            
+        case .matrixRadioButton:
+            for subquestionAnswerIndex in subquestionAnswerIndexes {
+                subquestionView.deselectAnswer(index: subquestionAnswerIndex)
+            }
+            subquestionView.selectAnswer(index: answerIndex)
+            selectedSubquestionAnswerIndexes[question.objectId]?[subquestionIndex] = [answerIndex]
+            
+        default:
+            break
+        }
+        
+        UISelectionFeedbackGenerator().selectionChanged()
+        
+        updateNavigationButtons()
     }
     
 }
@@ -339,6 +671,16 @@ extension QuizController: QuitQuizControllerDelegate {
     
     func quitQuizControllerSubmit(_ quitQuizController: QuitQuizController) {
         submitQuiz()
+    }
+    
+}
+
+extension QuizController: PassageViewDelegate {
+    
+    func passageView(_ passageView: PassageView, open image: UIImage) {
+        let imageController = ImageController.instantiate(bundle: .module)
+        imageController.image = image
+        present(imageController, animated: true)
     }
     
 }

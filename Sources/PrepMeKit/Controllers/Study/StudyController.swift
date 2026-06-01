@@ -132,9 +132,9 @@ extension StudyController: UICollectionViewDelegate {
         let subjectIds = Settings.shared.selectedSubjectIds
         let questions = ExamStorage.shared.questions[exam.id]?.filter({ question in
             return question.isFree || isPremium
-        }).filter({ question in
-            return subjectIds.contains(question.subject.id)
-        }) ?? []
+        }) ?? []//.filter({ question in
+//            return subjectIds.contains(question.subject.id)
+//        }) ?? []
         
         guard !questions.isEmpty else  {
             let alert = UIAlertController(title: "Error", message: "There are no questions", preferredStyle: .alert)
@@ -159,12 +159,20 @@ extension StudyController: UICollectionViewDelegate {
             quizBuildController.exam = exam
             present(quizBuildController, height: 550, animated: true)
         case .mockExam:
-            let mockExam = exam.mockExams.first ?? MockExam(
+            var mockExam = exam.mockExams.first ?? MockExam(
                 name: exam.descriptiveName,
                 duration: 10800,
                 description: nil,
-                questionSerials: quizMode.filterQuestions(ExamStorage.shared.questions[exam.id] ?? []).map(\.serial)
+                questionSerials: []
             )
+            
+            let examQuestionSerials = Set(ExamStorage.shared.questions[exam.id]?.map(\.serial) ?? [])
+            let mockExamQuestionSerials = Set(mockExam.questionSerials)
+            let availableQuestionSerials = examQuestionSerials.intersection(mockExamQuestionSerials)
+            
+            if mockExam.questionSerials.isEmpty || availableQuestionSerials.isEmpty {
+                mockExam.questionSerials = quizMode.filterQuestions(ExamStorage.shared.questions[exam.id] ?? []).map(\.serial)
+            }
             let questions = ExamStorage.shared.questions[exam.id]?.filter({ question in
                 return mockExam.questionSerials.contains(question.serial)
             }) ?? []

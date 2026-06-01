@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="SubquestionAnswerView" customModule="PrepMeKit">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="151"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acn-iu-wud">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="1"/>
+                    <color key="backgroundColor" name="SCEPShade3Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="6Kv-DK-pXd"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jc1-7P-sHS">
+                    <rect key="frame" x="0.0" y="8" width="393" height="135"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CheckboxUnchecked" translatesAutoresizingMaskIntoConstraints="NO" id="3nu-Ro-l2H">
+                            <rect key="frame" x="0.0" y="51.666666666666657" width="32" height="32"/>
+                            <color key="tintColor" name="SCEPAccentColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="1Gs-Tg-tqJ"/>
+                            </constraints>
+                        </imageView>
+                        <wkWebView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ab-WV-4w7" customClass="WebView" customModule="PrepMeKit">
+                            <rect key="frame" x="40" y="17.666666666666671" width="353" height="100"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" placeholder="YES" id="aU5-AU-0ob"/>
+                            </constraints>
+                            <wkWebViewConfiguration key="configuration">
+                                <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                <wkPreferences key="preferences"/>
+                            </wkWebViewConfiguration>
+                        </wkWebView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" name="SCEPShade4Color"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Jc1-7P-sHS" secondAttribute="bottom" constant="8" id="JAL-Jw-S0k"/>
+                <constraint firstAttribute="trailing" secondItem="Jc1-7P-sHS" secondAttribute="trailing" id="Pv4-sX-clj"/>
+                <constraint firstItem="Jc1-7P-sHS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="a2w-Ie-Xfa"/>
+                <constraint firstItem="acn-iu-wud" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nKE-rC-tgm"/>
+                <constraint firstItem="Jc1-7P-sHS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="oz3-k4-rto"/>
+                <constraint firstAttribute="trailing" secondItem="acn-iu-wud" secondAttribute="trailing" id="u5i-Ue-Xo1"/>
+                <constraint firstItem="acn-iu-wud" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ybO-Iz-VVx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="accessoryImageView" destination="3nu-Ro-l2H" id="6VO-rf-67H"/>
+                <outlet property="separatorView" destination="acn-iu-wud" id="9PK-kU-QKq"/>
+                <outlet property="titleWebView" destination="9Ab-WV-4w7" id="BFm-dR-1qb"/>
+            </connections>
+            <point key="canvasLocation" x="136.64122137404578" y="400.35211267605638"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="CheckboxUnchecked" width="32" height="32"/>
+        <namedColor name="SCEPAccentColor">
+            <color red="0.18431372549019609" green="0.396078431372549" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade3Color">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SCEPShade4Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

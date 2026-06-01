@@ -1,4 +1,6 @@
 import UIKit
+import SCEPKit
+import StoreKit
 
 class QuizResultController: UIViewController {
     
@@ -6,6 +8,7 @@ class QuizResultController: UIViewController {
     private let header = ResultHeaderView.instantiate()
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    private var selectedQuestionFilter: QuestionFilter?
     private var filteredQuestions = [Question]()
     
     var quizResult: QuizResult!
@@ -29,8 +32,37 @@ class QuizResultController: UIViewController {
         collectionView.addSubview(header)
     }
     
+    private func requestReviewIfNeeded() {
+        let configVariant = SCEPKit.remoteConfigValue(of: String.self, for: "prepme_kit_config_var")
+        let configs = SCEPKit.remoteConfigValue(of: [String: Config].self, for: "prepme_kit_config")
+        let config = configVariant.flatMap({ configs?[$0] })
+        switch config?.askForRatingAfterQuizMode {
+        case "true":
+            requestReview()
+        case "good_result_only":
+            if quizResult.score > 80 {
+                requestReview()
+            }
+        default:
+            break
+        }
+    }
+    
+    private func requestReview() {
+        SCEPKit.trackEvent("[PrepMeKit] asked_for_rating_after_quiz", properties: [
+            "quiz_result": quizResult.score
+        ])
+        
+        if let scene = UIApplication.shared.connectedScenes.first(
+            where: { $0.activationState == .foregroundActive }
+        ) as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: scene)
+        }
+    }
+    
     @IBAction private func closeClicked(_ sender: Any) {
         presentingViewController?.presentingViewController?.dismiss(animated: true)
+        requestReviewIfNeeded()
     }
     
 }
@@ -50,9 +82,35 @@ extension QuizResultController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(of: ChoiceResultCollectionViewCell.self, for: indexPath)
         let question = filteredQuestions[indexPath.row]
-        let isCorrect = quizResult.selectedChoiceIds[question.objectId].flatMap(question.choices.first)?.isCorrect == true
+        let isCorrect = quizResult.isCorrectAnswer(question: question)
         cell.setup(question: question, isCorrect: isCorrect)
         return cell
+    }
+    
+}
+
+extension QuizResultController: UICollectionViewDelegate {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        let quizController = QuizController.instantiate(bundle: .module)
+        quizController.questions = filteredQuestions
+        quizController.quizMode = .quickTenQuiz
+        quizController.isReview = true
+        quizController.currentQuestionIndex = indexPath.row
+        quizController.selectedChoiceIds = quizResult.selectedChoiceIds
+        quizController.selectedSubquestionAnswerIndexes = quizResult.selectedSubquestionAnswerIndexes
+        quizController.confirmedQuestionIds = Set(filteredQuestions.map(\.objectId))
+        let title: String
+        switch selectedQuestionFilter {
+        case .none: title = "Review all"
+        case .incorrect: title = "Review incorrect"
+        case .correct: title = "Review correct"
+        }
+        quizController.customTitle = title
+        navigationController?.pushViewController(quizController, animated: true)
     }
     
 }
@@ -85,22 +143,26 @@ extension QuizResultController: ResultHeaderViewDelegate {
     }
     
     func resultHeaderViewAllPage(_ resultHeaderView: ResultHeaderView) {
+        selectedQuestionFilter = nil
         filteredQuestions = quizResult.questions
         collectionView.reloadData()
     }
     
     func resultHeaderViewIncorrectPage(_ resultHeaderView: ResultHeaderView) {
-        filteredQuestions = quizResult.questions.filter {
-            quizResult.selectedChoiceIds[$0.objectId].flatMap($0.choices.first)?.isCorrect == false
-        }
+        selectedQuestionFilter = .incorrect
+        filteredQuestions = quizResult.wrongAnsweredQuestions
         collectionView.reloadData()
     }
     
     func resultHeaderViewCorrectPage(_ resultHeaderView: ResultHeaderView) {
-        filteredQuestions = quizResult.questions.filter {
-            quizResult.selectedChoiceIds[$0.objectId].flatMap($0.choices.first)?.isCorrect == true
-        }
+        selectedQuestionFilter = .correct
+        filteredQuestions = quizResult.correctAnsweredQuestions
         collectionView.reloadData()
     }
     
+}
+
+enum QuestionFilter {
+    case incorrect
+    case correct
 }
