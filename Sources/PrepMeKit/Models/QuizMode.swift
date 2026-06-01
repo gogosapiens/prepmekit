@@ -11,13 +11,13 @@ enum QuizMode: Codable, CaseIterable {
     
     var image: UIImage {
         switch self {
-        case .questionOfTheDay: return UIImage(resource: .questionOfTheDay)
-        case .quickTenQuiz: return UIImage(resource: .quickTenQuiz)
-        case .timedQuiz: return UIImage(resource: .timedQuiz)
-        case .mistakesQuiz: return UIImage(resource: .mistakesQuiz)
-        case .toughTopicQuiz: return UIImage(resource: .toughTopicQuiz)
-        case .buildOwnQuiz: return UIImage(resource: .buildOwnQuiz)
-        case .mockExam: return UIImage(resource: .mockExam)
+        case .questionOfTheDay: return .init(named: "PrepMeQuestionOfTheDay") ?? .init(resource: .questionOfTheDay)
+        case .quickTenQuiz: return .init(named: "PrepMeQuickTenQuiz") ?? .init(resource: .quickTenQuiz)
+        case .timedQuiz: return .init(named: "PrepMeTimedQuiz") ?? .init(resource: .timedQuiz)
+        case .mistakesQuiz: return .init(named: "PrepMeMistakesQuiz") ?? .init(resource: .mistakesQuiz)
+        case .toughTopicQuiz: return .init(named: "PrepMeToughTopicQuiz") ?? .init(resource: .toughTopicQuiz)
+        case .buildOwnQuiz: return .init(named: "PrepMeBuildOwnQuiz") ?? .init(resource: .buildOwnQuiz)
+        case .mockExam: return .init(named: "PrepMeMockExam") ?? .init(resource: .mockExam)
         }
     }
     
