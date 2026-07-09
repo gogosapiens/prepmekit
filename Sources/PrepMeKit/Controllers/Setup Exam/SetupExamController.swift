@@ -1,6 +1,6 @@
 import UIKit
 
-class SetupExamController: UIViewController {
+class SetupExamController: PrepMeViewController {
     
     private enum Item {
         case exam

@@ -37,6 +37,7 @@ class PrepMeKitInternal {
     }
     
     func getRootViewController() -> UIViewController {
+        print("[PrepMeKit] PrepMeKitInternal.getRootViewController()!!")
         return StudyController.instantiate(bundle: .module)
     }
     

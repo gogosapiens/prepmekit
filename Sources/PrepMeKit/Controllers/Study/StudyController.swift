@@ -1,7 +1,7 @@
 import UIKit
 import SCEPKit
 
-class StudyController: UIViewController {
+class StudyController: PrepMeViewController {
     
     @IBOutlet private weak var navigationBarBackgroundView: UIView!
     @IBOutlet private weak var examButton: UIButton!
@@ -21,6 +21,8 @@ class StudyController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        overrideUserInterfaceStyle = .light
+
         collectionView.contentInset = .init(top: 202, left: 16, bottom: 16, right: 16)
         collectionView.register(QuestionDayCollectionViewCell.self)
         collectionView.register(QuizModeCollectionViewCell.self)

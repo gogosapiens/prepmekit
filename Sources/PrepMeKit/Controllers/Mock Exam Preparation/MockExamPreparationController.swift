@@ -1,6 +1,6 @@
 import UIKit
 
-class MockExamPreparationController: UIViewController {
+class MockExamPreparationController: PrepMeViewController {
     
     @IBOutlet private weak var pageLabel: UILabel!
     @IBOutlet private weak var continueButton: UIButton!

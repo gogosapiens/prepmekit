@@ -1,6 +1,6 @@
 import UIKit
 
-class QuizController: UIViewController {
+class QuizController: PrepMeViewController {
     
     @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -315,7 +315,7 @@ class QuizController: UIViewController {
         previousButton.isEnabled = currentQuestionIndex > 0
         nextButton.isActive = hasSelection
         nextButton.isHidden = currentQuestionIndex >= questions.count - 1
-        submitButton.backgroundColor = hasSelection ? .prepMeAccent : .scepShade2
+        submitButton.backgroundColor = hasSelection ? .prepMeAccent : .prepMeShade2
         submitButton.isUserInteractionEnabled = hasSelection
         submitButton.isHidden = currentQuestionIndex < questions.count - 1
         submitButton.setTitle(isConfirmedSelection && quizMode == .questionOfTheDay || isReview ? "Close" : "Submit", for: .normal)

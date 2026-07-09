@@ -1,6 +1,6 @@
 import UIKit
 
-class DurationController: UIViewController {
+class DurationController: PrepMeViewController {
     
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var slider: UISlider!

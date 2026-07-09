@@ -32,7 +32,7 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="Close">
-                                            <color key="baseForegroundColor" name="SCEPTextColor"/>
+                                            <color key="baseForegroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="closeClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pzt-0t-ErR"/>
@@ -41,7 +41,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch exam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cW-yw-EVR">
                                         <rect key="frame" x="56" y="0.0" width="281" height="56"/>
                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
-                                        <color key="textColor" name="SCEPTextColor"/>
+                                        <color key="textColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -74,7 +74,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" name="SCEPShade4Color"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EbG-LJ-0KL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="8EV-Fg-d9z"/>
                             <constraint firstItem="xlY-JM-hfI" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="8mz-De-lqj"/>
@@ -96,11 +96,5 @@
     </scenes>
     <resources>
         <image name="Close" width="24" height="24"/>
-        <namedColor name="SCEPShade4Color">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SCEPTextColor">
-            <color red="0.11372549019607843" green="0.11764705882352941" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

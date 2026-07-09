@@ -1,6 +1,6 @@
 import UIKit
 
-class StudyRemindersController: UIViewController {
+class StudyRemindersController: PrepMeViewController {
     
     @IBOutlet private weak var warningView: UIStackView!
     @IBOutlet private weak var settingsButton: UIButton!

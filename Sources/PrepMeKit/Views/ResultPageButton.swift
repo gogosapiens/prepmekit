@@ -26,12 +26,12 @@ class ResultPageButton: UIButton {
         ])
         
         pageTitleLabel.font = SCEPKit.font(ofSize: 12, weight: .medium)
-        pageTitleLabel.textColor = .scepTextColor
+        pageTitleLabel.textColor = .prepMeTextColor
         pageTitleLabel.textAlignment = .center
         stackView.addArrangedSubview(pageTitleLabel)
         
         pageSubtitleLabel.font = SCEPKit.font(ofSize: 24, weight: .bold)
-        pageSubtitleLabel.textColor = .scepTextColor
+        pageSubtitleLabel.textColor = .prepMeTextColor
         pageSubtitleLabel.textAlignment = .center
         stackView.addArrangedSubview(pageSubtitleLabel)
         
@@ -51,8 +51,8 @@ class ResultPageButton: UIButton {
     }
     
     private func update() {
-        pageTitleLabel.textColor = isActive ? .scepTextColor : .scepShade1
-        pageSubtitleLabel.textColor = isActive ? .scepTextColor : .scepShade1
+        pageTitleLabel.textColor = isActive ? .prepMeTextColor : .prepMeShade1
+        pageSubtitleLabel.textColor = isActive ? .prepMeTextColor : .prepMeShade1
         indicatorView.backgroundColor = isActive ? .prepMeAccent : .clear
     }
     

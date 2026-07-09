@@ -20,7 +20,7 @@ class MockExamDetailsView: UIView {
         descriptionLabel.text = mockExam.description?.removingHTMLTags()
         descriptionLabel.isHidden = mockExam.description == nil
         detailsView.layer.borderWidth = 1
-        detailsView.layer.borderColor = UIColor.scepShade2.cgColor
+        detailsView.layer.borderColor = UIColor.prepMeShade2.cgColor
         questionCountLabel.text = "\(mockExam.questionSerials.count) Questions"
         updateDetails()
     }

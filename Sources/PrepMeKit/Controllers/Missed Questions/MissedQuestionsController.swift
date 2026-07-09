@@ -1,6 +1,6 @@
 import UIKit
 
-class MissedQuestionsController: UIViewController {
+class MissedQuestionsController: PrepMeViewController {
     
     @IBOutlet private weak var incorrectView: UIView!
     @IBOutlet private weak var incorrectCountLabel: UILabel!

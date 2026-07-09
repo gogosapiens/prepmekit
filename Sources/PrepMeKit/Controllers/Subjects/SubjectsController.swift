@@ -5,7 +5,7 @@ protocol SubjectsControllerDelegate: AnyObject {
     func subjectsController(_ subjectsController: SubjectsController, didSelect subjectIds: Set<String>)
 }
 
-class SubjectsController: UIViewController {
+class SubjectsController: PrepMeViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var examTitleLabel: UILabel!
@@ -58,7 +58,7 @@ class SubjectsController: UIViewController {
         }
         
         let isSaveEnabled = !selectedSubjectIds.isEmpty
-        saveButton.backgroundColor = isSaveEnabled ? .prepMeAccent : .scepShade2
+        saveButton.backgroundColor = isSaveEnabled ? .prepMeAccent : .prepMeShade2
         saveButton.isUserInteractionEnabled = isSaveEnabled
     }
     

@@ -1,7 +1,7 @@
 import UIKit
 import SCEPKit
 
-class ExamsController: UIViewController {
+class ExamsController: PrepMeViewController {
     
     private struct Section {
         let title: String

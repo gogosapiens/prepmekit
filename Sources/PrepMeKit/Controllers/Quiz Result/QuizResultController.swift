@@ -2,7 +2,7 @@ import UIKit
 import SCEPKit
 import StoreKit
 
-class QuizResultController: UIViewController {
+class QuizResultController: PrepMeViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
     private let header = ResultHeaderView.instantiate()

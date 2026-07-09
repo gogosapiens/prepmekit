@@ -23,11 +23,11 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ain-Fw-ZeO">
                     <rect key="frame" x="32" y="8" width="329" height="17"/>
                     <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
-                    <color key="textColor" name="SCEPShade1Color"/>
+                    <color key="textColor" red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Ain-Fw-ZeO" secondAttribute="trailing" constant="32" id="RzQ-zG-ZXP"/>
                 <constraint firstItem="Ain-Fw-ZeO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="U5a-je-fkn"/>
@@ -41,11 +41,5 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="SCEPShade1Color">
-            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

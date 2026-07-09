@@ -126,9 +126,9 @@ class ChoiceView: UIView {
         leadingIndexLabel.isHidden = false
         leadingIndexLabel.text = String(index + 1)
         orderButtonsView.isHidden = false
-        upOrderButton.tintColor = index > 0 ? .prepMeAccent : .scepShade2
+        upOrderButton.tintColor = index > 0 ? .prepMeAccent : .prepMeShade2
         upOrderButton.isUserInteractionEnabled = index > 0
-        downOrderButton.tintColor = index + 1 < choiceCount ? .prepMeAccent : .scepShade2
+        downOrderButton.tintColor = index + 1 < choiceCount ? .prepMeAccent : .prepMeShade2
         downOrderButton.isUserInteractionEnabled = index + 1 < choiceCount
     }
     
@@ -141,7 +141,7 @@ class ChoiceView: UIView {
     func deselect() {
         leadingIndexLabel.isHidden = true
         leadingIndexLabel.textColor = .white
-        leadingIndexLabel.backgroundColor = .scepTextColor
+        leadingIndexLabel.backgroundColor = .prepMeTextColor
         leadingIndexLabel.layer.borderWidth = 0
         leadingIndicatorImageView.isHidden = true
         trailingIndicatorImageView.image = nil

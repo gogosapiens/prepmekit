@@ -17,18 +17,18 @@ class QuestionDayCollectionViewCell: UICollectionViewCell {
     
     func enable() {
         imageView.tintColor = .prepMeAccent
-        titleLabel.textColor = .scepTextColor
+        titleLabel.textColor = .prepMeTextColor
         edgeIndicatorView.backgroundColor = .prepMeAccent
         dotIndicatorView.backgroundColor = .prepMeAccent
-        dateLabel.textColor = .scepTextColor
+        dateLabel.textColor = .prepMeTextColor
     }
     
     func disable() {
-        imageView.tintColor = .scepShade1
-        titleLabel.textColor = .scepShade1
-        edgeIndicatorView.backgroundColor = .scepShade2
-        dotIndicatorView.backgroundColor = .scepShade1
-        dateLabel.textColor = .scepShade1
+        imageView.tintColor = .prepMeShade1
+        titleLabel.textColor = .prepMeShade1
+        edgeIndicatorView.backgroundColor = .prepMeShade2
+        dotIndicatorView.backgroundColor = .prepMeShade1
+        dateLabel.textColor = .prepMeShade1
     }
     
 }

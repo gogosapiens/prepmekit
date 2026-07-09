@@ -35,7 +35,7 @@ class StudyHeaderView: UIView {
         self.dates = dates
         
         streakImageView.image = UIImage(resource: isStreakActive ? .fire : .fireInactive)
-        streakLabel.textColor = isStreakActive ? .scepTextColor : .scepShade1
+        streakLabel.textColor = isStreakActive ? .prepMeTextColor : .prepMeShade1
         streakLabel.text = "\(streak) Day\(streak == 1 ? "" : "s") streak"
         
         let itemWidth: CGFloat = 49
@@ -56,14 +56,14 @@ class StudyHeaderView: UIView {
         allStudyingButton.layer.borderColor = UIColor.prepMeAccent.cgColor
         allStudyingButton.setTitleColor(.prepMeAccent, for: .normal)
         qotdButton.layer.borderColor = UIColor.clear.cgColor
-        qotdButton.setTitleColor(.scepTextColor, for: .normal)
+        qotdButton.setTitleColor(.prepMeTextColor, for: .normal)
         tab = .allStudying
         collectionView.reloadData()
     }
     
     @IBAction private func qotdClicked(_ sender: Any) {
         allStudyingButton.layer.borderColor = UIColor.clear.cgColor
-        allStudyingButton.setTitleColor(.scepTextColor, for: .normal)
+        allStudyingButton.setTitleColor(.prepMeTextColor, for: .normal)
         qotdButton.layer.borderColor = UIColor.prepMeAccent.cgColor
         qotdButton.setTitleColor(.prepMeAccent, for: .normal)
         tab = .qotd

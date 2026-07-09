@@ -1,6 +1,6 @@
 import UIKit
 
-class QuizBuildController: UIViewController {
+class QuizBuildController: PrepMeViewController {
     
     private enum Filter: CaseIterable {
         case newQuestions
@@ -48,7 +48,7 @@ class QuizBuildController: UIViewController {
         super.viewDidLoad()
         
         filterView.layer.borderWidth = 1
-        filterView.layer.borderColor = UIColor.scepShade2.cgColor
+        filterView.layer.borderColor = UIColor.prepMeShade2.cgColor
         
         reloadData()
     }
@@ -61,17 +61,17 @@ class QuizBuildController: UIViewController {
         
         newQuestions = allQuestions.subtracting(oldQuestions).filter({ selectedSubjectIds.contains($0.subject.id) })
         newQuestionCountLabel.text = String(newQuestions.count)
-        newQuestionCountLabel.textColor = includeFilters.contains(.newQuestions) ? .scepShade1 : .scepShade2
+        newQuestionCountLabel.textColor = includeFilters.contains(.newQuestions) ? .prepMeShade1 : .prepMeShade2
         newQuestionsCheckboxImageView.image = UIImage(resource: includeFilters.contains(.newQuestions) ? .checkboxChecked : .checkboxUnchecked)
         
         answeredQuestions = oldQuestions.filter({ selectedSubjectIds.contains($0.subject.id) })
         answeredQuestionCountLabel.text = String(answeredQuestions.count)
-        answeredQuestionCountLabel.textColor = includeFilters.contains(.answeredQuestions) ? .scepShade1 : .scepShade2
+        answeredQuestionCountLabel.textColor = includeFilters.contains(.answeredQuestions) ? .prepMeShade1 : .prepMeShade2
         answeredQuestionsCheckboxImageView.image = UIImage(resource: includeFilters.contains(.answeredQuestions) ? .checkboxChecked : .checkboxUnchecked)
         
         incorrectQuestions = Set(ResultStorage.shared.quizResults.flatMap(\.wrongAnsweredQuestions)).filter({ selectedSubjectIds.contains($0.subject.id) })
         incorrectQuestionCountLabel.text = String(incorrectQuestions.count)
-        incorrectQuestionCountLabel.textColor = includeFilters.contains(.incorrectQuestions) ? .scepShade1 : .scepShade2
+        incorrectQuestionCountLabel.textColor = includeFilters.contains(.incorrectQuestions) ? .prepMeShade1 : .prepMeShade2
         incorrectQuestionsCheckboxImageView.image = UIImage(resource: includeFilters.contains(.incorrectQuestions) ? .checkboxChecked : .checkboxUnchecked)
         
         let minValue = min(1, questions.count)
@@ -83,7 +83,7 @@ class QuizBuildController: UIViewController {
         sliderMaxValueLabel.text = String(questions.count)
         
         let isStartEnabled = !questions.isEmpty
-        startButton.backgroundColor = isStartEnabled ? .prepMeAccent : .scepShade2
+        startButton.backgroundColor = isStartEnabled ? .prepMeAccent : .prepMeShade2
         startButton.isUserInteractionEnabled = isStartEnabled
     }
     

@@ -22,7 +22,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6H-0g-EKa">
                     <rect key="frame" x="0.0" y="81" width="474" height="17"/>
                     <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
-                    <color key="textColor" name="SCEPShade1Color"/>
+                    <color key="textColor" red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -38,8 +38,5 @@
         </collectionReusableView>
     </objects>
     <resources>
-        <namedColor name="SCEPShade1Color">
-            <color red="0.58431372549019611" green="0.59999999999999998" blue="0.63921568627450975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

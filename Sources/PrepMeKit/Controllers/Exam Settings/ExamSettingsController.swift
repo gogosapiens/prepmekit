@@ -1,7 +1,7 @@
 import UIKit
 import SCEPKit
 
-class ExamSettingsController: UIViewController {
+class ExamSettingsController: PrepMeViewController {
     
     private enum ExamSetting {
         case switchExam
@@ -118,7 +118,7 @@ extension ExamSettingsController: UITableViewDelegate {
         header.setup(
             title: "I’M PREPARING FOR",
             font: SCEPKit.font(ofSize: 14, weight: .medium),
-            color: .scepShade1,
+            color: .prepMeShade1,
             bottomPadding: 12
         )
         return header

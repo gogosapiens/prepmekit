@@ -17,7 +17,7 @@ class PaginationView: UIStackView {
         
         for _ in 0..<numberOfPages {
             let view = UIView()
-            view.backgroundColor = .scepShade2
+            view.backgroundColor = .prepMeShade2
             view.layer.cornerRadius = 2
             addArrangedSubview(view)
         }
@@ -25,7 +25,7 @@ class PaginationView: UIStackView {
     
     func setCurrentIndex(_ currentIndex: Int) {
         for (index, view) in arrangedSubviews.enumerated() {
-            view.backgroundColor = index <= currentIndex ? .prepMeAccent : .scepShade2
+            view.backgroundColor = index <= currentIndex ? .prepMeAccent : .prepMeShade2
         }
     }
     

@@ -7,7 +7,7 @@ protocol QuitQuizControllerDelegate: AnyObject {
     func quitQuizControllerSubmit(_ quitQuizController: QuitQuizController)
 }
 
-class QuitQuizController: UIViewController {
+class QuitQuizController: PrepMeViewController {
     
     @IBOutlet private weak var subtitleLabel: UILabel!
     @IBOutlet private weak var submitButton: UIButton!

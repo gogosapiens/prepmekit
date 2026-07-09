@@ -17,10 +17,10 @@ class DayCollectionViewCell: UICollectionViewCell {
             weekdayLabel.text = calendar.shortWeekdaySymbols[weekday]
         }
         dayLabel.text = String(calendar.component(.day, from: date))
-        dayView.layer.borderColor = UIColor.scepTextColor.cgColor
+        dayView.layer.borderColor = UIColor.prepMeTextColor.cgColor
         dayView.layer.borderWidth = isSelected ? 1 : 0
-        weekdayLabel.textColor = isSelected ? .scepTextColor : .scepShade1
-        dayLabel.textColor = isSelected || indicatorColor != .clear ? .scepTextColor : .scepShade1
+        weekdayLabel.textColor = isSelected ? .prepMeTextColor : .prepMeShade1
+        dayLabel.textColor = isSelected || indicatorColor != .clear ? .prepMeTextColor : .prepMeShade1
         indicatorView.backgroundColor = indicatorColor
     }
     

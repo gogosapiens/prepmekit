@@ -23,7 +23,7 @@ fileprivate enum Preference {
     }
 }
 
-class QuizPreferencesController: UIViewController {
+class QuizPreferencesController: PrepMeViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -117,7 +117,7 @@ extension QuizPreferencesController: UITableViewDelegate {
         header.setup(
             title: preference.title,
             font: SCEPKit.font(ofSize: 14, weight: .medium),
-            color: .scepTextColor,
+            color: .prepMeTextColor,
             bottomPadding: 16
         )
         return header

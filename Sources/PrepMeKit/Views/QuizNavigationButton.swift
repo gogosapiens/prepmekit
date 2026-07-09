@@ -27,15 +27,15 @@ class QuizNavigationButton: UIButton {
         if !isEnabled {
             borderColor = .clear
             borderWidth = 0
-            tintColor = .scepTextColor
+            tintColor = .prepMeTextColor
         } else if isActive {
             borderColor = .prepMeAccent
             borderWidth = 1
             tintColor = .prepMeAccent
         } else {
-            borderColor = .scepShade2
+            borderColor = .prepMeShade2
             borderWidth = 1
-            tintColor = .scepTextColor
+            tintColor = .prepMeTextColor
         }
         
         

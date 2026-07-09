@@ -3,6 +3,10 @@ import UIKit
 extension UIColor {
     
     static let prepMeAccent = UIColor(resource: .prepMeAccent)
+    static let prepMeTextColor = UIColor(hex: 0x1D1E21)
+    static let prepMeShade1 = UIColor(hex: 0x9599A3)
+    static let prepMeShade2 = UIColor(hex: 0xD0D6E5)
+    static let prepMeShade3 = UIColor(hex: 0xF4F5F9)
     
     convenience init(hex: UInt64, alpha: CGFloat = 1) {
         let divisor = CGFloat(255)

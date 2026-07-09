@@ -1,6 +1,6 @@
 import UIKit
 
-class ImageController: UIViewController {
+class ImageController: PrepMeViewController {
     
     @IBOutlet private weak var imageView: UIImageView!
     

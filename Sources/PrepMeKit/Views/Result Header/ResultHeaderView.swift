@@ -69,7 +69,7 @@ class ResultHeaderView: UIView {
         placeholderLayer.frame = progressView.bounds
         let path = UIBezierPath(arcCenter: CGPoint(x: progressView.bounds.width / 2, y: progressView.bounds.height - lineWidth / 2), radius: progressView.bounds.height - lineWidth, startAngle: -.pi, endAngle: 0, clockwise: true).cgPath
         placeholderLayer.path = path
-        placeholderLayer.strokeColor = UIColor.scepShade3.cgColor
+        placeholderLayer.strokeColor = UIColor.prepMeShade3.cgColor
         placeholderLayer.lineWidth = lineWidth
         placeholderLayer.fillColor = UIColor.clear.cgColor
         placeholderLayer.lineCap = .round
@@ -87,7 +87,7 @@ class ResultHeaderView: UIView {
         let pointLayer = CAShapeLayer()
         pointLayer.frame = progressView.bounds
         pointLayer.path = path
-        pointLayer.strokeColor = UIColor.scepTextColor.cgColor
+        pointLayer.strokeColor = UIColor.prepMeTextColor.cgColor
         pointLayer.lineWidth = 11
         pointLayer.fillColor = UIColor.clear.cgColor
         pointLayer.lineCap = .round
